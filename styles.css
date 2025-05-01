@@ -95,7 +95,7 @@ section {
 
 .section-subtitle {
     font-size: 1.2rem;
-    color: var(--text-light);
+    color: #444;
     margin-bottom: 3rem;
     max-width: 800px;
     margin-left: auto;
@@ -477,6 +477,11 @@ nav a:hover {
     padding: 100px 0;
 }
 
+.waitlist .section-subtitle {
+    color: #333;
+    font-weight: 500;
+}
+
 .waitlist-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -619,8 +624,9 @@ nav a:hover {
 .form-footer {
     margin-top: 20px;
     text-align: center;
-    font-size: 0.9rem;
-    color: var(--text-light);
+    font-size: 0.95rem;
+    color: #333;
+    font-weight: 500;
 }
 
 .form-footer a {
