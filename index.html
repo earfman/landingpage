@@ -116,72 +116,23 @@
     <!-- Waitlist Section -->
     <section class="waitlist" id="waitlist">
         <div class="container">
-            <div class="waitlist-grid">
-                <div class="waitlist-content">
-                    <h2>Join the Exclusive Waitlist</h2>
-                    <p>Be among the first to access ZeroTrustKerberosLink and transform how your enterprise connects Kerberos to AWS.</p>
-                    
-                    <ul class="waitlist-benefits">
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Early access to the platform before public release</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>50% discount for the first 6 months of subscription</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Direct access to our engineering team during setup</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Priority feature requests and implementation</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle"></i>
-                            <span>Complimentary security assessment of your AWS setup</span>
-                        </li>
-                    </ul>
-                    
-                    <div class="countdown">
-                        <p>Limited spots available. Early access begins in:</p>
-                        <div class="countdown-timer">
-                            <div class="countdown-item">
-                                <span class="countdown-number" id="days">30</span>
-                                <span class="countdown-label">Days</span>
-                            </div>
-                            <div class="countdown-item">
-                                <span class="countdown-number" id="hours">12</span>
-                                <span class="countdown-label">Hours</span>
-                            </div>
-                            <div class="countdown-item">
-                                <span class="countdown-number" id="minutes">45</span>
-                                <span class="countdown-label">Minutes</span>
-                            </div>
-                            <div class="countdown-item">
-                                <span class="countdown-number" id="seconds">18</span>
-                                <span class="countdown-label">Seconds</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-card">
-                    <h3>Reserve Your Spot</h3>
-                    <p>Fill out the form below to join our waitlist and be notified when early access begins.</p>
-                    
-                    <form id="waitlistForm" class="waitlist-form">
+            <div class="section-header center">
+                <span class="section-badge">Early Access</span>
+                <h2>Join the Exclusive Waitlist</h2>
+                <p class="section-subtitle">Be among the first to experience enterprise-grade Kerberos to AWS integration with Zero Trust security</p>
+            </div>
+            
+            <div class="waitlist-content">
+                <div class="waitlist-form">
+                    <form action="https://formspree.io/f/contact@zerotrustkerberoslink.com" method="POST" id="waitlistForm">
                         <div class="form-group">
-                            <label for="fullName">Full Name</label>
-                            <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
                         </div>
-                        
                         <div class="form-group">
-                            <label for="companyEmail">Work Email</label>
-                            <input type="email" id="companyEmail" name="companyEmail" placeholder="your.name@company.com" required>
+                            <label for="email">Work Email</label>
+                            <input type="email" id="email" name="email" placeholder="Your work email" required>
                         </div>
-                        
                         <div class="form-group">
                             <label for="companyName">Company Name</label>
                             <input type="text" id="companyName" name="companyName" placeholder="Your company" required>
@@ -624,25 +575,20 @@
             <div class="kb-cta">
                 <h3>Need Technical Support?</h3>
                 <p>Our security engineers are available to help with your implementation</p>
-                <a href="#waitlist" class="btn btn-primary">Contact Support</a>
+                <a href="mailto:contact@zerotrustkerberoslink.com" class="btn btn-primary">Contact Support</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="logo">
-                        <i class="fas fa-shield-alt logo-icon"></i>
-                        <h1>ZeroTrustKerberosLink</h1>
-                    </div>
-                    <p>The most secure way to connect your Kerberos infrastructure to AWS services.</p>
-                    <div class="social-links">
-                        <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>ZeroTrustKerberosLink</h2>
+                    <p>Secure enterprise Kerberos to AWS integration with Zero Trust principles</p>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:contact@zerotrustkerberoslink.com">contact@zerotrustkerberoslink.com</a></p>
                     </div>
                 </div>
                 
@@ -689,6 +635,7 @@
             
             <div class="footer-bottom">
                 <p>&copy; 2025 ZeroTrustKerberosLink. All rights reserved.</p>
+                <p>Contact: <a href="mailto:contact@zerotrustkerberoslink.com">contact@zerotrustkerberoslink.com</a></p>
                 <div class="footer-badges">
                     <span><i class="fas fa-lock"></i> SOC2 Compliant</span>
                     <span><i class="fas fa-shield-alt"></i> HIPAA Ready</span>
