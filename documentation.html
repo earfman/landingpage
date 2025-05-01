@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - ZeroTrustKerberosLink</title>
+    <meta name="description" content="ZeroTrustKerberosLink Documentation - Learn how to implement secure Kerberos to AWS integration with Zero Trust principles.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-shield-alt logo-icon"></i>
+                <h1>ZeroTrustKerberosLink</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#waitlist" class="btn btn-primary">Join Waitlist</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Documentation Content -->
+    <section class="documentation">
+        <div class="container">
+            <div class="section-header center">
+                <h1>ZeroTrustKerberosLink Documentation</h1>
+                <p class="section-subtitle">Comprehensive guides to help you implement and maintain your secure Kerberos to AWS integration</p>
+            </div>
+            
+            <div class="documentation-grid">
+                <div class="documentation-sidebar">
+                    <div class="sidebar-section">
+                        <h3>Getting Started</h3>
+                        <ul>
+                            <li><a href="#installation" class="active">Installation Guide</a></li>
+                            <li><a href="#quickstart">Quick Start</a></li>
+                            <li><a href="#requirements">System Requirements</a></li>
+                            <li><a href="#architecture">Architecture Overview</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3>Configuration</h3>
+                        <ul>
+                            <li><a href="#kerberos-config">Kerberos Configuration</a></li>
+                            <li><a href="#aws-config">AWS Integration</a></li>
+                            <li><a href="#zero-trust">Zero Trust Settings</a></li>
+                            <li><a href="#security-headers">Security Headers</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3>Security</h3>
+                        <ul>
+                            <li><a href="#security-model">Security Model</a></li>
+                            <li><a href="#input-validation">Input Validation</a></li>
+                            <li><a href="#secure-redis">Secure Redis Communication</a></li>
+                            <li><a href="#penetration-testing">Penetration Testing</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3>API Reference</h3>
+                        <ul>
+                            <li><a href="#rest-api">REST API</a></li>
+                            <li><a href="#cli">Command Line Interface</a></li>
+                            <li><a href="#sdk">SDK Documentation</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="documentation-content">
+                    <div id="installation" class="doc-section">
+                        <h2>Installation Guide</h2>
+                        <div class="doc-meta">
+                            <span class="doc-updated">Last updated: May 1, 2025</span>
+                            <span class="doc-author">By: ZeroTrustKerberosLink Team</span>
+                        </div>
+                        
+                        <p>ZeroTrustKerberosLink is designed to be easy to install while maintaining enterprise-grade security. This guide will walk you through the installation process step by step.</p>
+                        
+                        <h3>Prerequisites</h3>
+                        <ul>
+                            <li>Linux-based server (Ubuntu 20.04+ or RHEL 8+ recommended)</li>
+                            <li>Docker and Docker Compose</li>
+                            <li>Access to your Kerberos KDC</li>
+                            <li>AWS IAM permissions for integration</li>
+                        </ul>
+                        
+                        <h3>Step 1: Download the Installation Package</h3>
+                        <div class="code-block">
+                            <pre><code>curl -sSL https://download.zerotrustkerberos.link/latest | sudo bash</code></pre>
+                        </div>
+                        
+                        <h3>Step 2: Configure Your Environment</h3>
+                        <p>Create a configuration file by copying the example:</p>
+                        <div class="code-block">
+                            <pre><code>cp /etc/zerotrustkerberos/config.example.yaml /etc/zerotrustkerberos/config.yaml
+nano /etc/zerotrustkerberos/config.yaml</code></pre>
+                        </div>
+                        
+                        <h3>Step 3: Set Up Kerberos Integration</h3>
+                        <p>Configure your Kerberos settings in the configuration file:</p>
+                        <div class="code-block">
+                            <pre><code># Kerberos Configuration
+kerberos:
+  realm: YOUR.REALM
+  kdc: kdc.your-domain.com
+  admin_server: admin-server.your-domain.com
+  keytab_path: /etc/zerotrustkerberos/krb5.keytab</code></pre>
+                        </div>
+                        
+                        <h3>Step 4: Configure AWS Integration</h3>
+                        <p>Set up your AWS integration settings:</p>
+                        <div class="code-block">
+                            <pre><code># AWS Configuration
+aws:
+  region: us-west-2
+  role_mapping:
+    - kerberos_principal: "admin@YOUR.REALM"
+      aws_role: "arn:aws:iam::123456789012:role/AdminRole"
+    - kerberos_principal: "developer@YOUR.REALM"
+      aws_role: "arn:aws:iam::123456789012:role/DeveloperRole"</code></pre>
+                        </div>
+                        
+                        <h3>Step 5: Configure Security Settings</h3>
+                        <p>Enable security features based on your requirements:</p>
+                        <div class="code-block">
+                            <pre><code># Security Configuration
+security:
+  input_validation: true
+  xss_protection: true
+  content_security_policy: true
+  secure_headers: true
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 60</code></pre>
+                        </div>
+                        
+                        <h3>Step 6: Start the Service</h3>
+                        <div class="code-block">
+                            <pre><code>sudo systemctl enable zerotrustkerberos
+sudo systemctl start zerotrustkerberos</code></pre>
+                        </div>
+                        
+                        <h3>Step 7: Verify Installation</h3>
+                        <p>Check that the service is running correctly:</p>
+                        <div class="code-block">
+                            <pre><code>sudo systemctl status zerotrustkerberos
+curl http://localhost:8080/health</code></pre>
+                        </div>
+                        
+                        <div class="doc-callout">
+                            <h4>Security Note</h4>
+                            <p>ZeroTrustKerberosLink implements comprehensive security hardening by default, including input validation, protection against XSS and injection attacks, secure headers, and TLS support for all communications.</p>
+                        </div>
+                        
+                        <div class="doc-navigation">
+                            <a href="#quickstart" class="doc-next">Next: Quick Start Guide <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>ZeroTrustKerberosLink</h2>
+                    <p>Secure enterprise Kerberos to AWS integration with Zero Trust principles</p>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:contact@zerotrustkerberoslink.com">contact@zerotrustkerberoslink.com</a></p>
+                    </div>
+                </div>
+                
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <h3>Product</h3>
+                        <ul>
+                            <li><a href="index.html#features">Features</a></li>
+                            <li><a href="index.html#pricing">Pricing</a></li>
+                            <li><a href="documentation.html">Documentation</a></li>
+                            <li><a href="index.html#waitlist">Early Access</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="index.html#about">About Us</a></li>
+                            <li><a href="mailto:contact@zerotrustkerberoslink.com">Contact</a></li>
+                            <li><a href="index.html#comparison">Why Choose Us</a></li>
+                            <li><a href="index.html#how-it-works">How It Works</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="mailto:contact@zerotrustkerberoslink.com">Support</a></li>
+                            <li><a href="index.html#knowledge-base">Knowledge Base</a></li>
+                            <li><a href="index.html#security">Security</a></li>
+                            <li><a href="https://aws.amazon.com/marketplace/" target="_blank">AWS Marketplace</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="terms-of-service.html">Terms of Service</a></li>
+                            <li><a href="eula.html">EULA</a></li>
+                            <li><a href="index.html#security">Compliance</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 ZeroTrustKerberosLink. All rights reserved.</p>
+                <p>Contact: <a href="mailto:contact@zerotrustkerberoslink.com">contact@zerotrustkerberoslink.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
