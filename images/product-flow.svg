@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" rx="10" fill="#F8F9FA"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" fill="#333333" text-anchor="middle">ZeroTrustKerberosLink Authentication Flow</text>
+  
+  <!-- Enterprise Environment -->
+  <rect x="50" y="80" width="200" height="340" rx="10" fill="#E9ECEF" stroke="#4361EE" stroke-width="2"/>
+  <text x="150" y="110" font-family="Arial" font-size="16" font-weight="bold" fill="#333333" text-anchor="middle">Enterprise Environment</text>
+  
+  <!-- Kerberos Server -->
+  <rect x="75" y="130" width="150" height="80" rx="5" fill="white" stroke="#4361EE" stroke-width="2"/>
+  <text x="150" y="160" font-family="Arial" font-size="14" font-weight="bold" fill="#333333" text-anchor="middle">Kerberos Server</text>
+  <text x="150" y="180" font-family="Arial" font-size="12" fill="#666666" text-anchor="middle">(Active Directory)</text>
+  
+  <!-- Enterprise User -->
+  <circle cx="150" cy="280" r="40" fill="white" stroke="#4361EE" stroke-width="2"/>
+  <text x="150" y="285" font-family="Arial" font-size="14" font-weight="bold" fill="#333333" text-anchor="middle">Enterprise</text>
+  <text x="150" y="305" font-family="Arial" font-size="14" font-weight="bold" fill="#333333" text-anchor="middle">User</text>
+  
+  <!-- ZeroTrustKerberosLink -->
+  <rect x="300" y="80" width="200" height="340" rx="10" fill="#4361EE" opacity="0.1" stroke="#4361EE" stroke-width="2"/>
+  <text x="400" y="110" font-family="Arial" font-size="16" font-weight="bold" fill="#4361EE" text-anchor="middle">ZeroTrustKerberosLink</text>
+  
+  <!-- Authentication Module -->
+  <rect x="325" y="130" width="150" height="60" rx="5" fill="white" stroke="#4361EE" stroke-width="2"/>
+  <text x="400" y="160" font-family="Arial" font-size="14" font-weight="bold" fill="#333333" text-anchor="middle">Authentication Module</text>
+  
+  <!-- Zero Trust Policy Engine -->
+  <rect x="325" y="210" width="150" height="60" rx="5" fill="white" stroke="#4361EE" stroke-width="2"/>
+  <text x="400" y="240" font-family="Arial" font-size="14" font-weight="bold" fill="#333333" text-anchor="middle">Zero Trust Policy Engine</text>
+  
+  <!-- AWS Credential Generator -->
+  <rect x="325" y="290" width="150" height="60" rx="5" fill="white" stroke="#4361EE" stroke-width="2"/>
+  <text x="400" y="315" font-family="Arial" font-size="12" font-weight="bold" fill="#333333" text-anchor="middle">AWS Credential</text>
+  <text x="400" y="335" font-family="Arial" font-size="12" font-weight="bold" fill="#333333" text-anchor="middle">Generator</text>
+  
+  <!-- Audit & Monitoring -->
+  <rect x="325" y="370" width="150" height="40" rx="5" fill="white" stroke="#4361EE" stroke-width="2"/>
+  <text x="400" y="395" font-family="Arial" font-size="14" font-weight="bold" fill="#333333" text-anchor="middle">Audit & Monitoring</text>
+  
+  <!-- AWS Cloud -->
+  <rect x="550" y="80" width="200" height="340" rx="10" fill="#F8F9FA" stroke="#4CC9F0" stroke-width="2"/>
+  <text x="650" y="110" font-family="Arial" font-size="16" font-weight="bold" fill="#4CC9F0" text-anchor="middle">AWS Cloud</text>
+  
+  <!-- AWS IAM -->
+  <rect x="575" y="130" width="150" height="60" rx="5" fill="white" stroke="#4CC9F0" stroke-width="2"/>
+  <text x="650" y="160" font-family="Arial" font-size="14" font-weight="bold" fill="#333333" text-anchor="middle">AWS IAM</text>
+  
+  <!-- AWS Services -->
+  <rect x="575" y="210" width="150" height="60" rx="5" fill="white" stroke="#4CC9F0" stroke-width="2"/>
+  <text x="650" y="240" font-family="Arial" font-size="14" font-weight="bold" fill="#333333" text-anchor="middle">AWS S3</text>
+  
+  <rect x="575" y="290" width="150" height="60" rx="5" fill="white" stroke="#4CC9F0" stroke-width="2"/>
+  <text x="650" y="320" font-family="Arial" font-size="14" font-weight="bold" fill="#333333" text-anchor="middle">AWS EC2</text>
+  
+  <rect x="575" y="370" width="150" height="40" rx="5" fill="white" stroke="#4CC9F0" stroke-width="2"/>
+  <text x="650" y="395" font-family="Arial" font-size="14" font-weight="bold" fill="#333333" text-anchor="middle">Other AWS Services</text>
+  
+  <!-- Flow Arrows -->
+  <!-- Step 1: User to Kerberos -->
+  <path d="M150,240 L150,220" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="170" y="230" font-family="Arial" font-size="12" fill="#333333">1. Kerberos</text>
+  <text x="170" y="245" font-family="Arial" font-size="12" fill="#333333">Authentication</text>
+  
+  <!-- Step 2: Kerberos to ZTK -->
+  <path d="M225,160 L325,160" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="250" y="145" font-family="Arial" font-size="12" fill="#333333">2. Kerberos</text>
+  <text x="250" y="160" font-family="Arial" font-size="12" fill="#333333">Ticket</text>
+  
+  <!-- Step 3: Auth to Policy -->
+  <path d="M400,190 L400,210" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="420" y="200" font-family="Arial" font-size="12" fill="#333333">3. Validate</text>
+  
+  <!-- Step 4: Policy to Credential -->
+  <path d="M400,270 L400,290" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="420" y="280" font-family="Arial" font-size="12" fill="#333333">4. Authorize</text>
+  
+  <!-- Step 5: Credential to AWS IAM -->
+  <path d="M475,320 L575,160" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="500" y="220" font-family="Arial" font-size="12" fill="#333333">5. Temporary</text>
+  <text x="500" y="235" font-family="Arial" font-size="12" fill="#333333">AWS Credentials</text>
+  
+  <!-- Step 6: IAM to Services -->
+  <path d="M650,190 L650,210" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="670" y="200" font-family="Arial" font-size="12" fill="#333333">6. Access</text>
+  
+  <path d="M650,270 L650,290" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <path d="M650,350 L650,370" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Step 7: Monitoring -->
+  <path d="M400,350 L400,370" stroke="#333333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="420" y="360" font-family="Arial" font-size="12" fill="#333333">7. Log & Monitor</text>
+  
+  <!-- User to AWS (conceptual) -->
+  <path d="M190,280 C300,450 500,450 610,350" stroke="#333333" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
+  <text x="350" y="450" font-family="Arial" font-size="14" font-weight="bold" fill="#333333" text-anchor="middle">Secure Access to AWS Resources</text>
+  
+  <!-- Arrowhead Marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333333"/>
+    </marker>
+  </defs>
+  
+  <!-- Security Features Callout -->
+  <rect x="50" y="440" width="700" height="50" rx="5" fill="#F72585" opacity="0.1" stroke="#F72585" stroke-width="1"/>
+  <text x="400" y="470" font-family="Arial" font-size="14" font-weight="bold" fill="#333333" text-anchor="middle">
+    Secure by Design: Input Validation • Content Security Policy • HSTS • XSS Protection • Path Traversal Protection • Secure Redis Communication
+  </text>
+</svg>

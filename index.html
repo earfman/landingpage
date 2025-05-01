@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroTrustKerberosLink - Secure Enterprise Kerberos to AWS Integration</title>
+    <meta name="description" content="ZeroTrustKerberosLink provides secure, zero-trust integration between enterprise Kerberos authentication and AWS services. Deploy in under 60 minutes.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="container">
+            <p><span class="highlight">Limited Time</span> Join the waitlist for early access and get 50% off your first 6 months! <a href="#waitlist">Sign up now</a></p>
+            <button class="close-announcement" id="closeAnnouncement">×</button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-shield-alt logo-icon"></i>
+                <h1>ZeroTrustKerberosLink</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#waitlist" class="btn btn-primary btn-sm">Join Waitlist</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-eyebrow">
+                        <span class="eyebrow-badge">Self-Hosted. Your Data, Your Control.</span>
+                    </div>
+                    <h1>Secure Kerberos to AWS Integration in 60 Minutes</h1>
+                    <p class="hero-subtitle">The only self-hosted Zero Trust solution that bridges your existing Kerberos authentication with AWS services without compromising security or compliance.</p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">60</span>
+                            <span class="stat-label">Minute Setup</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">99.9%</span>
+                            <span class="stat-label">Uptime</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Data Sovereignty</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-cta">
+                        <a href="#waitlist" class="btn btn-primary btn-lg">Join the Waitlist</a>
+                        <a href="#how-it-works" class="btn-text">See How It Works <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="hero-image">
+                        <img src="images/dashboard.svg" alt="ZeroTrustKerberosLink Dashboard">
+                    </div>
+                    <div class="hero-customers">
+                        <p>Trusted by security-conscious enterprises</p>
+                        <div class="customer-logos">
+                            <div class="customer-logo"><img src="images/logo-enterprise1.svg" alt="Enterprise Customer"></div>
+                            <div class="customer-logo"><img src="images/logo-enterprise2.svg" alt="Finance Customer"></div>
+                            <div class="customer-logo"><img src="images/logo-enterprise3.svg" alt="Healthcare Customer"></div>
+                            <div class="customer-logo"><img src="images/logo-enterprise4.svg" alt="Government Customer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-badges-strip">
+            <div class="container">
+                <div class="badges-strip">
+                    <div class="badge-item">
+                        <i class="fas fa-lock"></i>
+                        <span>SOC2 Compliant</span>
+                    </div>
+                    <div class="badge-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>HIPAA Ready</span>
+                    </div>
+                    <div class="badge-item">
+                        <i class="fas fa-server"></i>
+                        <span>Self-Hosted Control</span>
+                    </div>
+                    <div class="badge-item">
+                        <i class="fas fa-database"></i>
+                        <span>Zero Data Sharing</span>
+                    </div>
+                    <div class="badge-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Deploy in 60 Minutes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Section -->
+    <section class="waitlist" id="waitlist">
+        <div class="container">
+            <div class="waitlist-grid">
+                <div class="waitlist-content">
+                    <h2>Join the Exclusive Waitlist</h2>
+                    <p>Be among the first to access ZeroTrustKerberosLink and transform how your enterprise connects Kerberos to AWS.</p>
+                    
+                    <ul class="waitlist-benefits">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Early access to the platform before public release</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>50% discount for the first 6 months of subscription</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Direct access to our engineering team during setup</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Priority feature requests and implementation</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Complimentary security assessment of your AWS setup</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="countdown">
+                        <p>Limited spots available. Early access begins in:</p>
+                        <div class="countdown-timer">
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="days">30</span>
+                                <span class="countdown-label">Days</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="hours">12</span>
+                                <span class="countdown-label">Hours</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="minutes">45</span>
+                                <span class="countdown-label">Minutes</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number" id="seconds">18</span>
+                                <span class="countdown-label">Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-card">
+                    <h3>Reserve Your Spot</h3>
+                    <p>Fill out the form below to join our waitlist and be notified when early access begins.</p>
+                    
+                    <form id="waitlistForm" class="waitlist-form">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="companyEmail">Work Email</label>
+                            <input type="email" id="companyEmail" name="companyEmail" placeholder="your.name@company.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="companyName">Company Name</label>
+                            <input type="text" id="companyName" name="companyName" placeholder="Your company" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="companySize">Company Size</label>
+                            <select id="companySize" name="companySize" required>
+                                <option value="" disabled selected>Select company size</option>
+                                <option value="1-50">1-50 employees</option>
+                                <option value="51-200">51-200 employees</option>
+                                <option value="201-500">201-500 employees</option>
+                                <option value="501-1000">501-1000 employees</option>
+                                <option value="1001-5000">1001-5000 employees</option>
+                                <option value="5000+">5000+ employees</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="consent" name="consent" required>
+                            <label for="consent">I agree to receive communications about ZeroTrustKerberosLink. You can unsubscribe at any time. View our <a href="#">Privacy Policy</a>.</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Join the Waitlist</button>
+                    </form>
+                    
+                    <div class="form-footer">
+                        <p>By joining the waitlist, you'll be among the first to know when we launch.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-badge">Simple Implementation</span>
+                <h2>How ZeroTrustKerberosLink Works</h2>
+                <p class="section-subtitle">Deploy in under 60 minutes with our step-by-step guided setup process</p>
+            </div>
+            
+            <div class="product-flow">
+                <img src="images/login-flow.svg" alt="ZeroTrustKerberosLink Login Flow" class="flow-diagram">
+                <div class="flow-caption">
+                    <p>ZeroTrustKerberosLink provides a seamless authentication experience while enforcing Zero Trust security policies.</p>
+                </div>
+            </div>
+            
+            <div class="steps">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Enterprise Authentication</h3>
+                        <p>Users authenticate using their existing Kerberos credentials through your enterprise identity provider (Active Directory).</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Zero Trust Verification</h3>
+                        <p>Our policy engine verifies user identity, device compliance, and contextual factors before granting access.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Secure AWS Access</h3>
+                        <p>Temporary AWS credentials are generated with appropriate permissions based on the user's identity and role.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Comprehensive Auditing</h3>
+                        <p>All authentication events and AWS resource access are logged and monitored for security analysis.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cta-box">
+                <h3>Ready to secure your AWS access with Zero Trust principles?</h3>
+                <a href="#waitlist" class="btn btn-primary">Join the Waitlist</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-badge">Enterprise-Grade Features</span>
+                <h2>Everything You Need for Secure AWS Integration</h2>
+                <p class="section-subtitle">ZeroTrustKerberosLink provides a comprehensive set of features designed specifically for enterprise security needs</p>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Zero Trust Architecture</h3>
+                    <p>Implement true Zero Trust principles with granular access controls and continuous verification</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Seamless Kerberos Integration</h3>
+                    <p>Connect directly to your existing Kerberos infrastructure without modifications</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Self-Hosted Control</h3>
+                    <p>Deploy on your infrastructure for complete data sovereignty and compliance</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>High Performance</h3>
+                    <p>Designed for enterprise-scale with minimal latency and high throughput</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Comprehensive Audit Logs</h3>
+                    <p>Detailed logs of all authentication events for compliance and security analysis</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Real-time Monitoring</h3>
+                    <p>Monitor authentication flows and security events in real-time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison" id="comparison">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-badge">Why Choose Us</span>
+                <h2>The Smart Choice for Enterprise Security</h2>
+                <p class="section-subtitle">See how ZeroTrustKerberosLink outperforms other solutions</p>
+            </div>
+            
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Features</th>
+                            <th class="highlight-column">ZeroTrustKerberosLink</th>
+                            <th>In-house Solution</th>
+                            <th>Third-party SaaS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Self-hosted & Data Sovereignty</td>
+                            <td class="highlight-column"><i class="fas fa-check-circle success"></i> Complete control</td>
+                            <td><i class="fas fa-check-circle success"></i> Limited control</td>
+                            <td><i class="fas fa-times-circle danger"></i> No control</td>
+                        </tr>
+                        <tr>
+                            <td>Zero Trust Architecture</td>
+                            <td class="highlight-column"><i class="fas fa-check-circle success"></i> Enterprise-grade</td>
+                            <td><i class="fas fa-times-circle danger"></i> Requires expertise</td>
+                            <td><i class="fas fa-check-circle success"></i> Vendor dependent</td>
+                        </tr>
+                        <tr>
+                            <td>Deployment Time</td>
+                            <td class="highlight-column"><strong>60 minutes</strong></td>
+                            <td>3-6 months</td>
+                            <td>1-2 weeks</td>
+                        </tr>
+                        <tr>
+                            <td>Development Cost</td>
+                            <td class="highlight-column"><strong>$0</strong></td>
+                            <td>$150k-$300k</td>
+                            <td>$0</td>
+                        </tr>
+                        <tr>
+                            <td>Maintenance Cost</td>
+                            <td class="highlight-column"><strong>Included</strong></td>
+                            <td>$100k+/year</td>
+                            <td>Included but expensive</td>
+                        </tr>
+                        <tr>
+                            <td>Enterprise Support</td>
+                            <td class="highlight-column"><i class="fas fa-check-circle success"></i> Direct access to engineers</td>
+                            <td><i class="fas fa-times-circle danger"></i> Internal resources only</td>
+                            <td><i class="fas fa-check-circle success"></i> Tiered support</td>
+                        </tr>
+                        <tr>
+                            <td>Compliance Ready</td>
+                            <td class="highlight-column"><i class="fas fa-check-circle success"></i> SOC2, HIPAA, FedRAMP</td>
+                            <td><i class="fas fa-times-circle danger"></i> Custom effort</td>
+                            <td><i class="fas fa-check-circle success"></i> Limited options</td>
+                        </tr>
+                        <tr>
+                            <td>Data Privacy</td>
+                            <td class="highlight-column"><i class="fas fa-check-circle success"></i> 100% private</td>
+                            <td><i class="fas fa-check-circle success"></i> Depends on implementation</td>
+                            <td><i class="fas fa-times-circle danger"></i> Data leaves your network</td>
+                        </tr>
+                        <tr>
+                            <td>Integration with Existing Systems</td>
+                            <td class="highlight-column"><i class="fas fa-check-circle success"></i> Seamless</td>
+                            <td><i class="fas fa-check-circle success"></i> Custom development</td>
+                            <td><i class="fas fa-times-circle danger"></i> Limited options</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="comparison-summary">
+                <div class="summary-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Self-Hosted Security</h3>
+                    <p>Keep your authentication data within your network perimeter while still leveraging AWS services.</p>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Rapid Deployment</h3>
+                    <p>Deploy in 60 minutes instead of months with our guided setup process.</p>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Cost Effective</h3>
+                    <p>Save $150k-$300k in development costs and $100k+ annually in maintenance.</p>
+                </div>
+            </div>
+            
+            <div class="center mt-50">
+                <a href="#waitlist" class="btn btn-primary">Join the Waitlist</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-badge">Flexible Pricing</span>
+                <h2>Plans That Scale With Your Needs</h2>
+                <p class="section-subtitle">Choose the plan that works best for your organization</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Growth</h3>
+                        <div class="pricing-price">
+                            <span class="currency">$</span>
+                            <span class="amount">999</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p>Perfect for growing companies with basic Kerberos to AWS integration needs</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Up to 500 users</li>
+                            <li><i class="fas fa-check"></i> 5 AWS accounts</li>
+                            <li><i class="fas fa-check"></i> Basic monitoring</li>
+                            <li><i class="fas fa-check"></i> Standard support</li>
+                            <li><i class="fas fa-check"></i> Email support</li>
+                            <li class="disabled"><i class="fas fa-times"></i> Advanced security policies</li>
+                            <li class="disabled"><i class="fas fa-times"></i> Custom integrations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-cta">
+                        <a href="#waitlist" class="btn btn-outline btn-block">Join Waitlist</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Business</h3>
+                        <div class="pricing-price">
+                            <span class="currency">$</span>
+                            <span class="amount">2,499</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p>For established enterprises with more complex security requirements</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Up to 2,000 users</li>
+                            <li><i class="fas fa-check"></i> 15 AWS accounts</li>
+                            <li><i class="fas fa-check"></i> Advanced monitoring</li>
+                            <li><i class="fas fa-check"></i> Priority support</li>
+                            <li><i class="fas fa-check"></i> Email & phone support</li>
+                            <li><i class="fas fa-check"></i> Advanced security policies</li>
+                            <li class="disabled"><i class="fas fa-times"></i> Custom integrations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-cta">
+                        <a href="#waitlist" class="btn btn-primary btn-block">Join Waitlist</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Enterprise Plus</h3>
+                        <div class="pricing-price">
+                            <span class="currency">$</span>
+                            <span class="amount">4,999</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p>For large enterprises with complex infrastructure and compliance needs</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> <strong>Unlimited</strong> users</li>
+                            <li><i class="fas fa-check"></i> <strong>Unlimited</strong> AWS accounts</li>
+                            <li><i class="fas fa-check"></i> Enterprise monitoring</li>
+                            <li><i class="fas fa-check"></i> 24/7 premium support</li>
+                            <li><i class="fas fa-check"></i> Dedicated account manager</li>
+                            <li><i class="fas fa-check"></i> Advanced security policies</li>
+                            <li><i class="fas fa-check"></i> Custom integrations</li>
+                            <li><i class="fas fa-check"></i> Compliance package (SOC2, HIPAA)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pricing-cta">
+                        <a href="#waitlist" class="btn btn-primary btn-block">Join Waitlist</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="custom-quote">
+                <h3>Need a Custom Solution?</h3>
+                <p>Contact our sales team for a tailored quote that meets your specific requirements.</p>
+                <a href="#waitlist" class="btn btn-outline">Request Custom Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-badge">Our Story</span>
+                <h2>Securing Enterprise Authentication Since 2020</h2>
+                <p class="section-subtitle">Founded by security experts with decades of experience in enterprise authentication and cloud security</p>
+            </div>
+            
+            <div class="about-content">
+                <p>ZeroTrustKerberosLink was born out of a simple observation: enterprises were struggling to securely connect their existing Kerberos authentication infrastructure with modern AWS services.</p>
+                
+                <p>Our founding team of security architects and cloud engineers had firsthand experience with this challenge while working at Fortune 500 companies. After seeing many organizations build costly, insecure custom solutions or compromise on data sovereignty with third-party SaaS offerings, we decided there had to be a better way.</p>
+                
+                <p>In 2020, we set out to create a solution that would:</p>
+                
+                <ul class="about-list">
+                    <li><i class="fas fa-check-circle"></i> <span>Maintain complete data sovereignty through self-hosting</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Implement true Zero Trust principles</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Deploy in minutes, not months</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Meet enterprise compliance requirements</span></li>
+                </ul>
+                
+                <p>Today, ZeroTrustKerberosLink is trusted by security-conscious organizations across financial services, healthcare, government, and other regulated industries to securely bridge their Kerberos infrastructure with AWS services.</p>
+                
+                <p>Our mission is to help enterprises maintain security and compliance while accelerating their cloud journey, without compromising on data sovereignty or control.</p>
+            </div>
+            
+            <div class="about-cta center">
+                <h3>Ready to secure your AWS integration?</h3>
+                <a href="#waitlist" class="btn btn-primary">Join the Waitlist</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Knowledge Base Section -->
+    <section class="knowledge-base" id="knowledge-base">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-badge">Resources</span>
+                <h2>Knowledge Base</h2>
+                <p class="section-subtitle">Comprehensive documentation and resources to help you get the most out of ZeroTrustKerberosLink</p>
+            </div>
+            
+            <div class="documentation-preview">
+                <img src="images/documentation-preview.svg" alt="ZeroTrustKerberosLink Documentation Preview">
+                <div class="preview-overlay">
+                    <a href="https://docs.zerotrustkerberos.link" class="btn btn-primary">View Full Documentation</a>
+                </div>
+            </div>
+            
+            <div class="kb-categories">
+                <div class="kb-category">
+                    <div class="kb-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Documentation</h3>
+                    <p>Comprehensive guides for installation, configuration, and advanced usage</p>
+                    <a href="https://docs.zerotrustkerberos.link/getting-started" class="kb-link">Browse Documentation <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="kb-category">
+                    <div class="kb-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Tutorials</h3>
+                    <p>Step-by-step guides for common integration scenarios and use cases</p>
+                    <a href="https://docs.zerotrustkerberos.link/tutorials" class="kb-link">View Tutorials <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="kb-category">
+                    <div class="kb-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Best Practices</h3>
+                    <p>Security recommendations and optimization techniques for enterprise deployments</p>
+                    <a href="https://docs.zerotrustkerberos.link/best-practices" class="kb-link">Learn Best Practices <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="kb-cta">
+                <h3>Need Technical Support?</h3>
+                <p>Our security engineers are available to help with your implementation</p>
+                <a href="#waitlist" class="btn btn-primary">Contact Support</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-shield-alt logo-icon"></i>
+                        <h1>ZeroTrustKerberosLink</h1>
+                    </div>
+                    <p>The most secure way to connect your Kerberos infrastructure to AWS services.</p>
+                    <div class="social-links">
+                        <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="https://docs.zerotrustkerberos.link">Documentation</a></li>
+                        <li><a href="#waitlist">Early Access</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#waitlist">Contact</a></li>
+                        <li><a href="#comparison">Why Choose Us</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#waitlist">Support</a></li>
+                        <li><a href="#knowledge-base">Knowledge Base</a></li>
+                        <li><a href="#comparison">Security</a></li>
+                        <li><a href="https://aws.amazon.com/marketplace/" target="_blank">AWS Marketplace</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="../docs/legal/privacy_policy.html">Privacy Policy</a></li>
+                        <li><a href="../docs/legal/terms_of_service.html">Terms of Service</a></li>
+                        <li><a href="../docs/legal/eula.html">EULA</a></li>
+                        <li><a href="#comparison">Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 ZeroTrustKerberosLink. All rights reserved.</p>
+                <div class="footer-badges">
+                    <span><i class="fas fa-lock"></i> SOC2 Compliant</span>
+                    <span><i class="fas fa-shield-alt"></i> HIPAA Ready</span>
+                    <span><i class="fas fa-server"></i> Self-Hosted</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky CTA -->
+    <div class="sticky-cta" id="stickyCta">
+        <div class="container">
+            <div class="sticky-cta-content">
+                <p><strong>Limited Time Offer:</strong> Join our waitlist today and get 50% off your first 6 months!</p>
+            </div>
+            <a href="#waitlist" class="btn btn-secondary">Join Waitlist</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

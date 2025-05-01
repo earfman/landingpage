@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ZeroTrustKerberosLink Architecture</title>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#4361EE" offset="0%"></stop>
+            <stop stop-color="#3A56D4" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#4CC9F0" offset="0%"></stop>
+            <stop stop-color="#3AB7DC" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#F72585" offset="0%"></stop>
+            <stop stop-color="#D61E7A" offset="100%"></stop>
+        </linearGradient>
+        <filter x="-15.0%" y="-15.0%" width="130.0%" height="130.0%" filterUnits="objectBoundingBox" id="filter-4">
+            <feGaussianBlur stdDeviation="10" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="Architecture-Diagram" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <!-- Background Elements -->
+        <circle id="Glow1" fill="#4361EE" filter="url(#filter-4)" cx="200" cy="450" r="100"></circle>
+        <circle id="Glow2" fill="#4CC9F0" filter="url(#filter-4)" cx="600" cy="150" r="80"></circle>
+        <circle id="Glow3" fill="#F72585" filter="url(#filter-4)" cx="400" cy="300" r="60"></circle>
+        
+        <!-- Enterprise Side -->
+        <g id="Enterprise" transform="translate(50, 200)">
+            <rect id="EnterpriseBox" stroke="#333333" stroke-width="2" fill="#FFFFFF" x="0" y="0" width="200" height="200" rx="10"></rect>
+            <text font-family="Inter, sans-serif" font-size="18" font-weight="bold" fill="#333333" x="50" y="30">Enterprise</text>
+            
+            <!-- Kerberos Server -->
+            <g id="KerberosServer" transform="translate(50, 70)">
+                <rect fill="url(#linearGradient-1)" x="0" y="0" width="100" height="60" rx="5"></rect>
+                <text font-family="Inter, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF" x="20" y="35">Kerberos</text>
+            </g>
+            
+            <!-- Users -->
+            <g id="Users" transform="translate(30, 150)">
+                <circle fill="#EEEEEE" cx="15" cy="15" r="15"></circle>
+                <circle fill="#EEEEEE" cx="50" cy="15" r="15"></circle>
+                <circle fill="#EEEEEE" cx="85" cy="15" r="15"></circle>
+                <circle fill="#EEEEEE" cx="120" cy="15" r="15"></circle>
+                <text font-family="Inter, sans-serif" font-size="12" fill="#333333" x="40" y="45">Users</text>
+            </g>
+        </g>
+        
+        <!-- ZeroTrustKerberosLink -->
+        <g id="ZeroTrustKerberosLink" transform="translate(300, 150)">
+            <rect id="ProxyBox" stroke="#333333" stroke-width="3" fill="#FFFFFF" x="0" y="0" width="200" height="300" rx="10"></rect>
+            <text font-family="Inter, sans-serif" font-size="16" font-weight="bold" fill="#333333" x="20" y="30">ZeroTrustKerberosLink</text>
+            
+            <!-- Authentication -->
+            <g id="Authentication" transform="translate(25, 60)">
+                <rect fill="url(#linearGradient-1)" x="0" y="0" width="150" height="50" rx="5"></rect>
+                <text font-family="Inter, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF" x="25" y="30">Authentication</text>
+            </g>
+            
+            <!-- Policy Engine -->
+            <g id="PolicyEngine" transform="translate(25, 130)">
+                <rect fill="url(#linearGradient-2)" x="0" y="0" width="150" height="50" rx="5"></rect>
+                <text font-family="Inter, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF" x="30" y="30">Policy Engine</text>
+            </g>
+            
+            <!-- AWS Integration -->
+            <g id="AWSIntegration" transform="translate(25, 200)">
+                <rect fill="url(#linearGradient-3)" x="0" y="0" width="150" height="50" rx="5"></rect>
+                <text font-family="Inter, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF" x="20" y="30">AWS Integration</text>
+            </g>
+            
+            <!-- Shield Icon -->
+            <g id="ShieldIcon" transform="translate(85, 265)">
+                <path d="M30,0 L0,10 L0,25 C0,40 10,50 30,60 C50,50 60,40 60,25 L60,10 L30,0 Z" fill="#4361EE" opacity="0.3"></path>
+                <path d="M30,5 L5,13 L5,25 C5,37 13,45 30,53 C47,45 55,37 55,25 L55,13 L30,5 Z" stroke="#4361EE" stroke-width="2" fill="none"></path>
+                <text font-family="Inter, sans-serif" font-size="24" font-weight="bold" fill="#4361EE" x="25" y="35">✓</text>
+            </g>
+        </g>
+        
+        <!-- AWS Side -->
+        <g id="AWS" transform="translate(550, 200)">
+            <rect id="AWSBox" stroke="#333333" stroke-width="2" fill="#FFFFFF" x="0" y="0" width="200" height="200" rx="10"></rect>
+            <text font-family="Inter, sans-serif" font-size="18" font-weight="bold" fill="#333333" x="80" y="30">AWS</text>
+            
+            <!-- IAM -->
+            <g id="IAM" transform="translate(50, 70)">
+                <rect fill="#FF9900" x="0" y="0" width="100" height="40" rx="5"></rect>
+                <text font-family="Inter, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF" x="35" y="25">IAM</text>
+            </g>
+            
+            <!-- AWS Services -->
+            <g id="Services" transform="translate(20, 130)">
+                <rect fill="#EEEEEE" x="0" y="0" width="40" height="40" rx="5"></rect>
+                <rect fill="#EEEEEE" x="50" y="0" width="40" height="40" rx="5"></rect>
+                <rect fill="#EEEEEE" x="100" y="0" width="40" height="40" rx="5"></rect>
+                <rect fill="#EEEEEE" x="150" y="0" width="40" height="40" rx="5"></rect>
+                <text font-family="Inter, sans-serif" font-size="12" fill="#333333" x="50" y="60">AWS Services</text>
+            </g>
+        </g>
+        
+        <!-- Connection Lines -->
+        <path d="M250,300 L300,300" stroke="#333333" stroke-width="2" stroke-dasharray="5,5"></path>
+        <path d="M500,300 L550,300" stroke="#333333" stroke-width="2" stroke-dasharray="5,5"></path>
+        
+        <!-- Lock Icons -->
+        <g id="Lock1" transform="translate(265, 285)">
+            <circle fill="#4361EE" cx="10" cy="10" r="10"></circle>
+            <text font-family="Inter, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF" x="6" y="15">🔒</text>
+        </g>
+        
+        <g id="Lock2" transform="translate(515, 285)">
+            <circle fill="#4361EE" cx="10" cy="10" r="10"></circle>
+            <text font-family="Inter, sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF" x="6" y="15">🔒</text>
+        </g>
+        
+        <!-- Zero Trust Badge -->
+        <g id="ZeroTrustBadge" transform="translate(325, 50)">
+            <rect fill="#4361EE" x="0" y="0" width="150" height="40" rx="20"></rect>
+            <text font-family="Inter, sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF" x="25" y="25">Zero Trust</text>
+        </g>
+    </g>
+</svg>

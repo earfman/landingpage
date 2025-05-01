@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" rx="10" fill="#F8F9FA"/>
+  
+  <!-- Header -->
+  <rect width="800" height="60" fill="#4361EE"/>
+  <text x="30" y="38" font-family="Arial" font-size="20" font-weight="bold" fill="white">ZeroTrustKerberosLink Dashboard</text>
+  
+  <!-- Sidebar -->
+  <rect x="0" y="60" width="200" height="440" fill="#FFFFFF"/>
+  <rect x="20" y="100" width="160" height="40" rx="5" fill="#4361EE" opacity="0.1"/>
+  
+  <!-- Sidebar menu items -->
+  <text x="50" y="125" font-family="Arial" font-size="14" fill="#333333" font-weight="bold">Dashboard</text>
+  <text x="50" y="175" font-family="Arial" font-size="14" fill="#666666">Connections</text>
+  <text x="50" y="225" font-family="Arial" font-size="14" fill="#666666">Policies</text>
+  <text x="50" y="275" font-family="Arial" font-size="14" fill="#666666">Monitoring</text>
+  <text x="50" y="325" font-family="Arial" font-size="14" fill="#666666">Audit Logs</text>
+  <text x="50" y="375" font-family="Arial" font-size="14" fill="#666666">Settings</text>
+  
+  <!-- Dashboard content -->
+  <rect x="220" y="80" width="560" height="100" rx="8" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="220" y="200" width="270" height="280" rx="8" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  <rect x="510" y="200" width="270" height="280" rx="8" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+  
+  <!-- Stats in top card -->
+  <text x="240" y="110" font-family="Arial" font-size="16" font-weight="bold" fill="#333333">System Overview</text>
+  
+  <rect x="240" y="130" width="120" height="30" rx="15" fill="#4361EE" opacity="0.1"/>
+  <text x="260" y="150" font-family="Arial" font-size="12" fill="#4361EE" font-weight="bold">Active Users: 342</text>
+  
+  <rect x="380" y="130" width="150" height="30" rx="15" fill="#4CC9F0" opacity="0.1"/>
+  <text x="400" y="150" font-family="Arial" font-size="12" fill="#4CC9F0" font-weight="bold">AWS Connections: 15</text>
+  
+  <rect x="550" y="130" width="210" height="30" rx="15" fill="#F72585" opacity="0.1"/>
+  <text x="570" y="150" font-family="Arial" font-size="12" fill="#F72585" font-weight="bold">Authentication Events: 12,458</text>
+  
+  <!-- Left card content -->
+  <text x="240" y="230" font-family="Arial" font-size="16" font-weight="bold" fill="#333333">Authentication Activity</text>
+  
+  <!-- Chart representation -->
+  <rect x="240" y="250" width="230" height="200" rx="5" fill="#F8F9FA"/>
+  <path d="M240,400 L470,400" stroke="#E0E0E0" stroke-width="1"/>
+  <path d="M240,350 L470,350" stroke="#E0E0E0" stroke-width="1"/>
+  <path d="M240,300 L470,300" stroke="#E0E0E0" stroke-width="1"/>
+  
+  <!-- Chart bars -->
+  <rect x="260" y="350" width="20" height="50" fill="#4361EE"/>
+  <rect x="290" y="320" width="20" height="80" fill="#4361EE"/>
+  <rect x="320" y="300" width="20" height="100" fill="#4361EE"/>
+  <rect x="350" y="330" width="20" height="70" fill="#4361EE"/>
+  <rect x="380" y="280" width="20" height="120" fill="#4361EE"/>
+  <rect x="410" y="310" width="20" height="90" fill="#4361EE"/>
+  <rect x="440" y="340" width="20" height="60" fill="#4361EE"/>
+  
+  <!-- Right card content -->
+  <text x="530" y="230" font-family="Arial" font-size="16" font-weight="bold" fill="#333333">Active Policies</text>
+  
+  <!-- Policy list -->
+  <rect x="530" y="260" width="230" height="40" rx="5" fill="#F8F9FA"/>
+  <text x="545" y="285" font-family="Arial" font-size="12" fill="#333333">Default Zero Trust Policy</text>
+  <circle cx="740" cy="280" r="8" fill="#2ECC71"/>
+  
+  <rect x="530" y="310" width="230" height="40" rx="5" fill="#F8F9FA"/>
+  <text x="545" y="335" font-family="Arial" font-size="12" fill="#333333">AWS S3 Access Policy</text>
+  <circle cx="740" cy="330" r="8" fill="#2ECC71"/>
+  
+  <rect x="530" y="360" width="230" height="40" rx="5" fill="#F8F9FA"/>
+  <text x="545" y="385" font-family="Arial" font-size="12" fill="#333333">EC2 Management Policy</text>
+  <circle cx="740" cy="380" r="8" fill="#2ECC71"/>
+  
+  <rect x="530" y="410" width="230" height="40" rx="5" fill="#F8F9FA"/>
+  <text x="545" y="435" font-family="Arial" font-size="12" fill="#333333">Admin Access Policy</text>
+  <circle cx="740" cy="430" r="8" fill="#F39C12"/>
+</svg>
