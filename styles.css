@@ -819,13 +819,15 @@ nav a:hover {
 
 .comparison-table-wrapper {
     overflow-x: auto;
-    margin-bottom: 40px;
+    margin: 0 -20px; /* Negative margin to allow scrolling on mobile */
+    padding: 0 20px; /* Padding to maintain spacing */
     box-shadow: var(--shadow);
     border-radius: var(--border-radius);
 }
 
 .comparison-table {
     width: 100%;
+    min-width: 600px; /* Ensure minimum width to prevent squishing */
     border-collapse: collapse;
     background-color: white;
     table-layout: fixed;
