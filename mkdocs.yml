@@ -6,8 +6,8 @@ copyright: "&copy; 2025 ZeroTrustKerberosLink. All rights reserved."
 # Theme configuration
 theme:
   name: material
-  logo: assets/logo.png
-  favicon: assets/favicon.ico
+  logo: assets/cerberus-logo.png
+  favicon: assets/cerberus-logo.png
   palette:
     primary: indigo
     accent: blue
