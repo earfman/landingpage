@@ -2,6 +2,22 @@
 
 This is a modern, responsive landing page for ZeroTrustKerberosLink with comprehensive documentation.
 
+## 🚀 Quick Reference: Deployment
+
+**Website URL:** https://zerotrustkerberoslink.com/
+
+**Deployment Process:**
+1. Push changes to GitHub repository: https://github.com/earfman/landingpage.git
+2. Netlify automatically builds and deploys to zerotrustkerberoslink.com (typically takes 1-2 minutes)
+3. No manual deployment steps required!
+
+**Assets:**
+- Logo files are in the `assets/` directory
+- Main logo: `assets/cerberus-logo.png`
+- Symbol logo: `assets/cerberus-symbol.png`
+
+**For detailed deployment information, see the [Deployment Configuration](#deployment-configuration) section below.**
+
 ## Project Structure
 
 - `index.html` - The main landing page HTML file
