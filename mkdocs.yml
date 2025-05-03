@@ -1,0 +1,124 @@
+site_name: ZeroTrustKerberosLink Documentation
+site_description: Secure enterprise Kerberos to AWS integration with Zero Trust principles
+site_author: ZeroTrustKerberosLink Team
+copyright: "&copy; 2025 ZeroTrustKerberosLink. All rights reserved."
+
+# Repository
+repo_name: zerotrustkerberos/kerberos-aws-proxy
+repo_url: https://github.com/zerotrustkerberos/kerberos-aws-proxy
+
+# Theme configuration
+theme:
+  name: material
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
+  palette:
+    primary: indigo
+    accent: blue
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.tabs.link
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+# Extra CSS and JavaScript
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - javascripts/extra.js
+
+# Navigation structure
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Overview: getting-started/index.md
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quick-start.md
+  - Core Concepts:
+    - Overview: core-concepts/index.md
+    - Zero Trust Principles: core-concepts/zero-trust.md
+    - Authentication Flow: core-concepts/auth-flow.md
+    - Role Mapping: core-concepts/role-mapping.md
+    - Security Model: core-concepts/security-model.md
+  - Security Hardening:
+    - Overview: security-hardening/index.md
+    - Input Validation: security-hardening/input-validation.md
+    - Security Headers: security-hardening/security-headers.md
+    - Secure Redis: security-hardening/secure-redis.md
+    - Security Testing: security-hardening/security-testing.md
+    - Penetration Testing: security-hardening/penetration-testing.md
+    - Secrets Management: security-hardening/secrets-management.md
+  - Implementation Guide:
+    - Overview: implementation-guide/index.md
+    - Prerequisites: implementation-guide/prerequisites.md
+    - Installation: implementation-guide/installation.md
+    - Configuration: implementation-guide/configuration.md
+    - AWS Integration: implementation-guide/aws-integration.md
+    - High Availability: implementation-guide/high-availability.md
+    - Monitoring: implementation-guide/monitoring.md
+    - Audit Logging: implementation-guide/audit-logging.md
+    - Compliance Verification: implementation-guide/compliance-verification.md
+    - Custom Policies: implementation-guide/custom-policies.md
+    - Troubleshooting: implementation-guide/troubleshooting.md
+  - API Reference:
+    - Overview: api-reference/index.md
+    - REST API: api-reference/rest-api.md
+    - CLI: api-reference/cli.md
+    - SDK: api-reference/sdk.md
+  - FAQ: faq/index.md
+  - Release Notes: release-notes/index.md
+
+# Plugins
+plugins:
+  - search
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+  - git-revision-date-localized:
+      type: date
+
+# Extra settings
+extra:
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/zerotrustkerberos
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/zerotrustkerberos
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/company/zerotrustkerberos
+  version:
+    provider: mike
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.

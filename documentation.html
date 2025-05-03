@@ -42,131 +42,325 @@
                     <div class="sidebar-section">
                         <h3>Getting Started</h3>
                         <ul>
-                            <li><a href="#installation" class="active">Installation Guide</a></li>
-                            <li><a href="#quickstart">Quick Start</a></li>
-                            <li><a href="#requirements">System Requirements</a></li>
-                            <li><a href="#architecture">Architecture Overview</a></li>
+                            <li><a href="site/getting-started/index.html">Installation Guide</a></li>
+                            <li><a href="site/implementation-guide/index.html">Implementation Guide</a></li>
+                            <li><a href="site/implementation-guide/troubleshooting/index.html">Troubleshooting</a></li>
                         </ul>
                     </div>
                     
                     <div class="sidebar-section">
-                        <h3>Configuration</h3>
+                        <h3>Core Concepts</h3>
                         <ul>
-                            <li><a href="#kerberos-config">Kerberos Configuration</a></li>
-                            <li><a href="#aws-config">AWS Integration</a></li>
-                            <li><a href="#zero-trust">Zero Trust Settings</a></li>
-                            <li><a href="#security-headers">Security Headers</a></li>
+                            <li><a href="site/core-concepts/index.html">Overview</a></li>
+                            <li><a href="site/core-concepts/zero-trust/index.html">Zero Trust Principles</a></li>
+                            <li><a href="site/core-concepts/auth-flow/index.html">Authentication Flow</a></li>
+                            <li><a href="site/core-concepts/aws-integration/index.html">AWS Integration</a></li>
                         </ul>
                     </div>
                     
                     <div class="sidebar-section">
-                        <h3>Security</h3>
+                        <h3>Security Hardening</h3>
                         <ul>
-                            <li><a href="#security-model">Security Model</a></li>
-                            <li><a href="#input-validation">Input Validation</a></li>
-                            <li><a href="#secure-redis">Secure Redis Communication</a></li>
-                            <li><a href="#penetration-testing">Penetration Testing</a></li>
+                            <li><a href="site/security-hardening/index.html">Security Overview</a></li>
+                            <li><a href="site/security-hardening/input-validation/index.html">Input Validation</a></li>
+                            <li><a href="site/security-hardening/security-headers/index.html">Security Headers</a></li>
+                            <li><a href="site/security-hardening/secure-redis/index.html">Secure Redis</a></li>
+                            <li><a href="site/security-hardening/security-testing/index.html">Security Testing</a></li>
+                            <li><a href="site/security-hardening/best-practices/index.html">Best Practices</a></li>
+                            <li><a href="site/security-hardening/compliance/index.html">Compliance</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3>Advanced Configuration</h3>
+                        <ul>
+                            <li><a href="site/implementation-guide/high-availability/index.html">High Availability</a></li>
+                            <li><a href="site/implementation-guide/custom-policies/index.html">Custom Policies</a></li>
+                            <li><a href="site/implementation-guide/audit-logging/index.html">Audit Logging</a></li>
+                            <li><a href="site/implementation-guide/monitoring/index.html">Monitoring</a></li>
+                            <li><a href="site/implementation-guide/compliance-verification/index.html">Compliance Verification</a></li>
                         </ul>
                     </div>
                     
                     <div class="sidebar-section">
-                        <h3>API Reference</h3>
+                        <h3>Resources</h3>
                         <ul>
-                            <li><a href="#rest-api">REST API</a></li>
-                            <li><a href="#cli">Command Line Interface</a></li>
-                            <li><a href="#sdk">SDK Documentation</a></li>
+                            <li><a href="site/api-reference/index.html">API Reference</a></li>
+                            <li><a href="site/faq/index.html">FAQ</a></li>
+                            <li><a href="site/release-notes/index.html">Release Notes</a></li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="documentation-content">
-                    <div id="installation" class="doc-section">
-                        <h2>Installation Guide</h2>
-                        <div class="doc-meta">
-                            <span class="doc-updated">Last updated: May 1, 2025</span>
-                            <span class="doc-author">By: ZeroTrustKerberosLink Team</span>
-                        </div>
-                        
-                        <p>ZeroTrustKerberosLink is designed to be easy to install while maintaining enterprise-grade security. This guide will walk you through the installation process step by step.</p>
-                        
-                        <h3>Prerequisites</h3>
-                        <ul>
-                            <li>Linux-based server (Ubuntu 20.04+ or RHEL 8+ recommended)</li>
-                            <li>Docker and Docker Compose</li>
-                            <li>Access to your Kerberos KDC</li>
-                            <li>AWS IAM permissions for integration</li>
-                        </ul>
-                        
-                        <h3>Step 1: Download the Installation Package</h3>
-                        <div class="code-block">
-                            <pre><code>curl -sSL https://download.zerotrustkerberos.link/latest | sudo bash</code></pre>
-                        </div>
-                        
-                        <h3>Step 2: Configure Your Environment</h3>
-                        <p>Create a configuration file by copying the example:</p>
-                        <div class="code-block">
-                            <pre><code>cp /etc/zerotrustkerberos/config.example.yaml /etc/zerotrustkerberos/config.yaml
-nano /etc/zerotrustkerberos/config.yaml</code></pre>
-                        </div>
-                        
-                        <h3>Step 3: Set Up Kerberos Integration</h3>
-                        <p>Configure your Kerberos settings in the configuration file:</p>
-                        <div class="code-block">
-                            <pre><code># Kerberos Configuration
-kerberos:
-  realm: YOUR.REALM
-  kdc: kdc.your-domain.com
-  admin_server: admin-server.your-domain.com
-  keytab_path: /etc/zerotrustkerberos/krb5.keytab</code></pre>
-                        </div>
-                        
-                        <h3>Step 4: Configure AWS Integration</h3>
-                        <p>Set up your AWS integration settings:</p>
-                        <div class="code-block">
-                            <pre><code># AWS Configuration
-aws:
-  region: us-west-2
-  role_mapping:
-    - kerberos_principal: "admin@YOUR.REALM"
-      aws_role: "arn:aws:iam::123456789012:role/AdminRole"
-    - kerberos_principal: "developer@YOUR.REALM"
-      aws_role: "arn:aws:iam::123456789012:role/DeveloperRole"</code></pre>
-                        </div>
-                        
-                        <h3>Step 5: Configure Security Settings</h3>
-                        <p>Enable security features based on your requirements:</p>
-                        <div class="code-block">
-                            <pre><code># Security Configuration
-security:
-  input_validation: true
-  xss_protection: true
-  content_security_policy: true
-  secure_headers: true
-  rate_limiting:
-    enabled: true
-    requests_per_minute: 60</code></pre>
-                        </div>
-                        
-                        <h3>Step 6: Start the Service</h3>
-                        <div class="code-block">
-                            <pre><code>sudo systemctl enable zerotrustkerberos
-sudo systemctl start zerotrustkerberos</code></pre>
-                        </div>
-                        
-                        <h3>Step 7: Verify Installation</h3>
-                        <p>Check that the service is running correctly:</p>
-                        <div class="code-block">
-                            <pre><code>sudo systemctl status zerotrustkerberos
-curl http://localhost:8080/health</code></pre>
-                        </div>
+                    <div class="doc-section" id="overview">
+                        <h2>Documentation Overview</h2>
+                        <p>Welcome to the ZeroTrustKerberosLink documentation. This comprehensive guide will help you implement, configure, and maintain your secure Kerberos to AWS integration using Zero Trust principles.</p>
                         
                         <div class="doc-callout">
-                            <h4>Security Note</h4>
-                            <p>ZeroTrustKerberosLink implements comprehensive security hardening by default, including input validation, protection against XSS and injection attacks, secure headers, and TLS support for all communications.</p>
+                            <h4>Security First</h4>
+                            <p>ZeroTrustKerberosLink is built with security as the top priority. Our documentation includes detailed security hardening guides to help you maintain a robust security posture.</p>
                         </div>
                         
-                        <div class="doc-navigation">
-                            <a href="#quickstart" class="doc-next">Next: Quick Start Guide <i class="fas fa-arrow-right"></i></a>
+                        <h3>Documentation Structure</h3>
+                        <p>Our documentation is organized into the following main sections:</p>
+                        
+                        <div class="doc-card-grid">
+                            <div class="doc-card">
+                                <div class="doc-card-icon"><i class="fas fa-rocket"></i></div>
+                                <h4>Getting Started</h4>
+                                <p>Installation guides and quick start tutorials to get you up and running quickly.</p>
+                                <a href="site/getting-started/index.html" class="doc-card-link">View Guide</a>
+                            </div>
+                            
+                            <div class="doc-card">
+                                <div class="doc-card-icon"><i class="fas fa-book"></i></div>
+                                <h4>Core Concepts</h4>
+                                <p>Understand the fundamental concepts behind ZeroTrustKerberosLink.</p>
+                                <a href="site/core-concepts/index.html" class="doc-card-link">View Guide</a>
+                            </div>
+                            
+                            <div class="doc-card">
+                                <div class="doc-card-icon"><i class="fas fa-shield-alt"></i></div>
+                                <h4>Security Hardening</h4>
+                                <p>Comprehensive security guides to protect your deployment.</p>
+                                <a href="site/security-hardening/index.html" class="doc-card-link">View Guide</a>
+                            </div>
+                            
+                            <div class="doc-card">
+                                <div class="doc-card-icon"><i class="fas fa-cogs"></i></div>
+                                <h4>Implementation Guide</h4>
+                                <p>Detailed implementation instructions for production deployments.</p>
+                                <a href="site/implementation-guide/index.html" class="doc-card-link">View Guide</a>
+                            </div>
+                        </div>
+                        
+                        <h3>Key Security Features</h3>
+                        <p>ZeroTrustKerberosLink includes several security hardening features:</p>
+                        
+                        <ul class="feature-list">
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-filter"></i></span>
+                                <div class="feature-content">
+                                    <h4>Input Validation</h4>
+                                    <p>Comprehensive validation for all user inputs to protect against injection attacks.</p>
+                                    <a href="site/security-hardening/input-validation/index.html">Learn more</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-lock"></i></span>
+                                <div class="feature-content">
+                                    <h4>Security Headers</h4>
+                                    <p>Properly configured security headers to protect against common web vulnerabilities.</p>
+                                    <a href="site/security-hardening/security-headers/index.html">Learn more</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-database"></i></span>
+                                <div class="feature-content">
+                                    <h4>Secure Redis Communication</h4>
+                                    <p>TLS encryption and secure credential handling for Redis connections.</p>
+                                    <a href="site/security-hardening/secure-redis/index.html">Learn more</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-user-shield"></i></span>
+                                <div class="feature-content">
+                                    <h4>Zero Trust Authentication</h4>
+                                    <p>Secure authentication flow implementing Zero Trust principles.</p>
+                                    <a href="site/core-concepts/auth-flow/index.html">Learn more</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="doc-section" id="implementation-guide">
+                        <h2>Zero Trust Implementation Guide</h2>
+                        <p>Our comprehensive implementation guide provides step-by-step instructions for deploying ZeroTrustKerberosLink in your environment with security best practices.</p>
+                        
+                        <div class="doc-callout">
+                            <h4>Enterprise-Ready Deployment</h4>
+                            <p>Follow our implementation guide to deploy ZeroTrustKerberosLink in a secure, highly available configuration that meets enterprise requirements.</p>
+                        </div>
+                        
+                        <h3>Implementation Topics</h3>
+                        <ul class="feature-list">
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-server"></i></span>
+                                <div class="feature-content">
+                                    <h4>Installation</h4>
+                                    <p>Detailed installation instructions for various deployment options.</p>
+                                    <a href="site/getting-started/index.html">View Guide</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-sitemap"></i></span>
+                                <div class="feature-content">
+                                    <h4>High Availability</h4>
+                                    <p>Configure ZeroTrustKerberosLink for high availability and fault tolerance.</p>
+                                    <a href="site/implementation-guide/high-availability/index.html">View Guide</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-chart-line"></i></span>
+                                <div class="feature-content">
+                                    <h4>Monitoring</h4>
+                                    <p>Set up comprehensive monitoring for your ZeroTrustKerberosLink deployment.</p>
+                                    <a href="site/implementation-guide/monitoring/index.html">View Guide</a>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <a href="site/implementation-guide/index.html" class="btn btn-outline">View Complete Implementation Guide</a>
+                    </div>
+                    
+                    <div class="doc-section" id="security-hardening">
+                        <h2>Security Hardening Documentation</h2>
+                        <p>Our security hardening documentation provides detailed information on the security features implemented in ZeroTrustKerberosLink and how to configure them for maximum protection.</p>
+                        
+                        <div class="doc-callout">
+                            <h4>Security First Design</h4>
+                            <p>ZeroTrustKerberosLink is built with security as the primary focus, implementing robust security controls and following security best practices.</p>
+                        </div>
+                        
+                        <h3>Security Hardening Topics</h3>
+                        <ul class="feature-list">
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-filter"></i></span>
+                                <div class="feature-content">
+                                    <h4>Input Validation</h4>
+                                    <p>Comprehensive validation for all user inputs to protect against injection attacks.</p>
+                                    <a href="site/security-hardening/input-validation/index.html">View Documentation</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-lock"></i></span>
+                                <div class="feature-content">
+                                    <h4>Security Headers</h4>
+                                    <p>Properly configured security headers to protect against common web vulnerabilities.</p>
+                                    <a href="site/security-hardening/security-headers/index.html">View Documentation</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-shield-alt"></i></span>
+                                <div class="feature-content">
+                                    <h4>Best Practices</h4>
+                                    <p>Security best practices for deploying and maintaining ZeroTrustKerberosLink.</p>
+                                    <a href="site/security-hardening/best-practices/index.html">View Documentation</a>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <a href="site/security-hardening/index.html" class="btn btn-outline">View Complete Security Documentation</a>
+                    </div>
+                    
+                    <div class="doc-section" id="compliance">
+                        <h2>Compliance Verification Guides</h2>
+                        <p>Our compliance verification guides help you ensure that your ZeroTrustKerberosLink deployment meets various compliance requirements.</p>
+                        
+                        <div class="doc-callout">
+                            <h4>Compliance Ready</h4>
+                            <p>ZeroTrustKerberosLink is designed to help organizations meet compliance requirements for SOC 2, HIPAA, GDPR, and FedRAMP.</p>
+                        </div>
+                        
+                        <h3>Compliance Topics</h3>
+                        <ul class="feature-list">
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-check-circle"></i></span>
+                                <div class="feature-content">
+                                    <h4>SOC 2 Compliance</h4>
+                                    <p>Guide for verifying SOC 2 compliance with ZeroTrustKerberosLink.</p>
+                                    <a href="site/security-hardening/compliance/index.html#soc2">View Guide</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-hospital"></i></span>
+                                <div class="feature-content">
+                                    <h4>HIPAA Compliance</h4>
+                                    <p>Guide for verifying HIPAA compliance with ZeroTrustKerberosLink.</p>
+                                    <a href="site/security-hardening/compliance/index.html#hipaa">View Guide</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-user-shield"></i></span>
+                                <div class="feature-content">
+                                    <h4>GDPR Compliance</h4>
+                                    <p>Guide for verifying GDPR compliance with ZeroTrustKerberosLink.</p>
+                                    <a href="site/security-hardening/compliance/index.html#gdpr">View Guide</a>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <a href="site/security-hardening/compliance/index.html" class="btn btn-outline">View Complete Compliance Guides</a>
+                    </div>
+                    
+                    <div class="doc-section" id="security-testing">
+                        <h2>Security Testing Framework</h2>
+                        <p>Our security testing framework provides a structured approach to testing the security of your ZeroTrustKerberosLink deployment.</p>
+                        
+                        <div class="doc-callout">
+                            <h4>Comprehensive Testing</h4>
+                            <p>ZeroTrustKerberosLink includes a comprehensive security testing framework to help you identify and remediate security vulnerabilities.</p>
+                        </div>
+                        
+                        <h3>Security Testing Topics</h3>
+                        <ul class="feature-list">
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-bug"></i></span>
+                                <div class="feature-content">
+                                    <h4>Penetration Testing</h4>
+                                    <p>Guide for conducting penetration testing against ZeroTrustKerberosLink.</p>
+                                    <a href="site/security-hardening/penetration-testing/index.html">View Framework</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-search"></i></span>
+                                <div class="feature-content">
+                                    <h4>Vulnerability Scanning</h4>
+                                    <p>Guide for conducting vulnerability scanning against ZeroTrustKerberosLink.</p>
+                                    <a href="site/security-hardening/security-testing/index.html#vulnerability-scanning">View Framework</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon"><i class="fas fa-code"></i></span>
+                                <div class="feature-content">
+                                    <h4>Security Code Review</h4>
+                                    <p>Guide for conducting security code reviews of ZeroTrustKerberosLink.</p>
+                                    <a href="site/security-hardening/security-testing/index.html#code-review">View Framework</a>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <a href="site/security-hardening/security-testing/index.html" class="btn btn-outline">View Complete Testing Framework</a>
+                    </div>
+                    
+                    <div class="doc-section" id="quick-links">
+                        <h2>Quick Links</h2>
+                        <div class="quick-links-grid">
+                            <a href="site/implementation-guide/index.html" class="quick-link">
+                                <i class="fas fa-book"></i>
+                                <span>Implementation Guide</span>
+                            </a>
+                            <a href="site/core-concepts/auth-flow/index.html" class="quick-link">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>Authentication Flow</span>
+                            </a>
+                            <a href="site/security-hardening/best-practices/index.html" class="quick-link">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Security Best Practices</span>
+                            </a>
+                            <a href="site/implementation-guide/troubleshooting/index.html" class="quick-link">
+                                <i class="fas fa-wrench"></i>
+                                <span>Troubleshooting</span>
+                            </a>
+                            <a href="site/implementation-guide/high-availability/index.html" class="quick-link">
+                                <i class="fas fa-server"></i>
+                                <span>High Availability</span>
+                            </a>
+                            <a href="site/implementation-guide/monitoring/index.html" class="quick-link">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Monitoring</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -175,63 +369,54 @@ curl http://localhost:8080/health</code></pre>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>ZeroTrustKerberosLink</h2>
-                    <p>Secure enterprise Kerberos to AWS integration with Zero Trust principles</p>
-                    <div class="footer-contact">
-                        <p><i class="fas fa-envelope"></i> <a href="mailto:contact@zerotrustkerberoslink.com">contact@zerotrustkerberoslink.com</a></p>
-                    </div>
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#waitlist">Early Access</a></li>
+                    </ul>
                 </div>
-                
-                <div class="footer-columns">
-                    <div class="footer-column">
-                        <h3>Product</h3>
-                        <ul>
-                            <li><a href="index.html#features">Features</a></li>
-                            <li><a href="index.html#pricing">Pricing</a></li>
-                            <li><a href="documentation.html">Documentation</a></li>
-                            <li><a href="index.html#waitlist">Early Access</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h3>Company</h3>
-                        <ul>
-                            <li><a href="index.html#about">About Us</a></li>
-                            <li><a href="mailto:contact@zerotrustkerberoslink.com">Contact</a></li>
-                            <li><a href="index.html#comparison">Why Choose Us</a></li>
-                            <li><a href="index.html#how-it-works">How It Works</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h3>Resources</h3>
-                        <ul>
-                            <li><a href="mailto:contact@zerotrustkerberoslink.com">Support</a></li>
-                            <li><a href="index.html#knowledge-base">Knowledge Base</a></li>
-                            <li><a href="index.html#security">Security</a></li>
-                            <li><a href="https://aws.amazon.com/marketplace/" target="_blank">AWS Marketplace</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h3>Legal</h3>
-                        <ul>
-                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                            <li><a href="terms-of-service.html">Terms of Service</a></li>
-                            <li><a href="eula.html">EULA</a></li>
-                            <li><a href="index.html#security">Compliance</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="site/index.html">Documentation</a></li>
+                        <li><a href="site/api-reference/index.html">API Reference</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        <li><a href="eula.html">EULA</a></li>
+                        <li><a href="#">Compliance</a></li>
+                    </ul>
                 </div>
             </div>
-            
             <div class="footer-bottom">
                 <p>&copy; 2025 ZeroTrustKerberosLink. All rights reserved.</p>
-                <p>Contact: <a href="mailto:contact@zerotrustkerberoslink.com">contact@zerotrustkerberoslink.com</a></p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
             </div>
         </div>
     </footer>
