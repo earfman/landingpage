@@ -1,14 +1,77 @@
 # ZeroTrustKerberosLink Landing Page
 
-This is a modern, responsive landing page for ZeroTrustKerberosLink that can be hosted on Amazon S3.
+This is a modern, responsive landing page for ZeroTrustKerberosLink with comprehensive documentation.
 
-## Files Structure
+## Project Structure
 
-- `index.html` - The main HTML file
+- `index.html` - The main landing page HTML file
+- `documentation.html` - The main documentation page with anchor links to different sections
 - `styles.css` - CSS styles for the landing page
 - `script.js` - JavaScript for interactive elements
 - `images/` - Directory containing images used in the landing page
-  - `hero-image.svg` - SVG illustration for the hero section
+- `docs/` - Source markdown files for the documentation
+- `site/` - Generated HTML documentation (built from the `docs/` directory using MkDocs)
+  - `site/implementation-guide/` - Implementation guide documentation
+  - `site/security-hardening/` - Security hardening documentation
+  - `site/security-hardening/security-testing/` - Security testing framework documentation
+
+## Deployment Configuration
+
+This project is deployed on Netlify with automatic deployments from GitHub. The deployment configuration is defined in `netlify.toml`.
+
+### Netlify Deployment Process
+
+1. Changes are pushed to the GitHub repository at https://github.com/earfman/landingpage.git
+2. Netlify automatically detects the changes and starts a new build
+3. The build process installs MkDocs and its dependencies, then runs `mkdocs build` to generate the documentation site
+4. Netlify deploys the contents of the `site` directory to zerotrustkerberoslink.com
+
+### Key Netlify Configuration
+
+- **Build Command**: `pip install mkdocs mkdocs-material pymdown-extensions mkdocs-minify-plugin mkdocs-git-revision-date-localized-plugin && mkdocs build`
+- **Publish Directory**: `site`
+- **Security Headers**: Various security headers are configured in `netlify.toml` to enhance the security of the site
+
+## Documentation Structure
+
+The documentation is built using MkDocs, a static site generator designed for building documentation websites.
+
+### Source Files
+
+- `docs/` - Contains all the markdown source files for the documentation
+- `mkdocs.yml` - Configuration file for MkDocs that defines the structure and appearance of the documentation site
+
+### Generated Files
+
+- `site/` - Contains the generated HTML documentation (this directory is in `.gitignore` and not committed to the repository)
+
+### Documentation Sections
+
+- **Implementation Guide**: Comprehensive guide for deploying ZeroTrustKerberosLink
+- **Security Hardening**: Documentation on security features and hardening practices
+- **Security Testing Framework**: Framework for testing the security of ZeroTrustKerberosLink deployments
+- **Compliance Verification**: Guides for verifying compliance with various standards
+
+## Local Development
+
+To work on the documentation locally:
+
+1. Install MkDocs and required plugins:
+   ```
+   pip install mkdocs mkdocs-material pymdown-extensions mkdocs-minify-plugin mkdocs-git-revision-date-localized-plugin
+   ```
+
+2. Run the local development server:
+   ```
+   mkdocs serve
+   ```
+
+3. View the documentation at http://localhost:8000
+
+4. Build the documentation:
+   ```
+   mkdocs build
+   ```
 
 ## Deploying to Amazon S3
 
