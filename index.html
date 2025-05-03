@@ -24,8 +24,11 @@
             <div class="logo">
                 <img src="assets/cerberus-logo.png" alt="ZeroTrustKerberosLink Logo" class="logo-image" style="height: 45px; width: auto;">
                 <h1>ZeroTrustKerberosLink</h1>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <nav>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#how-it-works">How It Works</a></li>
@@ -812,6 +815,38 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (mobileMenuToggle && mainNav) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    if (icon) {
+                        if (mainNav.classList.contains('active')) {
+                            icon.classList.remove('fa-bars');
+                            icon.classList.add('fa-times');
+                        } else {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                        }
+                    }
+                });
+            }
+            
+            // Close announcement bar
+            const closeAnnouncement = document.getElementById('closeAnnouncement');
+            const announcementBar = document.getElementById('announcementBar');
+            
+            if (closeAnnouncement && announcementBar) {
+                closeAnnouncement.addEventListener('click', function() {
+                    announcementBar.style.display = 'none';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
