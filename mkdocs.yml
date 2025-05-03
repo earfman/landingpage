@@ -3,10 +3,6 @@ site_description: Secure enterprise Kerberos to AWS integration with Zero Trust 
 site_author: ZeroTrustKerberosLink Team
 copyright: "&copy; 2025 ZeroTrustKerberosLink. All rights reserved."
 
-# Repository
-repo_name: zerotrustkerberos/kerberos-aws-proxy
-repo_url: https://github.com/zerotrustkerberos/kerberos-aws-proxy
-
 # Theme configuration
 theme:
   name: material
