@@ -345,27 +345,10 @@
             const calculateBtn = document.getElementById('calculateBtn');
             const resultsContainer = document.getElementById('resultsContainer');
             
-            // Add event listeners to all input fields
-            const inputFields = document.querySelectorAll('#numUsers, #numAwsAccounts, #engineerCost, #securityIncidents, #complianceLevel, #timeframe');
-            inputFields.forEach(input => {
-                input.addEventListener('change', function() {
-                    calculateROI();
-                });
-                
-                // For number inputs, also listen for input events (as user types)
-                if (input.type === 'number') {
-                    input.addEventListener('input', function() {
-                        // Add a small delay to avoid too many calculations while typing
-                        clearTimeout(input.timeout);
-                        input.timeout = setTimeout(function() {
-                            calculateROI();
-                        }, 500);
-                    });
-                }
-            });
-            
+            // Remove automatic calculation on input change to ensure button click is required
             if (calculateBtn) {
                 calculateBtn.addEventListener('click', function() {
+                    console.log("Calculate button clicked");
                     calculateROI();
                 });
             }
@@ -378,13 +361,22 @@
             console.log("Calculating ROI...");
             const resultsContainer = document.getElementById('resultsContainer');
             
-            // Get input values
+            // Get input values - Force parsing as integers and provide fallbacks
             const numUsers = parseInt(document.getElementById('numUsers').value) || 500;
             const numAwsAccounts = parseInt(document.getElementById('numAwsAccounts').value) || 5;
             const engineerCost = parseInt(document.getElementById('engineerCost').value) || 150000;
             const securityIncidents = parseInt(document.getElementById('securityIncidents').value) || 5;
             const complianceLevel = document.getElementById('complianceLevel').value;
             const timeframe = parseInt(document.getElementById('timeframe').value) || 3;
+            
+            console.log("Input values:", {
+                numUsers,
+                numAwsAccounts,
+                engineerCost,
+                securityIncidents,
+                complianceLevel,
+                timeframe
+            });
             
             // Calculate compliance costs based on level
             let complianceCostFactor = 1.0;
@@ -435,6 +427,13 @@
             // Calculate savings
             const totalSavings = customSolutionTotalCost - ztkTotalWithOverhead;
             const savingsPercentage = Math.round((totalSavings / customSolutionTotalCost) * 100);
+            
+            console.log("Calculation results:", {
+                customSolutionTotalCost,
+                ztkTotalWithOverhead,
+                totalSavings,
+                savingsPercentage
+            });
             
             // Update results
             document.getElementById('customSolutionCost').textContent = '$' + Math.round(customSolutionTotalCost).toLocaleString();
