@@ -328,7 +328,7 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <script>
         // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', function() {
@@ -346,7 +346,9 @@
             const resultsContainer = document.getElementById('resultsContainer');
             
             if (calculateBtn) {
-                calculateBtn.addEventListener('click', calculateROI);
+                calculateBtn.addEventListener('click', function() {
+                    calculateROI();
+                });
             }
             
             // Initial calculation on page load
@@ -354,6 +356,9 @@
         });
         
         function calculateROI() {
+            console.log("Calculating ROI...");
+            const resultsContainer = document.getElementById('resultsContainer');
+            
             // Get input values
             const numUsers = parseInt(document.getElementById('numUsers').value) || 500;
             const numAwsAccounts = parseInt(document.getElementById('numAwsAccounts').value) || 5;
@@ -426,6 +431,7 @@
         }
         
         function updateChart(timeframe, customCost, ztkCost) {
+            console.log("Updating chart with timeframe:", timeframe, "customCost:", customCost, "ztkCost:", ztkCost);
             const ctx = document.getElementById('costComparisonChart').getContext('2d');
             
             // Destroy existing chart if it exists
@@ -442,74 +448,86 @@
             const firstYearCustom = customCost / timeframe * 1.5;
             const laterYearCustom = (customCost - firstYearCustom) / (timeframe - 1);
             
-            customYearlyCosts.push(firstYearCustom);
+            customYearlyCosts.push(Math.round(firstYearCustom));
             for (let i = 1; i < timeframe; i++) {
-                customYearlyCosts.push(laterYearCustom);
+                customYearlyCosts.push(Math.round(laterYearCustom));
             }
             
             // ZTK costs are more evenly distributed
             const yearlyZtk = ztkCost / timeframe;
             for (let i = 0; i < timeframe; i++) {
-                ztkYearlyCosts.push(yearlyZtk);
+                ztkYearlyCosts.push(Math.round(yearlyZtk));
                 labels.push('Year ' + (i + 1));
             }
             
             // Create chart
-            window.costChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [
-                        {
-                            label: 'Custom Solution',
-                            data: customYearlyCosts,
-                            backgroundColor: '#e74c3c',
-                            borderColor: '#c0392b',
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'ZeroTrustKerberosLink',
-                            data: ztkYearlyCosts,
-                            backgroundColor: '#4361ee',
-                            borderColor: '#3a56d4',
-                            borderWidth: 1
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Cost ($)'
+            try {
+                window.costChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Custom Solution',
+                                data: customYearlyCosts,
+                                backgroundColor: '#e74c3c',
+                                borderColor: '#c0392b',
+                                borderWidth: 1
                             },
-                            ticks: {
-                                callback: function(value) {
-                                    return '$' + value.toLocaleString();
+                            {
+                                label: 'ZeroTrustKerberosLink',
+                                data: ztkYearlyCosts,
+                                backgroundColor: '#4361ee',
+                                borderColor: '#3a56d4',
+                                borderWidth: 1
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Cost ($)'
+                                },
+                                ticks: {
+                                    callback: function(value) {
+                                        return '$' + value.toLocaleString();
+                                    }
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Timeline'
                                 }
                             }
                         },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Timeline'
-                            }
-                        }
-                    },
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return context.dataset.label + ': $' + Math.round(context.raw).toLocaleString();
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed.y !== null) {
+                                            label += '$' + context.parsed.y.toLocaleString();
+                                        }
+                                        return label;
+                                    }
                                 }
                             }
                         }
                     }
-                }
-            });
+                });
+                console.log("Chart created successfully");
+            } catch (error) {
+                console.error("Error creating chart:", error);
+            }
         }
     </script>
 </body>
