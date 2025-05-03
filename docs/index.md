@@ -2,6 +2,8 @@
 
 Welcome to the official documentation for ZeroTrustKerberosLink, the secure bridge between enterprise Kerberos authentication and AWS services built on Zero Trust principles.
 
+*Updated: May 3, 2025*
+
 ## Documentation Sections
 
 ### [Getting Started](./getting-started/index.md)

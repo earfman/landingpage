@@ -72,6 +72,13 @@ nav:
     - Penetration Testing: security-hardening/penetration-testing.md
     - Secrets Management: security-hardening/secrets-management.md
     - Compliance: security-hardening/compliance/index.md
+  - Security Whitepaper:
+    - Overview: security-whitepaper/index.md
+    - Security Control Mapping: security-whitepaper/security-control-mapping/index.md
+    - FedRAMP Alignment: security-whitepaper/fedramp-alignment/index.md
+    - Identity Federation Architecture: security-whitepaper/identity-federation/index.md
+    - Penetration Testing Summary: security-whitepaper/penetration-testing/index.md
+    - Executive Summary: security-whitepaper/executive-summary/index.md
   - Implementation Guide:
     - Overview: implementation-guide/index.md
     - Prerequisites: implementation-guide/prerequisites.md
