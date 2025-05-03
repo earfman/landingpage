@@ -1,0 +1,17 @@
+# Redirect old documentation links to new MkDocs structure
+/documentation.html                         /site/index.html
+/documentation.html#implementation-guide    /site/implementation-guide/index.html
+/documentation.html#security-hardening      /site/security-hardening/index.html
+/documentation.html#security-testing        /site/security-hardening/security-testing/index.html
+/documentation.html#compliance              /site/security-hardening/compliance/index.html
+/documentation.html#input-validation        /site/security-hardening/input-validation/index.html
+/documentation.html#security-headers        /site/security-hardening/security-headers/index.html
+/documentation.html#secure-redis            /site/security-hardening/secure-redis/index.html
+/documentation.html#rate-limiting           /site/security-hardening/rate-limiting/index.html
+/documentation.html#secrets-management      /site/security-hardening/secrets-management/index.html
+/documentation.html#best-practices          /site/security-hardening/best-practices/index.html
+/documentation.html#penetration-testing     /site/security-hardening/penetration-testing/index.html
+
+# Redirect old legal pages to new structure
+/privacy-policy.html                        /site/privacy-policy/index.html
+/terms-of-service.html                      /site/terms-of-service/index.html

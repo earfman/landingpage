@@ -1,9 +1,10 @@
 [build]
-  publish = "/"
-  command = ""
+  publish = "."
+  command = "pip install mkdocs mkdocs-material pymdown-extensions mkdocs-minify-plugin mkdocs-git-revision-date-localized-plugin && mkdocs build"
 
 [build.environment]
   NODE_VERSION = "16"
+  PYTHON_VERSION = "3.9"
 
 [[headers]]
   for = "/*"

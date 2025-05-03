@@ -71,6 +71,7 @@ nav:
     - Security Testing: security-hardening/security-testing.md
     - Penetration Testing: security-hardening/penetration-testing.md
     - Secrets Management: security-hardening/secrets-management.md
+    - Compliance: security-hardening/compliance/index.md
   - Implementation Guide:
     - Overview: implementation-guide/index.md
     - Prerequisites: implementation-guide/prerequisites.md
@@ -90,6 +91,9 @@ nav:
     - SDK: api-reference/sdk.md
   - FAQ: faq/index.md
   - Release Notes: release-notes/index.md
+  - Legal:
+    - Privacy Policy: privacy-policy/index.md
+    - Terms of Service: terms-of-service/index.md
 
 # Plugins
 plugins:
