@@ -345,6 +345,25 @@
             const calculateBtn = document.getElementById('calculateBtn');
             const resultsContainer = document.getElementById('resultsContainer');
             
+            // Add event listeners to all input fields
+            const inputFields = document.querySelectorAll('#numUsers, #numAwsAccounts, #engineerCost, #securityIncidents, #complianceLevel, #timeframe');
+            inputFields.forEach(input => {
+                input.addEventListener('change', function() {
+                    calculateROI();
+                });
+                
+                // For number inputs, also listen for input events (as user types)
+                if (input.type === 'number') {
+                    input.addEventListener('input', function() {
+                        // Add a small delay to avoid too many calculations while typing
+                        clearTimeout(input.timeout);
+                        input.timeout = setTimeout(function() {
+                            calculateROI();
+                        }, 500);
+                    });
+                }
+            });
+            
             if (calculateBtn) {
                 calculateBtn.addEventListener('click', function() {
                     calculateROI();
