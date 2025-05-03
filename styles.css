@@ -1018,6 +1018,123 @@ nav a:hover {
     margin-bottom: 0;
 }
 
+/* Comparison Table Improvements */
+.comparison-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    padding: 15px;
+    text-align: center;
+    border-bottom: 2px solid #fff;
+    font-size: 1rem;
+}
+
+.comparison-table th:first-child {
+    background-color: var(--primary-dark);
+    text-align: left;
+}
+
+.comparison-table th.highlight-column {
+    background-color: var(--accent-color);
+    position: relative;
+    color: white;
+}
+
+.comparison-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95rem;
+}
+
+.comparison-table td:first-child {
+    text-align: left;
+    font-weight: 600;
+    background-color: rgba(67, 97, 238, 0.05);
+}
+
+.comparison-table td.highlight-column {
+    background-color: rgba(247, 37, 133, 0.05);
+    font-weight: 600;
+}
+
+.comparison-table .success {
+    color: var(--success-color);
+}
+
+.comparison-table .warning {
+    color: var(--warning-color);
+}
+
+.comparison-table .danger {
+    color: var(--danger-color);
+}
+
+/* Security Comparison Table Improvements */
+.security-comparison .comparison-table th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    padding: 15px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.security-comparison .comparison-table th:first-child {
+    background-color: var(--primary-dark);
+    text-align: left;
+}
+
+.security-comparison .comparison-table th.highlight-column {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.security-comparison .comparison-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95rem;
+}
+
+.security-comparison .comparison-table td:first-child {
+    text-align: left;
+    font-weight: 600;
+    background-color: rgba(67, 97, 238, 0.05);
+}
+
+.security-comparison .comparison-table td.highlight-column {
+    background-color: rgba(247, 37, 133, 0.05);
+    font-weight: 600;
+}
+
+.text-success {
+    color: var(--success-color);
+}
+
+.text-warning {
+    color: var(--warning-color);
+}
+
+.text-danger {
+    color: var(--danger-color);
+}
+
+/* Responsive improvements for comparison tables */
+@media (max-width: 768px) {
+    .comparison-table th, 
+    .comparison-table td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+    }
+    
+    .security-comparison .comparison-table th, 
+    .security-comparison .comparison-table td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+    }
+}
+
 /* Benefits Section */
 .benefits {
     background-color: var(--background-color);

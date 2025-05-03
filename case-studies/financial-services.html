@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Global Investment Bank - ZeroTrustKerberosLink</title>
+    <meta name="description" content="Learn how a Fortune 100 investment bank implemented ZeroTrustKerberosLink to secure their AWS access while maintaining Kerberos authentication.">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        .case-study-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .case-study-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .industry-badge {
+            display: inline-block;
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .case-study-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .stat-item {
+            background-color: var(--background-alt);
+            padding: 20px;
+            border-radius: var(--border-radius);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .case-study-section {
+            margin-bottom: 40px;
+        }
+        
+        .case-study-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 40px 0;
+            padding-left: 30px;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .quote-box {
+            background-color: rgba(67, 97, 238, 0.05);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .quote-box:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            color: rgba(67, 97, 238, 0.2);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .quote-content {
+            font-style: italic;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .quote-author {
+            font-weight: 600;
+            display: block;
+            text-align: right;
+        }
+        
+        .quote-position {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            display: block;
+            text-align: right;
+        }
+        
+        .results-section {
+            background-color: var(--background-alt);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin: 40px 0;
+        }
+        
+        .results-section h3 {
+            border-bottom: none;
+            text-align: center;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .result-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .result-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--success-color);
+            margin-bottom: 10px;
+        }
+        
+        .result-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin: 60px 0 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .case-study-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html" class="logo-link">
+                    <img src="../assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Symbol" class="logo-symbol">
+                    <h1>ZeroTrustKerberosLink</h1>
+                </a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="../index.html#features">Features</a></li>
+                    <li><a href="../index.html#how-it-works">How It Works</a></li>
+                    <li><a href="../index.html#security">Security</a></li>
+                    <li><a href="../index.html#case-studies">Case Studies</a></li>
+                    <li><a href="../index.html#pricing">Pricing</a></li>
+                    <li><a href="../site/index.html" class="btn btn-secondary btn-sm">Security Docs</a></li>
+                    <li><a href="../index.html#waitlist" class="btn btn-primary btn-sm">Join Waitlist</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Case Study Section -->
+    <section class="case-study-page">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-badge">Case Study</span>
+                <h2>Global Investment Bank Secures AWS Access</h2>
+                <p class="section-subtitle">How a Fortune 100 investment bank implemented ZeroTrustKerberosLink to secure their AWS access while maintaining Kerberos authentication</p>
+            </div>
+            
+            <div class="case-study-container">
+                <div class="case-study-header">
+                    <span class="industry-badge">Financial Services</span>
+                    <h2>Global Investment Bank Secures AWS Access with Zero Trust Principles</h2>
+                </div>
+                
+                <div class="case-study-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">99.99%</span>
+                        <span class="stat-label">Uptime</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">87%</span>
+                        <span class="stat-label">Reduction in Access Issues</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">3.5 FTE</span>
+                        <span class="stat-label">Engineering Time Saved</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">45 min</span>
+                        <span class="stat-label">Implementation Time</span>
+                    </div>
+                </div>
+                
+                <div class="case-study-section">
+                    <h3>About the Client</h3>
+                    <p>A Fortune 100 global investment bank with over 50,000 employees worldwide and $2 trillion in assets under management. The bank operates in 60+ countries and has been in business for over 150 years.</p>
+                    <p>The organization has a complex IT infrastructure with a mix of legacy systems and modern cloud services. They have been using Kerberos authentication for over 15 years as part of their enterprise identity management strategy.</p>
+                </div>
+                
+                <div class="case-study-section">
+                    <h3>The Challenge</h3>
+                    <p>The bank was accelerating their AWS adoption as part of a multi-year digital transformation initiative. However, they faced significant challenges in integrating their existing Kerberos authentication infrastructure with AWS services:</p>
+                    
+                    <ul>
+                        <li><strong>Security Gaps:</strong> Their existing solution required storing long-lived AWS credentials, creating security vulnerabilities.</li>
+                        <li><strong>Compliance Concerns:</strong> As a financial institution, they needed to maintain strict compliance with regulations including SOX, GDPR, and various banking regulations.</li>
+                        <li><strong>Operational Overhead:</strong> Their security team was spending 4+ hours daily managing AWS credentials and troubleshooting access issues.</li>
+                        <li><strong>Scalability Issues:</strong> Their custom-built solution couldn't scale to support their growing AWS footprint, which was expanding from 5 to 25+ accounts.</li>
+                        <li><strong>Audit Challenges:</strong> They lacked comprehensive audit trails for AWS access, creating challenges during security audits.</li>
+                    </ul>
+                    
+                    <p>The bank had attempted to build an in-house solution, but after 8 months of development and over $1.2 million invested, they were still facing significant challenges with reliability and security.</p>
+                </div>
+                
+                <div class="case-study-section">
+                    <h3>The Solution</h3>
+                    <p>After evaluating several options, the bank selected ZeroTrustKerberosLink to bridge their Kerberos authentication with AWS services. Key factors in their decision included:</p>
+                    
+                    <ul>
+                        <li><strong>Zero Trust Architecture:</strong> ZeroTrustKerberosLink's zero trust approach aligned with their security strategy.</li>
+                        <li><strong>Self-Hosted Deployment:</strong> The ability to deploy within their own infrastructure addressed data sovereignty concerns.</li>
+                        <li><strong>Comprehensive Audit Logging:</strong> Detailed logs for all authentication and authorization events.</li>
+                        <li><strong>Seamless Integration:</strong> No changes required to their existing Kerberos infrastructure.</li>
+                        <li><strong>Rapid Deployment:</strong> The solution could be implemented in under 60 minutes.</li>
+                    </ul>
+                    
+                    <h4>Implementation Timeline</h4>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">Week 1: Planning & Preparation</div>
+                            <p>The bank's security team worked with ZeroTrustKerberosLink to plan the implementation. This included defining security requirements, mapping Kerberos principals to AWS IAM roles, and preparing the deployment environment.</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">Week 2: Initial Deployment</div>
+                            <p>ZeroTrustKerberosLink was deployed in a test environment. The actual deployment took only 45 minutes. The bank's security team was surprised by the simplicity of the process, having expected a multi-week implementation.</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">Week 3: Testing & Validation</div>
+                            <p>The solution underwent rigorous security testing, including penetration testing and compliance verification. No critical issues were found, and the few minor recommendations were addressed within days.</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">Week 4: Production Rollout</div>
+                            <p>ZeroTrustKerberosLink was deployed to production, initially supporting 5,000 users across 12 business units. The rollout was completed without any service disruptions.</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-date">Weeks 5-8: Expansion</div>
+                            <p>The solution was expanded to cover all 25 AWS accounts and integrated with the bank's existing monitoring and alerting systems. Additional security policies were implemented based on business unit requirements.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quote-box">
+                    <p class="quote-content">ZeroTrustKerberosLink allowed us to maintain our security posture while accelerating our AWS adoption. The implementation was completed in just 45 minutes, and the ROI was evident within the first month. Our security team can now focus on strategic initiatives instead of managing credentials.</p>
+                    <span class="quote-author">James Wilson</span>
+                    <span class="quote-position">Chief Information Security Officer</span>
+                </div>
+                
+                <div class="case-study-section results-section">
+                    <h3>Results & Benefits</h3>
+                    
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="result-value">87%</div>
+                            <div class="result-description">Reduction in AWS access-related incidents</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-value">3.5 FTE</div>
+                            <div class="result-description">Engineering resources reallocated to strategic projects</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-value">99.99%</div>
+                            <div class="result-description">Authentication service uptime since implementation</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-value">100%</div>
+                            <div class="result-description">Compliance with financial regulations</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-value">45 min</div>
+                            <div class="result-description">From deployment to production-ready</div>
+                        </div>
+                        
+                        <div class="result-item">
+                            <div class="result-value">$1.4M</div>
+                            <div class="result-description">Annual cost savings compared to previous solution</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="case-study-section">
+                    <h3>Key Lessons</h3>
+                    
+                    <ol>
+                        <li><strong>Don't Reinvent the Wheel:</strong> The bank had spent 8 months trying to build a custom solution before realizing that a specialized product would be more effective and less costly.</li>
+                        <li><strong>Security and Convenience Can Coexist:</strong> ZeroTrustKerberosLink proved that strong security doesn't have to come at the expense of user experience.</li>
+                        <li><strong>Start Small, Scale Fast:</strong> The phased implementation approach allowed for quick wins while ensuring security at each step.</li>
+                        <li><strong>Compliance as a Driver:</strong> Regulatory requirements were a key driver for the project, but the solution delivered benefits beyond compliance.</li>
+                    </ol>
+                </div>
+                
+                <div class="cta-section">
+                    <h3>Ready to secure your AWS access with Kerberos authentication?</h3>
+                    <p>Learn how ZeroTrustKerberosLink can help your organization achieve similar results.</p>
+                    <a href="../index.html#waitlist" class="btn btn-primary btn-lg">Request Early Access</a>
+                    <a href="../roi-calculator.html" class="btn btn-outline btn-lg">Calculate Your ROI</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-wrapper">
+                        <img src="../assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Symbol" class="footer-logo-symbol">
+                        <h2>ZeroTrustKerberosLink</h2>
+                    </div>
+                    <p>Secure, zero-trust integration between enterprise Kerberos authentication and AWS services.</p>
+                </div>
+                
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <h3>Product</h3>
+                        <ul>
+                            <li><a href="../index.html#features">Features</a></li>
+                            <li><a href="../index.html#security">Security</a></li>
+                            <li><a href="../index.html#pricing">Pricing</a></li>
+                            <li><a href="../index.html#case-studies">Case Studies</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="../site/index.html">Documentation</a></li>
+                            <li><a href="../site/implementation-guide/index.html">Implementation Guide</a></li>
+                            <li><a href="../site/security-hardening/index.html">Security Hardening</a></li>
+                            <li><a href="../roi-calculator.html">ROI Calculator</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="../index.html#about">About Us</a></li>
+                            <li><a href="../index.html#waitlist">Contact</a></li>
+                            <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="../terms-of-service.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2025 ZeroTrustKerberosLink. All rights reserved.
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
