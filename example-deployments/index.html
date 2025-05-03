@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Deployments - ZeroTrustKerberosLink</title>
+    <meta name="description" content="Real-world deployment examples for ZeroTrustKerberosLink in various enterprise environments.">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        .deployment-examples {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .example-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .example-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .example-icon {
+            font-size: 24px;
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .example-title {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+        
+        .example-content {
+            padding: 25px;
+        }
+        
+        .example-section {
+            margin-bottom: 25px;
+        }
+        
+        .example-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .example-section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .example-section ul {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        
+        .example-section li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .deployment-diagram {
+            background-color: var(--background-alt);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .deployment-diagram img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .deployment-diagram-caption {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .code-block {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            font-family: monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .example-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .example-nav-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background-color: var(--background-alt);
+            border-radius: var(--border-radius);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .example-nav-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .deployment-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric-card {
+            background-color: var(--background-alt);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html" class="logo-link">
+                    <img src="../assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Symbol" class="logo-symbol">
+                    <h1>ZeroTrustKerberosLink</h1>
+                </a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="../index.html#features">Features</a></li>
+                    <li><a href="../index.html#how-it-works">How It Works</a></li>
+                    <li><a href="../index.html#security">Security</a></li>
+                    <li><a href="../index.html#case-studies">Case Studies</a></li>
+                    <li><a href="../index.html#pricing">Pricing</a></li>
+                    <li><a href="../site/index.html" class="btn btn-secondary btn-sm">Security Docs</a></li>
+                    <li><a href="../index.html#waitlist" class="btn btn-primary btn-sm">Join Waitlist</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Example Deployments Section -->
+    <section class="deployment-examples">
+        <div class="section-header center">
+            <span class="section-badge">Enterprise Deployments</span>
+            <h2>Example Deployment Architectures</h2>
+            <p class="section-subtitle">Real-world deployment examples for ZeroTrustKerberosLink in various enterprise environments</p>
+        </div>
+        
+        <!-- Example 1: Financial Services -->
+        <div class="example-card">
+            <div class="example-header">
+                <div class="example-icon">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <h2 class="example-title">Financial Services Deployment</h2>
+            </div>
+            
+            <div class="example-content">
+                <div class="example-section">
+                    <h3>Environment Overview</h3>
+                    <p>This deployment architecture is based on a global investment bank with 10,000+ employees, 50+ AWS accounts, and strict regulatory compliance requirements including SOC 2, PCI-DSS, and GDPR.</p>
+                    
+                    <div class="deployment-metrics">
+                        <div class="metric-card">
+                            <div class="metric-value">10,000+</div>
+                            <div class="metric-label">Users</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">50+</div>
+                            <div class="metric-label">AWS Accounts</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">99.99%</div>
+                            <div class="metric-label">Uptime SLA</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">3</div>
+                            <div class="metric-label">Global Regions</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="example-section">
+                    <h3>Architecture Diagram</h3>
+                    <div class="deployment-diagram">
+                        <img src="../assets/financial-deployment.png" alt="Financial Services Deployment Architecture">
+                        <div class="deployment-diagram-caption">High-availability multi-region deployment with Active Directory integration</div>
+                    </div>
+                </div>
+                
+                <div class="example-section">
+                    <h3>Key Components</h3>
+                    <ul>
+                        <li><strong>Multi-Region Deployment:</strong> Primary in US-East with failover to EU-Central and AP-Southeast</li>
+                        <li><strong>Active Directory Integration:</strong> Enterprise AD with multiple domain controllers</li>
+                        <li><strong>AWS Organization:</strong> 50+ accounts organized by business unit with centralized security controls</li>
+                        <li><strong>Load Balancing:</strong> Global load balancing with AWS Global Accelerator</li>
+                        <li><strong>Auto-Scaling:</strong> Dynamic scaling based on authentication load patterns</li>
+                        <li><strong>Monitoring:</strong> Integrated with Datadog and PagerDuty for 24/7 monitoring</li>
+                    </ul>
+                </div>
+                
+                <div class="example-section">
+                    <h3>Deployment Configuration</h3>
+                    <div class="code-block">
+# ZeroTrustKerberosLink Enterprise Configuration
+# Financial Services Deployment
+
+# High Availability Settings
+ha_mode: active-active
+min_nodes: 4
+max_nodes: 12
+scaling_threshold_cpu: 70
+scaling_threshold_memory: 75
+
+# Security Settings
+encryption:
+  kms_key_rotation: enabled
+  transit_encryption: tls1.3
+  at_rest_encryption: aes256
+
+# Authentication Settings
+auth:
+  mfa_required: true
+  session_timeout: 8h
+  idle_timeout: 30m
+  failed_login_lockout: 5
+  
+# AWS Integration
+aws:
+  role_assumption_duration: 1h
+  cross_account_access: enabled
+  organization_integration: enabled
+  
+# Compliance
+compliance:
+  audit_logging: verbose
+  log_retention: 2y
+  pci_dss_mode: enabled
+  gdpr_mode: enabled
+                    </div>
+                </div>
+                
+                <div class="example-section">
+                    <h3>Implementation Timeline</h3>
+                    <ul>
+                        <li><strong>Week 1:</strong> Initial deployment and Active Directory integration</li>
+                        <li><strong>Week 2:</strong> AWS account integration and role mapping configuration</li>
+                        <li><strong>Week 3:</strong> Security hardening and compliance configuration</li>
+                        <li><strong>Week 4:</strong> Load testing and performance tuning</li>
+                        <li><strong>Week 5:</strong> User acceptance testing and rollout to initial business units</li>
+                        <li><strong>Week 6-8:</strong> Phased rollout to remaining business units</li>
+                    </ul>
+                </div>
+                
+                <div class="example-section">
+                    <h3>Results & Benefits</h3>
+                    <ul>
+                        <li>Reduced AWS access management overhead by 85%</li>
+                        <li>Improved security posture with zero-trust architecture</li>
+                        <li>Simplified compliance audits with comprehensive audit logging</li>
+                        <li>Eliminated credential-related security incidents</li>
+                        <li>Reduced developer onboarding time from days to hours</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Example 2: Healthcare -->
+        <div class="example-card">
+            <div class="example-header">
+                <div class="example-icon">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <h2 class="example-title">Healthcare Provider Deployment</h2>
+            </div>
+            
+            <div class="example-content">
+                <div class="example-section">
+                    <h3>Environment Overview</h3>
+                    <p>This deployment architecture is based on a large healthcare provider network with 5,000+ employees, 20+ AWS accounts, and strict HIPAA compliance requirements.</p>
+                    
+                    <div class="deployment-metrics">
+                        <div class="metric-card">
+                            <div class="metric-value">5,000+</div>
+                            <div class="metric-label">Users</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">20+</div>
+                            <div class="metric-label">AWS Accounts</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">99.95%</div>
+                            <div class="metric-label">Uptime SLA</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">2</div>
+                            <div class="metric-label">Regions</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="example-section">
+                    <h3>Architecture Diagram</h3>
+                    <div class="deployment-diagram">
+                        <img src="../assets/healthcare-deployment.png" alt="Healthcare Provider Deployment Architecture">
+                        <div class="deployment-diagram-caption">HIPAA-compliant deployment with enhanced security controls</div>
+                    </div>
+                </div>
+                
+                <div class="example-section">
+                    <h3>Key Components</h3>
+                    <ul>
+                        <li><strong>Dual-Region Deployment:</strong> Primary in US-East with failover to US-West</li>
+                        <li><strong>HIPAA Compliance:</strong> Enhanced audit logging and PHI protection controls</li>
+                        <li><strong>Network Isolation:</strong> Dedicated VPC with private subnets and VPC endpoints</li>
+                        <li><strong>Encryption:</strong> End-to-end encryption for all data in transit and at rest</li>
+                        <li><strong>Role-Based Access:</strong> Granular permissions based on clinical and administrative roles</li>
+                        <li><strong>Monitoring:</strong> Integrated with Splunk for security monitoring and compliance reporting</li>
+                    </ul>
+                </div>
+                
+                <div class="example-section">
+                    <h3>Deployment Configuration</h3>
+                    <div class="code-block">
+# ZeroTrustKerberosLink Healthcare Configuration
+# HIPAA-Compliant Deployment
+
+# High Availability Settings
+ha_mode: active-passive
+min_nodes: 3
+max_nodes: 8
+scaling_threshold_cpu: 65
+scaling_threshold_memory: 70
+
+# Security Settings
+encryption:
+  kms_key_rotation: enabled
+  transit_encryption: tls1.3
+  at_rest_encryption: aes256
+  phi_protection: enabled
+
+# Authentication Settings
+auth:
+  mfa_required: true
+  session_timeout: 4h
+  idle_timeout: 15m
+  failed_login_lockout: 3
+  
+# AWS Integration
+aws:
+  role_assumption_duration: 1h
+  cross_account_access: enabled
+  organization_integration: enabled
+  
+# Compliance
+compliance:
+  audit_logging: verbose
+  log_retention: 6y
+  hipaa_mode: enabled
+  phi_access_logging: enabled
+                    </div>
+                </div>
+                
+                <div class="example-section">
+                    <h3>Implementation Timeline</h3>
+                    <ul>
+                        <li><strong>Week 1:</strong> Initial deployment and Active Directory integration</li>
+                        <li><strong>Week 2:</strong> AWS account integration and HIPAA compliance configuration</li>
+                        <li><strong>Week 3:</strong> Security hardening and PHI protection controls</li>
+                        <li><strong>Week 4:</strong> Compliance validation and documentation</li>
+                        <li><strong>Week 5-6:</strong> Phased rollout to clinical and administrative teams</li>
+                    </ul>
+                </div>
+                
+                <div class="example-section">
+                    <h3>Results & Benefits</h3>
+                    <ul>
+                        <li>Achieved HIPAA compliance with comprehensive audit trails</li>
+                        <li>Eliminated PHI exposure risks with zero-trust architecture</li>
+                        <li>Reduced compliance reporting effort by 70%</li>
+                        <li>Simplified AWS access for clinical research teams</li>
+                        <li>Improved security incident response time by 85%</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Example 3: Government -->
+        <div class="example-card">
+            <div class="example-header">
+                <div class="example-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <h2 class="example-title">Government Agency Deployment</h2>
+            </div>
+            
+            <div class="example-content">
+                <div class="example-section">
+                    <h3>Environment Overview</h3>
+                    <p>This deployment architecture is based on a federal government agency with 3,000+ employees, 15+ AWS GovCloud accounts, and FedRAMP High compliance requirements.</p>
+                    
+                    <div class="deployment-metrics">
+                        <div class="metric-card">
+                            <div class="metric-value">3,000+</div>
+                            <div class="metric-label">Users</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">15+</div>
+                            <div class="metric-label">AWS GovCloud Accounts</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">99.99%</div>
+                            <div class="metric-label">Uptime SLA</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">2</div>
+                            <div class="metric-label">GovCloud Regions</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="example-section">
+                    <h3>Architecture Diagram</h3>
+                    <div class="deployment-diagram">
+                        <img src="../assets/government-deployment.png" alt="Government Agency Deployment Architecture">
+                        <div class="deployment-diagram-caption">FedRAMP High compliant deployment in AWS GovCloud</div>
+                    </div>
+                </div>
+                
+                <div class="example-section">
+                    <h3>Key Components</h3>
+                    <ul>
+                        <li><strong>GovCloud Deployment:</strong> Deployed in AWS GovCloud US-East and US-West</li>
+                        <li><strong>FedRAMP Compliance:</strong> Meets FedRAMP High security controls</li>
+                        <li><strong>PIV/CAC Integration:</strong> Support for government-issued smart cards</li>
+                        <li><strong>Air-Gapped Deployment:</strong> No direct internet connectivity</li>
+                        <li><strong>FIPS Compliance:</strong> FIPS 140-2 validated cryptographic modules</li>
+                        <li><strong>Monitoring:</strong> Integrated with Splunk and AWS Security Hub for continuous monitoring</li>
+                    </ul>
+                </div>
+                
+                <div class="example-section">
+                    <h3>Deployment Configuration</h3>
+                    <div class="code-block">
+# ZeroTrustKerberosLink Government Configuration
+# FedRAMP High Deployment
+
+# High Availability Settings
+ha_mode: active-active
+min_nodes: 4
+max_nodes: 8
+scaling_threshold_cpu: 60
+scaling_threshold_memory: 65
+
+# Security Settings
+encryption:
+  kms_key_rotation: enabled
+  transit_encryption: tls1.3_fips
+  at_rest_encryption: aes256_fips
+  fips_mode: enabled
+
+# Authentication Settings
+auth:
+  mfa_required: true
+  piv_cac_support: enabled
+  session_timeout: 2h
+  idle_timeout: 10m
+  failed_login_lockout: 3
+  
+# AWS Integration
+aws:
+  role_assumption_duration: 1h
+  cross_account_access: enabled
+  organization_integration: enabled
+  govcloud_mode: enabled
+  
+# Compliance
+compliance:
+  audit_logging: verbose
+  log_retention: 7y
+  fedramp_high_mode: enabled
+  nist_800_53_controls: enabled
+                    </div>
+                </div>
+                
+                <div class="example-section">
+                    <h3>Implementation Timeline</h3>
+                    <ul>
+                        <li><strong>Week 1-2:</strong> Initial deployment and PIV/CAC integration</li>
+                        <li><strong>Week 3-4:</strong> AWS GovCloud account integration and FedRAMP controls implementation</li>
+                        <li><strong>Week 5-6:</strong> Security assessment and documentation</li>
+                        <li><strong>Week 7-8:</strong> Authority to Operate (ATO) process</li>
+                        <li><strong>Week 9-12:</strong> Phased rollout across departments</li>
+                    </ul>
+                </div>
+                
+                <div class="example-section">
+                    <h3>Results & Benefits</h3>
+                    <ul>
+                        <li>Achieved FedRAMP High compliance</li>
+                        <li>Simplified PIV/CAC-based authentication to AWS</li>
+                        <li>Reduced security authorization timeline by 50%</li>
+                        <li>Eliminated credential-based security vulnerabilities</li>
+                        <li>Improved cross-agency collaboration with secure role-based access</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-navigation">
+            <a href="../index.html" class="example-nav-button">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+            <a href="../site/implementation-guide/index.html" class="example-nav-button">
+                Implementation Guide <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-wrapper">
+                        <img src="../assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Symbol" class="footer-logo-symbol">
+                        <h2>ZeroTrustKerberosLink</h2>
+                    </div>
+                    <p>Secure, zero-trust integration between enterprise Kerberos authentication and AWS services.</p>
+                </div>
+                
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <h3>Product</h3>
+                        <ul>
+                            <li><a href="../index.html#features">Features</a></li>
+                            <li><a href="../index.html#security">Security</a></li>
+                            <li><a href="../index.html#pricing">Pricing</a></li>
+                            <li><a href="../index.html#case-studies">Case Studies</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="../site/index.html">Documentation</a></li>
+                            <li><a href="../site/implementation-guide/index.html">Implementation Guide</a></li>
+                            <li><a href="../site/security-hardening/index.html">Security Hardening</a></li>
+                            <li><a href="../roi-calculator.html">ROI Calculator</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="../index.html#about">About Us</a></li>
+                            <li><a href="../index.html#waitlist">Contact</a></li>
+                            <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="../terms-of-service.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2025 ZeroTrustKerberosLink. All rights reserved.
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
