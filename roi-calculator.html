@@ -217,6 +217,141 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+        .announcement-bar {
+            background-color: var(--background-alt);
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .announcement-bar .highlight {
+            color: var(--primary-color);
+        }
+        
+        .announcement-bar a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .announcement-bar a:hover {
+            color: var(--primary-color);
+        }
+        
+        .close-button {
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .close-button:hover {
+            color: var(--primary-color);
+        }
+        
+        .header {
+            background-color: var(--background-alt);
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .header .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .header .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .header .logo h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        .main-nav li {
+            margin-right: 20px;
+        }
+        
+        .main-nav a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .main-nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        .cta-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--primary-color-dark);
+        }
+        
+        .mobile-menu-toggle {
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .mobile-menu-toggle:hover {
+            color: var(--primary-color);
+        }
+        
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-color-dark);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-color-dark);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--secondary-color-dark);
+        }
     </style>
 </head>
 <body>
@@ -224,35 +359,35 @@
     <div class="announcement-bar" id="announcementBar">
         <div class="container">
             <p><span class="highlight">Limited Time</span> Join the waitlist for early access and get 50% off your first 6 months! <a href="index">Sign up now</a></p>
-            <button class="close-announcement" id="closeAnnouncement">×</button>
+            <button id="closeAnnouncement" class="close-button"><i class="fas fa-times"></i></button>
         </div>
     </div>
 
     <!-- Header -->
-    <header>
+    <header class="header">
         <div class="container">
             <div class="logo">
-                <a href="index" class="logo-link">
-                    <img src="site-assets/logo.svg" alt="ZeroTrustKerberosLink Symbol" class="logo-symbol">
+                <a href="index">
+                    <img src="site-assets/logo.svg" alt="ZeroTrustKerberosLink Logo">
                     <h1>ZeroTrustKerberosLink</h1>
                 </a>
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </div>
-            <nav id="mainNav">
+            <nav class="main-nav" id="mainNav">
                 <ul>
                     <li><a href="index#features">Features</a></li>
                     <li><a href="index#how-it-works">How It Works</a></li>
                     <li><a href="index#security">Security</a></li>
                     <li><a href="index#case-studies">Case Studies</a></li>
                     <li><a href="index#pricing">Pricing</a></li>
-                    <li><a href="docs" class="btn btn-secondary btn-sm">Documentation</a></li>
-                    <li><a href="index#waitlist" class="btn btn-primary btn-sm">Join Waitlist</a></li>
+                    <li><a href="docs">Documentation</a></li>
+                    <li class="cta-button"><a href="index#waitlist">Join Waitlist</a></li>
                 </ul>
             </nav>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
@@ -304,7 +439,7 @@
                     </div>
                     
                     <div class="form-row">
-                        <button id="calculateButton" class="btn btn-primary full-width">Calculate ROI</button>
+                        <button id="calculateButton" class="btn btn-primary">Calculate ROI</button>
                     </div>
                 </div>
                 
