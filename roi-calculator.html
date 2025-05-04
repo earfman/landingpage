@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Version 2.1 - Updated May 4, 2025 - Force refresh -->
     <title>ROI Calculator - ZeroTrustKerberosLink</title>
     <meta name="description" content="Calculate your potential savings with ZeroTrustKerberosLink's secure Kerberos to AWS integration solution.">
     <link rel="stylesheet" href="styles.css">
@@ -330,7 +331,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <script>
+    console.log("ROI Calculator script loading...");
     document.addEventListener('DOMContentLoaded', function() {
+        console.log("DOM fully loaded, initializing calculator...");
+        
         // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         const mainNav = document.getElementById('mainNav');
@@ -363,7 +367,16 @@
         // Add event listener to calculate button
         calculateBtn.addEventListener('click', calculateROI);
         
+        // Add event listeners to inputs for automatic recalculation
+        numUsersInput.addEventListener('input', calculateROI);
+        numAwsAccountsInput.addEventListener('input', calculateROI);
+        engineerCostInput.addEventListener('input', calculateROI);
+        securityIncidentsInput.addEventListener('input', calculateROI);
+        complianceLevelSelect.addEventListener('change', calculateROI);
+        timeframeSelect.addEventListener('change', calculateROI);
+        
         // Initial calculation
+        console.log("Running initial calculation...");
         calculateROI();
         
         // ROI calculation function

@@ -571,6 +571,14 @@ compliance:
                 downloadConfiguration();
             });
             
+            // Add event listeners to all form fields to update configuration when changed
+            const formFields = document.querySelectorAll('input, select');
+            formFields.forEach(field => {
+                field.addEventListener('change', function() {
+                    generateConfiguration();
+                });
+            });
+            
             // Function to update form based on selected template
             function updateFormForTemplate(template) {
                 const organizationName = document.getElementById('organization-name');
