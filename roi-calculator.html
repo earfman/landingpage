@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Version 2.2 - Updated May 4, 2025 - Force refresh with standardized footer -->
     <title>ROI Calculator - ZeroTrustKerberosLink</title>
     <meta name="description" content="Calculate your potential savings with ZeroTrustKerberosLink's secure Kerberos to AWS integration solution.">
+    <meta name="keywords" content="ROI calculator, Kerberos AWS integration, security ROI, enterprise security, cost savings, AWS Kerberos, secure cloud authentication">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="ROI Calculator - ZeroTrustKerberosLink">
+    <meta property="og:description" content="Calculate your potential savings with ZeroTrustKerberosLink's secure Kerberos to AWS integration solution.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zerotrustkerberoslink.com/roi-calculator.html">
+    <link rel="canonical" href="https://zerotrustkerberoslink.com/roi-calculator.html">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -49,8 +55,8 @@
         }
         
         .results-container {
-            display: none;
-            background-color: var(--light-bg);
+            display: block;
+            background-color: var(--background-alt);
             padding: 30px;
             border-radius: var(--border-radius);
             margin-top: 20px;
@@ -74,6 +80,11 @@
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-sm);
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .result-card:hover {
+            transform: translateY(-5px);
         }
         
         .result-value {
@@ -89,8 +100,86 @@
         }
         
         .chart-container {
-            height: 300px;
+            height: 400px;
             margin: 30px 0;
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .detailed-analysis {
+            margin-top: 30px;
+        }
+        
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .analysis-column {
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .analysis-column h5 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .analysis-column ul {
+            padding-left: 20px;
+            list-style-type: none;
+        }
+        
+        .analysis-column li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 5px;
+        }
+        
+        .analysis-column li span {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .roi-summary {
+            margin-top: 30px;
+            background-color: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .roi-summary h4 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .roi-summary p {
+            margin-bottom: 15px;
+        }
+        
+        .roi-summary ul {
+            padding-left: 20px;
+        }
+        
+        .roi-summary li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .roi-summary li:before {
+            content: "✓";
+            color: var(--success-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
         }
         
         .assumptions {
@@ -98,10 +187,12 @@
             padding: 20px;
             border-radius: var(--border-radius);
             margin-top: 30px;
+            box-shadow: var(--shadow-sm);
         }
         
         .assumptions h4 {
             margin-bottom: 15px;
+            color: var(--primary-color);
         }
         
         .assumptions ul {
@@ -121,36 +212,45 @@
             .results-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="container">
+            <p><span class="highlight">Limited Time</span> Join the waitlist for early access and get 50% off your first 6 months! <a href="index.html#waitlist">Sign up now</a></p>
+            <button class="close-announcement" id="closeAnnouncement">×</button>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html">
-                    <img src="assets/cerberus-logo.png" alt="ZeroTrustKerberosLink">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Symbol" class="logo-symbol">
+                    <h1>ZeroTrustKerberosLink</h1>
                 </a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <nav class="main-nav">
+            <nav id="mainNav">
                 <ul>
                     <li><a href="index.html#features">Features</a></li>
                     <li><a href="index.html#how-it-works">How It Works</a></li>
                     <li><a href="index.html#security">Security</a></li>
                     <li><a href="index.html#case-studies">Case Studies</a></li>
                     <li><a href="index.html#pricing">Pricing</a></li>
-                    <li><a href="docs.html">Documentation</a></li>
+                    <li><a href="docs.html" class="btn btn-secondary btn-sm">Documentation</a></li>
+                    <li><a href="index.html#waitlist" class="btn btn-primary btn-sm">Join Waitlist</a></li>
                 </ul>
             </nav>
-            <div class="cta-button">
-                <a href="index.html#waitlist" class="button primary">Join Waitlist</a>
-            </div>
-            <button id="mobileMenuToggle" class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
 
@@ -202,7 +302,7 @@
                     </div>
                     
                     <div class="form-row">
-                        <button id="calculateButton" class="button primary full-width">Calculate ROI</button>
+                        <button id="calculateButton" class="btn btn-primary full-width">Calculate ROI</button>
                     </div>
                 </div>
                 
@@ -232,7 +332,48 @@
                         </div>
                     </div>
                     
-                    <div class="chart-container" id="costComparisonChart"></div>
+                    <div class="chart-container" id="chartWrapper">
+                        <h4>Cost Comparison Over Time</h4>
+                        <canvas id="costComparisonChart" width="800" height="400"></canvas>
+                    </div>
+                    
+                    <div class="detailed-analysis" id="detailedAnalysis">
+                        <h4>Detailed Cost Analysis</h4>
+                        <div class="analysis-grid">
+                            <div class="analysis-column">
+                                <h5>Custom Solution Breakdown</h5>
+                                <ul>
+                                    <li>Initial Development: <span id="initialDevCost">$0</span></li>
+                                    <li>Annual Maintenance: <span id="maintenanceCost">$0</span>/year</li>
+                                    <li>Credential Management: <span id="credentialCost">$0</span>/year</li>
+                                    <li>Security Incidents: <span id="securityCost">$0</span>/year</li>
+                                    <li>Compliance Efforts: <span id="complianceCost">$0</span>/year</li>
+                                </ul>
+                            </div>
+                            <div class="analysis-column">
+                                <h5>ZeroTrustKerberosLink Breakdown</h5>
+                                <ul>
+                                    <li>Implementation Cost: <span id="implementationCost">$0</span></li>
+                                    <li>Annual License: <span id="licenseCost">$0</span>/year</li>
+                                    <li>Reduced Credential Management: <span id="ztkCredentialCost">$0</span>/year</li>
+                                    <li>Reduced Security Incidents: <span id="ztkSecurityCost">$0</span>/year</li>
+                                    <li>Reduced Compliance Efforts: <span id="ztkComplianceCost">$0</span>/year</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="roi-summary" id="roiSummary">
+                        <h4>ROI Summary</h4>
+                        <p>With ZeroTrustKerberosLink, your organization would:</p>
+                        <ul id="roiSummaryPoints">
+                            <li>Reduce initial development costs by eliminating the need for custom integration development</li>
+                            <li>Lower ongoing maintenance costs through a managed solution</li>
+                            <li>Decrease security incidents through automated security controls</li>
+                            <li>Reduce compliance certification efforts with built-in compliance features</li>
+                            <li>Save engineering time on AWS credential management</li>
+                        </ul>
+                    </div>
                     
                     <div class="assumptions">
                         <h4>Calculation Assumptions</h4>
@@ -307,19 +448,31 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        console.log("DOM fully loaded, initializing calculator...");
+        console.log('DOM fully loaded, initializing calculator...');
+        
+        // Announcement bar close
+        const announcementBar = document.getElementById('announcementBar');
+        const closeAnnouncement = document.getElementById('closeAnnouncement');
+        
+        if (closeAnnouncement && announcementBar) {
+            closeAnnouncement.addEventListener('click', function() {
+                announcementBar.style.display = 'none';
+            });
+        }
         
         // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const mainNav = document.querySelector('.main-nav');
+        const mainNav = document.getElementById('mainNav');
         
-        mobileMenuToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            mainNav.classList.toggle('active');
-        });
+        if (mobileMenuToggle && mainNav) {
+            mobileMenuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+        }
         
         // ROI Calculator
         const calculateButton = document.getElementById('calculateButton');
@@ -327,13 +480,30 @@
         
         let costChart = null;
         
-        calculateButton.addEventListener('click', function() {
+        // Check if the canvas element exists
+        const canvas = document.getElementById('costComparisonChart');
+        console.log('Canvas element:', canvas);
+        
+        if (canvas) {
+            console.log('Canvas context:', canvas.getContext('2d'));
+        } else {
+            console.error('Canvas element not found!');
+        }
+        
+        // Initialize the calculator on page load
+        setTimeout(function() {
             calculateROI();
-            resultsContainer.style.display = 'block';
-            
-            // Scroll to results
-            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
+        }, 500);
+        
+        if (calculateButton && resultsContainer) {
+            calculateButton.addEventListener('click', function() {
+                console.log('Calculate button clicked');
+                calculateROI();
+                
+                // Scroll to results
+                resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        }
         
         function calculateROI() {
             // Get input values
@@ -403,141 +573,147 @@
             document.getElementById('savingsAmount').textContent = formatter.format(savings);
             document.getElementById('savingsPercent').textContent = `You could save approximately ${Math.round(savingsPercent)}% over the selected timeframe.`;
             
+            // Update detailed analysis
+            document.getElementById('initialDevCost').textContent = formatter.format(initialDevelopmentCost);
+            document.getElementById('maintenanceCost').textContent = formatter.format(annualMaintenanceCost);
+            document.getElementById('credentialCost').textContent = formatter.format(credentialManagementCost);
+            document.getElementById('securityCost').textContent = formatter.format(annualSecurityCost);
+            document.getElementById('complianceCost').textContent = formatter.format(annualComplianceCost);
+            
+            document.getElementById('implementationCost').textContent = formatter.format(implementationCost);
+            document.getElementById('licenseCost').textContent = formatter.format(annualLicenseCost);
+            document.getElementById('ztkCredentialCost').textContent = formatter.format(ztkCredentialManagementCost);
+            document.getElementById('ztkSecurityCost').textContent = formatter.format(ztkSecurityCost);
+            document.getElementById('ztkComplianceCost').textContent = formatter.format(ztkComplianceCost);
+            
+            // Update ROI summary
+            const roiSummaryPoints = document.getElementById('roiSummaryPoints');
+            roiSummaryPoints.innerHTML = '';
+            
+            // Add dynamic ROI summary points based on calculations
+            const summaryPoints = [
+                `Save ${formatter.format(initialDevelopmentCost)} in initial development costs`,
+                `Reduce annual maintenance costs by ${formatter.format(annualMaintenanceCost - (annualZTKCost - annualLicenseCost))} per year`,
+                `Decrease security incident costs by ${Math.round(ztkSecurityIncidentReduction * 100)}% (${formatter.format(annualSecurityCost - ztkSecurityCost)} per year)`,
+                `Lower compliance certification costs by ${Math.round(ztkComplianceReduction * 100)}% (${formatter.format(annualComplianceCost - ztkComplianceCost)} per year)`,
+                `Reduce credential management time by ${Math.round(ztkCredentialManagementReduction * 100)}% (${formatter.format(credentialManagementCost - ztkCredentialManagementCost)} per year)`,
+                `Achieve a total ${Math.round(savingsPercent)}% cost reduction over ${timeframe} years`
+            ];
+            
+            summaryPoints.forEach(point => {
+                const li = document.createElement('li');
+                li.textContent = point;
+                roiSummaryPoints.appendChild(li);
+            });
+            
             // Update chart
             updateChart(timeframe, totalCustomCost, totalZTKCost);
         }
         
-        function updateChart(timeframe, customCost, ztkCost) {
-            const ctx = document.getElementById('costComparisonChart').getContext('2d');
+        function updateChart(timeframe, totalCustomCost, totalZTKCost) {
+            console.log('Updating chart with data:', { timeframe, totalCustomCost, totalZTKCost });
             
-            // Destroy previous chart if it exists
-            if (costChart) {
-                costChart.destroy();
+            const canvas = document.getElementById('costComparisonChart');
+            if (!canvas) {
+                console.error('Canvas element not found in updateChart!');
+                return;
             }
             
-            // Calculate annual costs for each year
-            const years = Array.from({length: timeframe}, (_, i) => i + 1);
-            
-            // For custom solution, first year includes initial development
-            const initialDevelopmentMonths = 6;
-            const initialDevelopmentEngineers = 3;
-            const avgSalary = parseInt(document.getElementById('avgSalary').value);
-            const initialDevelopmentCost = initialDevelopmentEngineers * (avgSalary / 12) * initialDevelopmentMonths;
-            
-            const annualCustomCost = (customCost - initialDevelopmentCost) / timeframe;
-            const customCostData = years.map((year, index) => {
-                if (index === 0) {
-                    return initialDevelopmentCost + annualCustomCost;
-                } else {
-                    return annualCustomCost;
+            try {
+                // Destroy previous chart if it exists
+                if (costChart) {
+                    console.log('Destroying previous chart instance');
+                    costChart.destroy();
                 }
-            });
-            
-            // For ZTK, first year includes implementation cost
-            const implementationCost = 10000;
-            const annualZTKCost = (ztkCost - implementationCost) / timeframe;
-            const ztkCostData = years.map((year, index) => {
-                if (index === 0) {
-                    return implementationCost + annualZTKCost;
-                } else {
-                    return annualZTKCost;
-                }
-            });
-            
-            // Calculate cumulative costs
-            let customCumulative = 0;
-            const customCumulativeData = customCostData.map(cost => {
-                customCumulative += cost;
-                return customCumulative;
-            });
-            
-            let ztkCumulative = 0;
-            const ztkCumulativeData = ztkCostData.map(cost => {
-                ztkCumulative += cost;
-                return ztkCumulative;
-            });
-            
-            // Create chart
-            costChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: years.map(year => `Year ${year}`),
-                    datasets: [
-                        {
-                            label: 'Custom Solution (Annual)',
-                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            borderWidth: 1,
-                            data: customCostData
-                        },
-                        {
-                            label: 'ZeroTrustKerberosLink (Annual)',
-                            backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                            borderColor: 'rgb(54, 162, 235)',
-                            borderWidth: 1,
-                            data: ztkCostData
-                        },
-                        {
-                            label: 'Custom Solution (Cumulative)',
-                            type: 'line',
-                            backgroundColor: 'rgba(255, 99, 132, 0.1)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            borderWidth: 2,
-                            pointBackgroundColor: 'rgb(255, 99, 132)',
-                            fill: true,
-                            data: customCumulativeData
-                        },
-                        {
-                            label: 'ZeroTrustKerberosLink (Cumulative)',
-                            type: 'line',
-                            backgroundColor: 'rgba(54, 162, 235, 0.1)',
-                            borderColor: 'rgb(54, 162, 235)',
-                            borderWidth: 2,
-                            pointBackgroundColor: 'rgb(54, 162, 235)',
-                            fill: true,
-                            data: ztkCumulativeData
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Cost (USD)'
+                
+                // Calculate annual costs for each year
+                const years = Array.from({length: timeframe}, (_, i) => i + 1);
+                const yearLabels = years.map(year => `Year ${year}`);
+                
+                // For custom solution, first year includes initial development
+                const initialDevelopmentMonths = 6;
+                const initialDevelopmentEngineers = 3;
+                const avgSalary = parseInt(document.getElementById('avgSalary').value);
+                const initialDevelopmentCost = initialDevelopmentEngineers * (avgSalary / 12) * initialDevelopmentMonths;
+                
+                const annualCustomCost = (totalCustomCost - initialDevelopmentCost) / timeframe;
+                const customCostData = years.map((year, index) => {
+                    if (index === 0) {
+                        return initialDevelopmentCost + annualCustomCost;
+                    } else {
+                        return annualCustomCost;
+                    }
+                });
+                
+                // For ZTK, first year includes implementation cost
+                const implementationCost = 10000;
+                const annualZTKCost = (totalZTKCost - implementationCost) / timeframe;
+                const ztkCostData = years.map((year, index) => {
+                    if (index === 0) {
+                        return implementationCost + annualZTKCost;
+                    } else {
+                        return annualZTKCost;
+                    }
+                });
+                
+                // Create a simpler chart
+                const ctx = canvas.getContext('2d');
+                costChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: yearLabels,
+                        datasets: [
+                            {
+                                label: 'Custom Solution',
+                                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                                borderColor: 'rgb(255, 99, 132)',
+                                borderWidth: 1,
+                                data: customCostData
                             },
-                            ticks: {
-                                callback: function(value) {
-                                    return '$' + value.toLocaleString();
-                                }
+                            {
+                                label: 'ZeroTrustKerberosLink',
+                                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                                borderColor: 'rgb(54, 162, 235)',
+                                borderWidth: 1,
+                                data: ztkCostData
                             }
-                        }
+                        ]
                     },
-                    plugins: {
-                        tooltip: {
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        title: {
+                            display: true,
+                            text: 'Annual Cost Comparison'
+                        },
+                        tooltips: {
                             callbacks: {
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed.y !== null) {
-                                        label += new Intl.NumberFormat('en-US', {
-                                            style: 'currency',
-                                            currency: 'USD',
-                                            maximumFractionDigits: 0
-                                        }).format(context.parsed.y);
-                                    }
-                                    return label;
+                                label: function(tooltipItem, data) {
+                                    return data.datasets[tooltipItem.datasetIndex].label + ': $' + 
+                                           tooltipItem.yLabel.toLocaleString();
                                 }
                             }
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    callback: function(value) {
+                                        return '$' + value.toLocaleString();
+                                    }
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Cost (USD)'
+                                }
+                            }]
                         }
                     }
-                }
-            });
+                });
+                console.log('Chart created successfully');
+            } catch (error) {
+                console.error('Error creating chart:', error);
+            }
         }
     });
     </script>
