@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troubleshooting Guide - ZeroTrustKerberosLink</title>
+    <meta name="description" content="Comprehensive troubleshooting guide for ZeroTrustKerberosLink addressing authentication issues, AWS integration problems, and compliance concerns.">
+    <meta name="keywords" content="Kerberos troubleshooting, AWS authentication issues, zero trust security, enterprise troubleshooting, HIPAA compliance issues, PCI-DSS troubleshooting">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        .documentation-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .documentation-content h1 {
+            color: var(--primary-color);
+            margin-top: 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .documentation-content h2 {
+            color: var(--primary-dark);
+            margin-top: 40px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .documentation-content h3 {
+            color: var(--primary-color);
+            margin-top: 30px;
+        }
+        
+        .documentation-content p {
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        
+        .documentation-content ul, 
+        .documentation-content ol {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .documentation-content li {
+            margin-bottom: 8px;
+        }
+        
+        .documentation-content code {
+            background-color: #f5f7f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .documentation-content pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        .documentation-content pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            border-radius: 0;
+        }
+        
+        .documentation-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .documentation-content th {
+            background-color: #f5f7f9;
+            text-align: left;
+            padding: 12px 15px;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .documentation-content td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .documentation-content tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .documentation-toc {
+            background-color: #f5f7f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .documentation-toc h2 {
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .documentation-toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .documentation-toc ul ul {
+            padding-left: 20px;
+        }
+        
+        .documentation-toc li {
+            margin-bottom: 5px;
+        }
+        
+        .documentation-toc a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .documentation-toc a:hover {
+            text-decoration: underline;
+        }
+        
+        .documentation-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .documentation-nav a {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .documentation-nav a:hover {
+            text-decoration: underline;
+        }
+        
+        .documentation-nav .prev i {
+            margin-right: 8px;
+        }
+        
+        .documentation-nav .next i {
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../../index.html" class="logo-link">
+                    <img src="../../assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Symbol" class="logo-symbol">
+                    <h1>ZeroTrustKerberosLink</h1>
+                </a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="../../index.html#features">Features</a></li>
+                    <li><a href="../../index.html#how-it-works">How It Works</a></li>
+                    <li><a href="../../index.html#security">Security</a></li>
+                    <li><a href="../../index.html#case-studies">Case Studies</a></li>
+                    <li><a href="../../index.html#pricing">Pricing</a></li>
+                    <li><a href="../../docs.html" class="btn btn-secondary btn-sm">Documentation</a></li>
+                    <li><a href="../../index.html#waitlist" class="btn btn-primary btn-sm">Join Waitlist</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Documentation Content -->
+    <div class="documentation-content">
+        <h1>ZeroTrustKerberosLink Troubleshooting Guide</h1>
+        
+        <p>This comprehensive troubleshooting guide addresses common issues encountered during deployment and operation of ZeroTrustKerberosLink in enterprise environments.</p>
+        
+        <div class="documentation-toc">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#authentication-issues">Authentication Issues</a></li>
+                <li><a href="#aws-integration-issues">AWS Integration Issues</a></li>
+                <li><a href="#high-availability-issues">High Availability Issues</a></li>
+                <li><a href="#performance-issues">Performance Issues</a></li>
+                <li><a href="#compliance-and-audit-issues">Compliance and Audit Issues</a></li>
+                <li><a href="#diagnostic-commands">Diagnostic Commands</a></li>
+                <li><a href="#log-analysis">Log Analysis</a></li>
+                <li><a href="#support-resources">Support Resources</a></li>
+            </ul>
+        </div>
+        
+        <h2 id="authentication-issues">Authentication Issues</h2>
+        
+        <h3>Kerberos Authentication Failures</h3>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Issue</th>
+                    <th>Symptoms</th>
+                    <th>Resolution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ticket Expired</td>
+                    <td>"Ticket expired" or "Ticket not yet valid" errors</td>
+                    <td>Verify time synchronization between all servers (KDC, ZTK nodes, client machines); use NTP to maintain accurate time</td>
+                </tr>
+                <tr>
+                    <td>Keytab Issues</td>
+                    <td>"Cannot find key" or "Integrity check failed" errors</td>
+                    <td>Regenerate keytab file; verify keytab permissions (should be 0600); ensure correct service principal format</td>
+                </tr>
+                <tr>
+                    <td>KDC Connectivity</td>
+                    <td>"Cannot contact KDC" or timeout errors</td>
+                    <td>Check network connectivity to KDC; verify firewall rules allow traffic on ports 88, 464, and 749</td>
+                </tr>
+                <tr>
+                    <td>Principal Format</td>
+                    <td>"Principal unknown" errors</td>
+                    <td>Verify principal naming format matches Kerberos realm conventions; check for case sensitivity issues</td>
+                </tr>
+                <tr>
+                    <td>Clock Skew</td>
+                    <td>"Clock skew too great" errors</td>
+                    <td>Synchronize clocks between KDC and ZTK servers; adjust max_skew setting in krb5.conf</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h4>Diagnostic Steps:</h4>
+        
+        <ol>
+            <li><strong>Verify Kerberos configuration</strong>:
+                <pre><code>sudo ztk-test kerberos-config</code></pre>
+            </li>
+            <li><strong>Test KDC connectivity</strong>:
+                <pre><code>sudo ztk-test kdc-connectivity</code></pre>
+            </li>
+            <li><strong>Validate keytab file</strong>:
+                <pre><code>sudo klist -kt /etc/ztk/service.keytab</code></pre>
+            </li>
+            <li><strong>Check time synchronization</strong>:
+                <pre><code>sudo timedatectl status</code></pre>
+            </li>
+        </ol>
+        
+        <h3>Multi-Factor Authentication Issues</h3>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Issue</th>
+                    <th>Symptoms</th>
+                    <th>Resolution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>MFA Provider Unreachable</td>
+                    <td>MFA prompts not appearing or timing out</td>
+                    <td>Verify network connectivity to MFA provider; check MFA provider status; review API credentials</td>
+                </tr>
+                <tr>
+                    <td>MFA Configuration</td>
+                    <td>"Invalid configuration" errors</td>
+                    <td>Verify MFA provider settings in config.yaml; ensure API keys are correctly configured</td>
+                </tr>
+                <tr>
+                    <td>User Enrollment</td>
+                    <td>"User not enrolled" errors</td>
+                    <td>Verify user is enrolled in MFA system; check user mapping configuration</td>
+                </tr>
+                <tr>
+                    <td>Push Notification Failures</td>
+                    <td>Push notifications not received</td>
+                    <td>Check mobile device connectivity; verify push service configuration; check user device registration</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h4>Diagnostic Steps:</h4>
+        
+        <ol>
+            <li><strong>Test MFA provider connectivity</strong>:
+                <pre><code>sudo ztk-test mfa-connectivity</code></pre>
+            </li>
+            <li><strong>Verify MFA configuration</strong>:
+                <pre><code>sudo ztk-config --validate-mfa</code></pre>
+            </li>
+            <li><strong>Check MFA logs</strong>:
+                <pre><code>sudo journalctl -u ztk-mfa-service -f</code></pre>
+            </li>
+        </ol>
+        
+        <h2 id="aws-integration-issues">AWS Integration Issues</h2>
+        
+        <h3>Role Assumption Failures</h3>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Issue</th>
+                    <th>Symptoms</th>
+                    <th>Resolution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Access Denied</td>
+                    <td>"AccessDenied" when attempting to assume role</td>
+                    <td>Verify trust relationship in IAM role; check principal names in configuration; ensure AWS account IDs match</td>
+                </tr>
+                <tr>
+                    <td>Missing Permissions</td>
+                    <td>"User is not authorized to perform action" errors</td>
+                    <td>Review IAM policy attached to role; add required permissions; check for permission boundaries</td>
+                </tr>
+                <tr>
+                    <td>Invalid External ID</td>
+                    <td>"InvalidExternalID" errors</td>
+                    <td>Verify external ID in role trust policy matches configuration</td>
+                </tr>
+                <tr>
+                    <td>Session Duration</td>
+                    <td>"Requested DurationSeconds exceeds MaxSessionDuration"</td>
+                    <td>Adjust session duration to be less than or equal to the role's maximum session duration</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- More content would continue here... -->
+        
+        <div class="documentation-nav">
+            <a href="../index.html" class="prev"><i class="fas fa-arrow-left"></i> Documentation Home</a>
+            <a href="../deployment-guides/financial-services.html" class="next">Financial Services Deployment Guide <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../../index.html" class="footer-logo">
+                        <img src="../../assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Logo" class="footer-logo-img">
+                        <span class="footer-logo-text">ZeroTrustKerberosLink</span>
+                    </a>
+                    <p class="footer-tagline">Enterprise-grade Kerberos to AWS integration with zero-trust security principles</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="../../docs.html">Documentation Home</a></li>
+                        <li><a href="../deployment-guides/financial-services.html">Financial Services Guide</a></li>
+                        <li><a href="../deployment-guides/healthcare.html">Healthcare Guide</a></li>
+                        <li><a href="../deployment-guides/government.html">Government Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="../tools/configuration-builder.html">Configuration Builder</a></li>
+                        <li><a href="common-issues.html">Troubleshooting Guide</a></li>
+                        <li><a href="../architecture/deployment-comparison.html">Architecture Comparison</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2025 ZeroTrustKerberosLink. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
