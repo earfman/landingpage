@@ -18,7 +18,19 @@
   display: block;
   width: 2rem;
   height: 2rem;
-  background-image: url('/site-assets/cerberus-symbol.png');
+  background-image: url('https://zerotrustkerberoslink.com/assets/cerberus-symbol.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Additional fallback for logo */
+.md-header__button.md-logo:not(:has(img))::before {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  background-image: url('https://zerotrustkerberoslink.com/assets/cerberus-symbol.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -49,7 +61,7 @@
   display: inline-block;
   width: 1.5rem;
   height: 1.5rem;
-  background-image: url('/site-assets/cerberus-symbol.png');
+  background-image: url('https://zerotrustkerberoslink.com/assets/cerberus-symbol.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -87,4 +99,18 @@
 .md-typeset table:not([class]) th {
   background-color: var(--md-primary-fg-color);
   color: white;
+}
+
+/* Footer styling to match main site */
+.md-footer {
+  background-color: #333;
+}
+
+.md-footer-meta {
+  background-color: #444;
+}
+
+/* Add ZeroTrustKerberosLink branding to footer */
+.md-footer-copyright::before {
+  content: "ZeroTrustKerberosLink | ";
 }

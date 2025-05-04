@@ -214,7 +214,7 @@
         function injectScript() {
             // Create a script element to load our custom script
             const script = document.createElement('script');
-            script.src = '/site-assets/docs-logo.js';
+            script.src = 'https://zerotrustkerberoslink.com/site-assets/docs-logo.js';
             script.async = true;
             
             // Append it to the head
@@ -227,6 +227,15 @@
         if (window.location.pathname.startsWith('/site/')) {
             injectScript();
         }
+        
+        // Also add a direct script tag to ensure it loads
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.location.pathname.startsWith('/site/')) {
+                const scriptTag = document.createElement('script');
+                scriptTag.src = 'https://zerotrustkerberoslink.com/site-assets/docs-logo.js';
+                document.body.appendChild(scriptTag);
+            }
+        });
     </script>
 </body>
 </html>
