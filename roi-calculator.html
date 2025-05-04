@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Version 2.2 - Updated May 4, 2025 - Force refresh with standardized footer -->
+    <title>ROI Calculator - ZeroTrustKerberosLink</title>
+    <meta name="description" content="Calculate your potential savings with ZeroTrustKerberosLink's secure Kerberos to AWS integration solution.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        .calculator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .calculator-form {
+            margin-bottom: 40px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            flex: 1;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+        
+        .results-container {
+            display: none;
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+        }
+        
+        .results-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .result-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+        
+        .result-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+        
+        .result-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .chart-container {
+            height: 300px;
+            margin: 30px 0;
+        }
+        
+        .assumptions {
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-top: 30px;
+        }
+        
+        .assumptions h4 {
+            margin-bottom: 15px;
+        }
+        
+        .assumptions ul {
+            padding-left: 20px;
+        }
+        
+        .assumptions li {
+            margin-bottom: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/cerberus-logo.png" alt="ZeroTrustKerberosLink">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#how-it-works">How It Works</a></li>
+                    <li><a href="index.html#security">Security</a></li>
+                    <li><a href="index.html#case-studies">Case Studies</a></li>
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                    <li><a href="docs.html">Documentation</a></li>
+                </ul>
+            </nav>
+            <div class="cta-button">
+                <a href="index.html#waitlist" class="button primary">Join Waitlist</a>
+            </div>
+            <button id="mobileMenuToggle" class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <section class="roi-calculator">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-badge">ROI Calculator</span>
+                <h2>Calculate Your Potential Savings</h2>
+                <p class="section-subtitle">See how much your organization can save by implementing ZeroTrustKerberosLink instead of building and maintaining custom Kerberos-AWS integrations</p>
+            </div>
+            
+            <div class="calculator-container">
+                <div class="calculator-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="numUsers">Number of Users</label>
+                            <input type="number" id="numUsers" min="10" value="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="numEngineers">Number of Engineers</label>
+                            <input type="number" id="numEngineers" min="1" value="5">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="avgSalary">Average Engineer Salary (USD)</label>
+                            <input type="number" id="avgSalary" min="50000" value="150000">
+                        </div>
+                        <div class="form-group">
+                            <label for="timeframe">Timeframe</label>
+                            <select id="timeframe">
+                                <option value="1">1 Year</option>
+                                <option value="3" selected>3 Years</option>
+                                <option value="5">5 Years</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="securityIncidents">Estimated Security Incidents per Year</label>
+                            <input type="number" id="securityIncidents" min="0" value="3">
+                        </div>
+                        <div class="form-group">
+                            <label for="complianceEffort">Compliance Certification Effort (hours/year)</label>
+                            <input type="number" id="complianceEffort" min="0" value="200">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <button id="calculateButton" class="button primary full-width">Calculate ROI</button>
+                    </div>
+                </div>
+                
+                <div class="results-container" id="resultsContainer">
+                    <div class="results-header">
+                        <h3>Your Estimated ROI Results</h3>
+                        <p>Based on your inputs, here's how much you could save with ZeroTrustKerberosLink</p>
+                    </div>
+                    
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <span class="result-label">Custom Solution Cost</span>
+                            <div class="result-value" id="customCost">$0</div>
+                            <span class="result-label">Over selected timeframe</span>
+                        </div>
+                        
+                        <div class="result-card">
+                            <span class="result-label">ZeroTrustKerberosLink Cost</span>
+                            <div class="result-value" id="ztkCost">$0</div>
+                            <span class="result-label">Over selected timeframe</span>
+                        </div>
+                        
+                        <div class="result-card">
+                            <span class="result-label">Total Estimated Savings</span>
+                            <div class="result-value" id="savingsAmount">$0</div>
+                            <span class="result-label" id="savingsPercent">You could save approximately 85% over the selected timeframe.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container" id="costComparisonChart"></div>
+                    
+                    <div class="assumptions">
+                        <h4>Calculation Assumptions</h4>
+                        <ul>
+                            <li>Custom solution requires 2-3 engineers for initial development (6 months) and 1 engineer for ongoing maintenance.</li>
+                            <li>Each security incident costs approximately $25,000 in investigation and remediation.</li>
+                            <li>ZeroTrustKerberosLink reduces security incidents by 80% through automated security controls.</li>
+                            <li>Compliance certification costs are reduced by 60% with ZeroTrustKerberosLink's built-in compliance controls.</li>
+                            <li>Engineer time spent on AWS credential management is reduced by 85%.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-wrapper">
+                        <img src="assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Symbol" class="footer-logo-symbol">
+                        <h2>ZeroTrustKerberosLink</h2>
+                    </div>
+                    <p>Secure, zero-trust integration between enterprise Kerberos authentication and AWS services.</p>
+                </div>
+                
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <h3>Product</h3>
+                        <ul>
+                            <li><a href="index.html#features">Features</a></li>
+                            <li><a href="index.html#security">Security</a></li>
+                            <li><a href="index.html#pricing">Pricing</a></li>
+                            <li><a href="index.html#case-studies">Case Studies</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="docs.html">Documentation</a></li>
+                            <li><a href="docs.html">Implementation Guide</a></li>
+                            <li><a href="docs.html">Security Hardening</a></li>
+                            <li><a href="roi-calculator.html">ROI Calculator</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="index.html#about">About Us</a></li>
+                            <li><a href="index.html#waitlist">Contact</a></li>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2025 ZeroTrustKerberosLink. All rights reserved.
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("DOM fully loaded, initializing calculator...");
+        
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mainNav = document.querySelector('.main-nav');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+        
+        // ROI Calculator
+        const calculateButton = document.getElementById('calculateButton');
+        const resultsContainer = document.getElementById('resultsContainer');
+        
+        let costChart = null;
+        
+        calculateButton.addEventListener('click', function() {
+            calculateROI();
+            resultsContainer.style.display = 'block';
+            
+            // Scroll to results
+            resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        
+        function calculateROI() {
+            // Get input values
+            const numUsers = parseInt(document.getElementById('numUsers').value);
+            const numEngineers = parseInt(document.getElementById('numEngineers').value);
+            const avgSalary = parseInt(document.getElementById('avgSalary').value);
+            const timeframe = parseInt(document.getElementById('timeframe').value);
+            const securityIncidents = parseInt(document.getElementById('securityIncidents').value);
+            const complianceEffort = parseInt(document.getElementById('complianceEffort').value);
+            
+            // Calculate hourly rate (assuming 2080 working hours per year)
+            const hourlyRate = avgSalary / 2080;
+            
+            // Custom solution costs
+            const initialDevelopmentMonths = 6;
+            const initialDevelopmentEngineers = Math.min(numEngineers, 3);
+            const initialDevelopmentCost = initialDevelopmentEngineers * (avgSalary / 12) * initialDevelopmentMonths;
+            
+            const maintenanceEngineerPercentage = 0.25; // 25% of one engineer's time
+            const annualMaintenanceCost = avgSalary * maintenanceEngineerPercentage;
+            
+            const credentialManagementHoursPerEngineer = 100; // hours per year
+            const credentialManagementCost = hourlyRate * credentialManagementHoursPerEngineer * numEngineers;
+            
+            const securityIncidentCost = 25000; // cost per incident
+            const annualSecurityCost = securityIncidentCost * securityIncidents;
+            
+            const complianceCostPerHour = hourlyRate * 1.5; // compliance work often involves senior engineers
+            const annualComplianceCost = complianceCostPerHour * complianceEffort;
+            
+            const annualCustomCost = annualMaintenanceCost + credentialManagementCost + annualSecurityCost + annualComplianceCost;
+            const totalCustomCost = initialDevelopmentCost + (annualCustomCost * timeframe);
+            
+            // ZeroTrustKerberosLink costs
+            const baseAnnualLicense = 15000;
+            const perUserLicense = 120; // per user per year
+            const annualLicenseCost = baseAnnualLicense + (perUserLicense * numUsers);
+            
+            const implementationCost = 10000; // one-time implementation cost
+            
+            const ztkCredentialManagementReduction = 0.85; // 85% reduction
+            const ztkCredentialManagementCost = credentialManagementCost * (1 - ztkCredentialManagementReduction);
+            
+            const ztkSecurityIncidentReduction = 0.80; // 80% reduction
+            const ztkSecurityCost = annualSecurityCost * (1 - ztkSecurityIncidentReduction);
+            
+            const ztkComplianceReduction = 0.60; // 60% reduction
+            const ztkComplianceCost = annualComplianceCost * (1 - ztkComplianceReduction);
+            
+            const annualZTKCost = annualLicenseCost + ztkCredentialManagementCost + ztkSecurityCost + ztkComplianceCost;
+            const totalZTKCost = implementationCost + (annualZTKCost * timeframe);
+            
+            // Calculate savings
+            const savings = totalCustomCost - totalZTKCost;
+            const savingsPercent = (savings / totalCustomCost) * 100;
+            
+            // Format currency
+            const formatter = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0
+            });
+            
+            // Update results
+            document.getElementById('customCost').textContent = formatter.format(totalCustomCost);
+            document.getElementById('ztkCost').textContent = formatter.format(totalZTKCost);
+            document.getElementById('savingsAmount').textContent = formatter.format(savings);
+            document.getElementById('savingsPercent').textContent = `You could save approximately ${Math.round(savingsPercent)}% over the selected timeframe.`;
+            
+            // Update chart
+            updateChart(timeframe, totalCustomCost, totalZTKCost);
+        }
+        
+        function updateChart(timeframe, customCost, ztkCost) {
+            const ctx = document.getElementById('costComparisonChart').getContext('2d');
+            
+            // Destroy previous chart if it exists
+            if (costChart) {
+                costChart.destroy();
+            }
+            
+            // Calculate annual costs for each year
+            const years = Array.from({length: timeframe}, (_, i) => i + 1);
+            
+            // For custom solution, first year includes initial development
+            const initialDevelopmentMonths = 6;
+            const initialDevelopmentEngineers = 3;
+            const avgSalary = parseInt(document.getElementById('avgSalary').value);
+            const initialDevelopmentCost = initialDevelopmentEngineers * (avgSalary / 12) * initialDevelopmentMonths;
+            
+            const annualCustomCost = (customCost - initialDevelopmentCost) / timeframe;
+            const customCostData = years.map((year, index) => {
+                if (index === 0) {
+                    return initialDevelopmentCost + annualCustomCost;
+                } else {
+                    return annualCustomCost;
+                }
+            });
+            
+            // For ZTK, first year includes implementation cost
+            const implementationCost = 10000;
+            const annualZTKCost = (ztkCost - implementationCost) / timeframe;
+            const ztkCostData = years.map((year, index) => {
+                if (index === 0) {
+                    return implementationCost + annualZTKCost;
+                } else {
+                    return annualZTKCost;
+                }
+            });
+            
+            // Calculate cumulative costs
+            let customCumulative = 0;
+            const customCumulativeData = customCostData.map(cost => {
+                customCumulative += cost;
+                return customCumulative;
+            });
+            
+            let ztkCumulative = 0;
+            const ztkCumulativeData = ztkCostData.map(cost => {
+                ztkCumulative += cost;
+                return ztkCumulative;
+            });
+            
+            // Create chart
+            costChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: years.map(year => `Year ${year}`),
+                    datasets: [
+                        {
+                            label: 'Custom Solution (Annual)',
+                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            borderWidth: 1,
+                            data: customCostData
+                        },
+                        {
+                            label: 'ZeroTrustKerberosLink (Annual)',
+                            backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                            borderColor: 'rgb(54, 162, 235)',
+                            borderWidth: 1,
+                            data: ztkCostData
+                        },
+                        {
+                            label: 'Custom Solution (Cumulative)',
+                            type: 'line',
+                            backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            borderWidth: 2,
+                            pointBackgroundColor: 'rgb(255, 99, 132)',
+                            fill: true,
+                            data: customCumulativeData
+                        },
+                        {
+                            label: 'ZeroTrustKerberosLink (Cumulative)',
+                            type: 'line',
+                            backgroundColor: 'rgba(54, 162, 235, 0.1)',
+                            borderColor: 'rgb(54, 162, 235)',
+                            borderWidth: 2,
+                            pointBackgroundColor: 'rgb(54, 162, 235)',
+                            fill: true,
+                            data: ztkCumulativeData
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Cost (USD)'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('en-US', {
+                                            style: 'currency',
+                                            currency: 'USD',
+                                            maximumFractionDigits: 0
+                                        }).format(context.parsed.y);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    });
+    </script>
+</body>
+</html>
