@@ -1,0 +1,90 @@
+/* Custom CSS for ZeroTrustKerberosLink Documentation Site */
+
+/* Logo styling for documentation site */
+.md-header__button.md-logo {
+  display: flex !important;
+  align-items: center;
+  padding: 0;
+}
+
+.md-header__button.md-logo img {
+  height: 2rem;
+  width: auto;
+}
+
+/* Add logo if it's missing */
+.md-header__button.md-logo:empty::before {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  background-image: url('/site-assets/cerberus-symbol.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Custom styling for better integration with main site */
+:root {
+  --md-primary-fg-color: #4361ee;
+  --md-primary-fg-color--light: #818cf8;
+  --md-primary-fg-color--dark: #3a56d4;
+  --md-accent-fg-color: #f72585;
+}
+
+/* Improve header styling */
+.md-header {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Add link back to main site */
+.md-header__title::after {
+  content: " | ";
+  opacity: 0.6;
+  margin: 0 0.5rem;
+}
+
+.md-header__title::before {
+  content: "";
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url('/site-assets/cerberus-symbol.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.back-to-main {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.back-to-main:hover {
+  opacity: 1;
+}
+
+/* Improve navigation styling */
+.md-nav__link:hover {
+  color: var(--md-accent-fg-color);
+}
+
+/* Improve code block styling */
+.md-typeset pre > code {
+  border-radius: 0.2rem;
+}
+
+/* Improve table styling */
+.md-typeset table:not([class]) {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 0.2rem;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-primary-fg-color);
+  color: white;
+}

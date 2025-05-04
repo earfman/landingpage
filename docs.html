@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroTrustKerberosLink Documentation</title>
+    <meta http-equiv="refresh" content="0;url=/site/">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .redirect-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            margin-bottom: 20px;
+            color: #4361ee;
+        }
+        
+        p {
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #4361ee;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #3a56d4;
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-container">
+        <img src="assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Logo" class="logo">
+        <h1>ZeroTrustKerberosLink Documentation</h1>
+        <p>You are being redirected to the documentation site. If you are not redirected automatically, please click the button below.</p>
+        <a href="/site/" class="btn">Go to Documentation</a>
+    </div>
+    
+    <!-- This script fixes the logo in the documentation site -->
+    <script>
+        // Inject our script into the documentation site
+        function injectScript() {
+            // Create a script element to load our custom script
+            const script = document.createElement('script');
+            script.src = '/site-assets/docs-logo.js';
+            script.async = true;
+            
+            // Append it to the head
+            document.head.appendChild(script);
+            
+            console.log('ZeroTrustKerberosLink documentation enhancement script injected');
+        }
+        
+        // Run this script when redirected to the documentation site
+        if (window.location.pathname.startsWith('/site/')) {
+            injectScript();
+        }
+    </script>
+</body>
+</html>
