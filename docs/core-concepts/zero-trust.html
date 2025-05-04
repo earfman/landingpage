@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero Trust Principles - ZeroTrustKerberosLink Documentation</title>
+    <meta name="description" content="Learn about Zero Trust security principles and how they are implemented in ZeroTrustKerberosLink.">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../site-assets/docs-logo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        .documentation-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .documentation-content h1 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .documentation-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .documentation-content h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+        
+        .documentation-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .documentation-content ul, 
+        .documentation-content ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        .documentation-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .documentation-content code {
+            background-color: var(--background-alt);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        
+        .documentation-content pre {
+            background-color: var(--background-alt);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+        
+        .documentation-content pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        
+        .documentation-content blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+            margin-left: 0;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+        
+        .documentation-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+        }
+        
+        .documentation-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+        
+        .documentation-content th, 
+        .documentation-content td {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .documentation-content th {
+            background-color: var(--background-alt);
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .documentation-content tr:nth-child(even) {
+            background-color: var(--background-alt);
+        }
+        
+        .documentation-header {
+            margin-bottom: 2rem;
+        }
+        
+        .documentation-badge {
+            display: inline-block;
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .documentation-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .documentation-toc {
+            background-color: var(--background-alt);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+        
+        .documentation-toc h4 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .documentation-toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .documentation-toc li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .documentation-toc a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .documentation-toc a:hover {
+            color: var(--primary-color);
+        }
+        
+        .documentation-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .nav-previous, 
+        .nav-next {
+            display: flex;
+            align-items: center;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .nav-previous:hover, 
+        .nav-next:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-previous i {
+            margin-right: 0.5rem;
+        }
+        
+        .nav-next i {
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../../index.html" class="logo-link">
+                    <img src="../../assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Symbol" class="logo-symbol">
+                    <h1>ZeroTrustKerberosLink</h1>
+                </a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="../../index.html#features">Features</a></li>
+                    <li><a href="../../index.html#how-it-works">How It Works</a></li>
+                    <li><a href="../../index.html#security">Security</a></li>
+                    <li><a href="../../index.html#case-studies">Case Studies</a></li>
+                    <li><a href="../../index.html#pricing">Pricing</a></li>
+                    <li><a href="../../docs.html" class="btn btn-secondary btn-sm">Documentation</a></li>
+                    <li><a href="../../index.html#waitlist" class="btn btn-primary btn-sm">Join Waitlist</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="documentation-page">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-badge">Documentation</span>
+                <h2>Zero Trust Principles</h2>
+                <p class="section-subtitle">Understanding the Zero Trust security model and its implementation in ZeroTrustKerberosLink</p>
+            </div>
+            
+            <div class="documentation-content">
+                <div class="documentation-header">
+                    <span class="documentation-badge">Core Concepts</span>
+                    <h1>Zero Trust Principles</h1>
+                    <div class="documentation-meta">
+                        <span>30 min read • Updated May 2025</span>
+                    </div>
+                </div>
+                
+                <div class="documentation-toc">
+                    <h4>Table of Contents</h4>
+                    <ul>
+                        <li><a href="#what-is-zero-trust">What is Zero Trust?</a></li>
+                        <li><a href="#core-principles">Core Principles of Zero Trust</a></li>
+                        <li><a href="#implementation">Zero Trust in ZeroTrustKerberosLink</a></li>
+                        <li><a href="#architecture">Zero Trust Architecture</a></li>
+                        <li><a href="#benefits">Benefits of Zero Trust</a></li>
+                        <li><a href="#maturity-model">Zero Trust Maturity Model</a></li>
+                        <li><a href="#best-practices">Implementation Best Practices</a></li>
+                    </ul>
+                </div>
+                
+                <p>ZeroTrustKerberosLink is built on Zero Trust security principles, which fundamentally change how we approach security by eliminating the concept of a trusted network perimeter.</p>
+                
+                <h2 id="what-is-zero-trust">What is Zero Trust?</h2>
+                
+                <p>Zero Trust is a security framework that operates on one core principle: <strong>"Never trust, always verify."</strong> This approach assumes that threats exist both outside and inside the network, so no user or system should be automatically trusted.</p>
+                
+                <h3 id="core-principles">Core Principles of Zero Trust</h3>
+                
+                <ol>
+                    <li><strong>Verify Explicitly</strong>: Always authenticate and authorize based on all available data points</li>
+                    <li><strong>Use Least Privilege Access</strong>: Limit user access with Just-In-Time and Just-Enough-Access</li>
+                    <li><strong>Assume Breach</strong>: Minimize blast radius and segment access, verify end-to-end encryption</li>
+                    <li><strong>Identity-Based Security</strong>: Identity becomes the primary security perimeter</li>
+                </ol>
+                
+                <h2 id="implementation">Zero Trust in ZeroTrustKerberosLink</h2>
+                
+                <p>ZeroTrustKerberosLink implements Zero Trust principles throughout its architecture:</p>
+                
+                <h3 id="verify-explicitly">1. Verify Explicitly</h3>
+                
+                <p>ZeroTrustKerberosLink verifies identity through multiple factors:</p>
+                
+                <ul>
+                    <li>Kerberos authentication with AWS IAM integration</li>
+                    <li>Multi-factor authentication support</li>
+                    <li>Continuous validation of access</li>
+                    <li>Risk-based authentication decisions</li>
+                    <li>Device health verification</li>
+                </ul>
+                
+                <div class="code-example">
+                    <pre><code>// Example configuration for explicit verification
+{
+  "authentication": {
+    "kerberos": {
+      "enabled": true,
+      "realm": "EXAMPLE.COM",
+      "kdc": "kdc.example.com"
+    },
+    "mfa": {
+      "enabled": true,
+      "methods": ["totp", "push", "hardware"]
+    },
+    "continuous_validation": {
+      "interval_minutes": 15,
+      "reauthentication_threshold_hours": 8
+    }
+  }
+}</code></pre>
+                </div>
+                
+                <h3 id="least-privilege">2. Least Privilege Access</h3>
+                
+                <p>ZeroTrustKerberosLink enforces least privilege through:</p>
+                
+                <ul>
+                    <li>Just-in-time (JIT) access provisioning</li>
+                    <li>Just-enough-access (JEA) role-based controls</li>
+                    <li>Time-bound access grants</li>
+                    <li>Contextual access policies</li>
+                    <li>Automated access revocation</li>
+                </ul>
+                
+                <div class="code-example">
+                    <pre><code>// Example least privilege policy
+{
+  "access_policy": {
+    "default": "deny",
+    "jit_access": {
+      "enabled": true,
+      "max_duration_hours": 4,
+      "approval_required": true
+    },
+    "rbac": {
+      "roles": [
+        {
+          "name": "db-reader",
+          "permissions": ["rds:DescribeDBInstances", "rds:DescribeDBSnapshots"]
+        },
+        {
+          "name": "ec2-operator",
+          "permissions": ["ec2:Describe*", "ec2:Start*", "ec2:Stop*"]
+        }
+      ]
+    }
+  }
+}</code></pre>
+                </div>
+                
+                <h3 id="assume-breach">3. Assume Breach</h3>
+                
+                <p>ZeroTrustKerberosLink operates under the assumption that breaches will occur:</p>
+                
+                <ul>
+                    <li>Micro-segmentation of network access</li>
+                    <li>End-to-end encryption for all communications</li>
+                    <li>Real-time threat monitoring and detection</li>
+                    <li>Automated incident response</li>
+                    <li>Comprehensive logging and auditing</li>
+                </ul>
+                
+                <div class="code-example">
+                    <pre><code>// Example breach mitigation configuration
+{
+  "security": {
+    "encryption": {
+      "in_transit": true,
+      "at_rest": true,
+      "key_rotation_days": 90
+    },
+    "segmentation": {
+      "enabled": true,
+      "granularity": "service"
+    },
+    "monitoring": {
+      "anomaly_detection": true,
+      "threat_intelligence": true,
+      "alert_threshold": "medium"
+    }
+  }
+}</code></pre>
+                </div>
+                
+                <h3 id="identity-perimeter">4. Identity as the Primary Perimeter</h3>
+                
+                <p>ZeroTrustKerberosLink treats identity as the primary security boundary:</p>
+                
+                <ul>
+                    <li>Strong identity verification for all access requests</li>
+                    <li>Integration with enterprise identity providers</li>
+                    <li>Attribute-based access control (ABAC)</li>
+                    <li>Identity governance and administration</li>
+                    <li>Privileged access management</li>
+                </ul>
+                
+                <h2 id="architecture">Zero Trust Architecture</h2>
+                
+                <p>The ZeroTrustKerberosLink architecture implements Zero Trust through these key components:</p>
+                
+                <img src="../../images/zero-trust-flow.png" alt="Zero Trust Architecture Flow Diagram" class="architecture-diagram">
+                
+                <ol>
+                    <li><strong>Identity Provider Integration</strong>: Connects with enterprise Kerberos and other identity systems</li>
+                    <li><strong>Policy Enforcement Point</strong>: Validates all access requests against security policies</li>
+                    <li><strong>Policy Decision Point</strong>: Makes access decisions based on identity, context, and risk</li>
+                    <li><strong>Policy Information Point</strong>: Gathers contextual information to inform access decisions</li>
+                    <li><strong>Policy Administration Point</strong>: Manages and updates security policies</li>
+                </ol>
+                
+                <h2 id="benefits">Benefits of Zero Trust</h2>
+                
+                <p>Implementing Zero Trust through ZeroTrustKerberosLink provides numerous benefits:</p>
+                
+                <ul>
+                    <li><strong>Enhanced Security</strong>: Reduces attack surface and limits lateral movement</li>
+                    <li><strong>Improved Compliance</strong>: Supports regulatory requirements through comprehensive controls</li>
+                    <li><strong>Better Visibility</strong>: Provides detailed insights into access patterns and potential threats</li>
+                    <li><strong>Simplified Management</strong>: Centralizes security policy administration</li>
+                    <li><strong>Flexible Work Support</strong>: Secures access regardless of user location or device</li>
+                </ul>
+                
+                <h2 id="maturity-model">Zero Trust Maturity Model</h2>
+                
+                <p>Implementing Zero Trust is a journey. ZeroTrustKerberosLink supports this journey through a maturity model:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Level</th>
+                            <th>Description</th>
+                            <th>Key Features</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Basic</strong></td>
+                            <td>Initial Zero Trust implementation</td>
+                            <td>Identity verification, basic least privilege</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Intermediate</strong></td>
+                            <td>Enhanced Zero Trust controls</td>
+                            <td>MFA, JIT access, micro-segmentation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Advanced</strong></td>
+                            <td>Comprehensive Zero Trust architecture</td>
+                            <td>Risk-based access, continuous validation, automated response</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Optimal</strong></td>
+                            <td>Fully mature Zero Trust implementation</td>
+                            <td>AI-driven security, predictive controls, seamless user experience</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h2 id="best-practices">Implementation Best Practices</h2>
+                
+                <p>When implementing Zero Trust with ZeroTrustKerberosLink, follow these best practices:</p>
+                
+                <ol>
+                    <li><strong>Start with Identity</strong>: Focus first on strong authentication and identity verification</li>
+                    <li><strong>Inventory Assets</strong>: Identify and classify all resources that need protection</li>
+                    <li><strong>Map Data Flows</strong>: Understand how data moves through your environment</li>
+                    <li><strong>Define Policies</strong>: Create clear, risk-based access policies</li>
+                    <li><strong>Implement Gradually</strong>: Phase in Zero Trust controls to minimize disruption</li>
+                    <li><strong>Monitor and Adjust</strong>: Continuously evaluate and refine your implementation</li>
+                    <li><strong>Train Users</strong>: Educate users about Zero Trust principles and practices</li>
+                </ol>
+                
+                <div class="documentation-nav">
+                    <a href="../index.html" class="nav-previous">
+                        <i class="fas fa-arrow-left"></i> Core Concepts Index
+                    </a>
+                    <a href="../authentication/kerberos-integration.html" class="nav-next">
+                        Kerberos Integration <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-wrapper">
+                        <img src="../../assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Symbol" class="footer-logo-symbol">
+                        <h2>ZeroTrustKerberosLink</h2>
+                    </div>
+                    <p>Secure, zero-trust integration between enterprise Kerberos authentication and AWS services.</p>
+                </div>
+                
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <h3>Product</h3>
+                        <ul>
+                            <li><a href="../../index.html#features">Features</a></li>
+                            <li><a href="../../index.html#security">Security</a></li>
+                            <li><a href="../../index.html#pricing">Pricing</a></li>
+                            <li><a href="../../index.html#case-studies">Case Studies</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="../../docs.html">Documentation</a></li>
+                            <li><a href="../../docs.html">Implementation Guide</a></li>
+                            <li><a href="../../docs.html">Security Hardening</a></li>
+                            <li><a href="../../roi-calculator.html">ROI Calculator</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="../../index.html#about">About Us</a></li>
+                            <li><a href="../../index.html#waitlist">Contact</a></li>
+                            <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="../../terms-of-service.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2025 ZeroTrustKerberosLink. All rights reserved.
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (mobileMenuToggle && mainNav) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    mobileMenuToggle.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
