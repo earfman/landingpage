@@ -58,6 +58,88 @@
         .btn:hover {
             background-color: #3a56d4;
         }
+        
+        /* Footer styles */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo-wrapper {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .footer-logo-symbol {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .footer-columns {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            width: 25%;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .footer-column a:hover {
+            color: #ccc;
+        }
+        
+        .footer-bottom {
+            background-color: #444;
+            padding: 10px 0;
+            text-align: center;
+        }
+        
+        .footer-copyright {
+            margin-bottom: 10px;
+        }
+        
+        .footer-social {
+            margin-bottom: 10px;
+        }
+        
+        .footer-social a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .footer-social a:hover {
+            color: #ccc;
+        }
     </style>
 </head>
 <body>
@@ -67,6 +149,64 @@
         <p>You are being redirected to the documentation site. If you are not redirected automatically, please click the button below.</p>
         <a href="/site/" class="btn">Go to Documentation</a>
     </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-wrapper">
+                        <img src="assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Symbol" class="footer-logo-symbol">
+                        <h2>ZeroTrustKerberosLink</h2>
+                    </div>
+                    <p>Secure, zero-trust integration between enterprise Kerberos authentication and AWS services.</p>
+                </div>
+                
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <h3>Product</h3>
+                        <ul>
+                            <li><a href="index.html#features">Features</a></li>
+                            <li><a href="index.html#security">Security</a></li>
+                            <li><a href="index.html#pricing">Pricing</a></li>
+                            <li><a href="index.html#case-studies">Case Studies</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="docs.html">Documentation</a></li>
+                            <li><a href="docs.html">Implementation Guide</a></li>
+                            <li><a href="docs.html">Security Hardening</a></li>
+                            <li><a href="roi-calculator.html">ROI Calculator</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="index.html#about">About Us</a></li>
+                            <li><a href="index.html#waitlist">Contact</a></li>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="terms-of-service.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2025 ZeroTrustKerberosLink. All rights reserved.
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
     
     <!-- This script fixes the logo in the documentation site -->
     <script>
