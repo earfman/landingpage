@@ -199,259 +199,15 @@
             padding-left: 20px;
         }
         
-        .assumptions li {
-            margin-bottom: 8px;
-        }
-        
         @media (max-width: 768px) {
             .form-row {
                 flex-direction: column;
                 gap: 15px;
             }
             
-            .results-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .analysis-grid {
                 grid-template-columns: 1fr;
             }
-        }
-        
-        .announcement-bar {
-            background-color: var(--background-alt);
-            padding: 10px;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .announcement-bar .highlight {
-            color: var(--primary-color);
-        }
-        
-        .announcement-bar a {
-            color: var(--text-color);
-            text-decoration: none;
-        }
-        
-        .announcement-bar a:hover {
-            color: var(--primary-color);
-        }
-        
-        .close-button {
-            background-color: transparent;
-            border: none;
-            padding: 10px;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .close-button:hover {
-            color: var(--primary-color);
-        }
-        
-        .site-header {
-            background-color: var(--background-alt);
-            padding: 20px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .site-header .header-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .site-header .logo {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-        }
-        
-        .site-header .logo img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-        }
-        
-        .site-header .logo span {
-            font-size: 1.5rem;
-            margin: 0;
-        }
-        
-        .site-header .main-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .site-header .main-nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        
-        .site-header .main-nav li {
-            margin-right: 20px;
-        }
-        
-        .site-header .main-nav a {
-            color: var(--text-color);
-            text-decoration: none;
-        }
-        
-        .site-header .main-nav a:hover {
-            color: var(--primary-color);
-        }
-        
-        .site-header .cta-button {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-        }
-        
-        .site-header .cta-button:hover {
-            background-color: var(--primary-color-dark);
-        }
-        
-        .site-header .mobile-menu-toggle {
-            background-color: transparent;
-            border: none;
-            padding: 10px;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .site-header .mobile-menu-toggle:hover {
-            color: var(--primary-color);
-        }
-        
-        .btn {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background-color: var(--primary-color-dark);
-        }
-        
-        .btn-primary {
-            background-color: var(--primary-color);
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--primary-color-dark);
-        }
-        
-        .btn-secondary {
-            background-color: var(--secondary-color);
-        }
-        
-        .btn-secondary:hover {
-            background-color: var(--secondary-color-dark);
-        }
-        
-        .footer {
-            background-color: var(--background-alt);
-            padding: 40px 0;
-            border-top: 1px solid var(--border-color);
-        }
-        
-        .footer .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-        
-        .footer-logo {
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-        }
-        
-        .footer-logo h2 {
-            font-size: 1.5rem;
-            margin: 0;
-        }
-        
-        .footer-columns {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column {
-            margin-bottom: 20px;
-        }
-        
-        .footer-column h3 {
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .footer-column li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column a {
-            color: var(--text-color);
-            text-decoration: none;
-        }
-        
-        .footer-column a:hover {
-            color: var(--primary-color);
-        }
-        
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 40px;
-        }
-        
-        .footer-copyright {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .footer-social a {
-            color: var(--text-color);
-            text-decoration: none;
-        }
-        
-        .footer-social a:hover {
-            color: var(--primary-color);
         }
     </style>
 </head>
@@ -459,8 +215,8 @@
     <!-- Announcement Bar -->
     <div class="announcement-bar" id="announcementBar">
         <div class="container">
-            <p><span class="highlight">Limited Time</span> Join the waitlist for early access and get 50% off your first 6 months! <a href="index">Sign up now</a></p>
-            <button id="closeAnnouncement" class="close-button"><i class="fas fa-times"></i></button>
+            <p><span class="highlight">Limited Time</span> Join the waitlist for early access and get 50% off your first 6 months! <a href="index#waitlist">Sign up now</a></p>
+            <button class="close-announcement" id="closeAnnouncement">×</button>
         </div>
     </div>
 
@@ -468,8 +224,8 @@
     <header>
         <div class="container">
             <div class="logo">
-                <a class='logo-link' href='/'>
-                    <img src="site-assets/logo.svg" alt="ZeroTrustKerberosLink Symbol" class="logo-symbol">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Symbol" class="logo-symbol">
                     <h1>ZeroTrustKerberosLink</h1>
                 </a>
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
@@ -483,7 +239,7 @@
                     <li><a href="index#security">Security</a></li>
                     <li><a href="index#case-studies">Case Studies</a></li>
                     <li><a href="index#pricing">Pricing</a></li>
-                    <li><a class='btn btn-secondary btn-sm' href='/docs'>Documentation</a></li>
+                    <li><a href="docs.html" class="btn btn-secondary btn-sm">Documentation</a></li>
                     <li><a href="index#waitlist" class="btn btn-primary btn-sm">Join Waitlist</a></li>
                 </ul>
             </nav>
@@ -554,17 +310,20 @@
                             <div class="result-value" id="customCost">$0</div>
                             <span class="result-label">Over selected timeframe</span>
                         </div>
-                        
                         <div class="result-card">
                             <span class="result-label">ZeroTrustKerberosLink Cost</span>
                             <div class="result-value" id="ztkCost">$0</div>
                             <span class="result-label">Over selected timeframe</span>
                         </div>
-                        
                         <div class="result-card">
-                            <span class="result-label">Total Estimated Savings</span>
-                            <div class="result-value" id="savingsAmount">$0</div>
-                            <span class="result-label" id="savingsPercent">You could save approximately 85% over the selected timeframe.</span>
+                            <span class="result-label">Total Savings</span>
+                            <div class="result-value" id="totalSavings">$0</div>
+                            <span class="result-label">With ZeroTrustKerberosLink</span>
+                        </div>
+                        <div class="result-card">
+                            <span class="result-label">ROI Percentage</span>
+                            <div class="result-value" id="roiPercentage">0%</div>
+                            <span class="result-label">Return on investment</span>
                         </div>
                     </div>
                     
@@ -579,30 +338,30 @@
                             <div class="analysis-column">
                                 <h5>Custom Solution Breakdown</h5>
                                 <ul>
-                                    <li>Initial Development: <span id="initialDevCost">$0</span></li>
-                                    <li>Annual Maintenance: <span id="maintenanceCost">$0</span>/year</li>
-                                    <li>Credential Management: <span id="credentialCost">$0</span>/year</li>
-                                    <li>Security Incidents: <span id="securityCost">$0</span>/year</li>
-                                    <li>Compliance Efforts: <span id="complianceCost">$0</span>/year</li>
+                                    <li>Initial Development: <span id="customInitialDev">$0</span></li>
+                                    <li>Annual Maintenance: <span id="customMaintenance">$0/year</span></li>
+                                    <li>Credential Management: <span id="customCredential">$0/year</span></li>
+                                    <li>Security Incidents: <span id="customSecurity">$0/year</span></li>
+                                    <li>Compliance Efforts: <span id="customCompliance">$0/year</span></li>
                                 </ul>
                             </div>
                             <div class="analysis-column">
                                 <h5>ZeroTrustKerberosLink Breakdown</h5>
                                 <ul>
-                                    <li>Implementation Cost: <span id="implementationCost">$0</span></li>
-                                    <li>Annual License: <span id="licenseCost">$0</span>/year</li>
-                                    <li>Reduced Credential Management: <span id="ztkCredentialCost">$0</span>/year</li>
-                                    <li>Reduced Security Incidents: <span id="ztkSecurityCost">$0</span>/year</li>
-                                    <li>Reduced Compliance Efforts: <span id="ztkComplianceCost">$0</span>/year</li>
+                                    <li>Implementation Cost: <span id="ztkImplementation">$0</span></li>
+                                    <li>Annual License: <span id="ztkLicense">$0/year</span></li>
+                                    <li>Reduced Credential Management: <span id="ztkCredential">$0/year</span></li>
+                                    <li>Reduced Security Incidents: <span id="ztkSecurity">$0/year</span></li>
+                                    <li>Reduced Compliance Efforts: <span id="ztkCompliance">$0/year</span></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="roi-summary" id="roiSummary">
+                    <div class="roi-summary">
                         <h4>ROI Summary</h4>
                         <p>With ZeroTrustKerberosLink, your organization would:</p>
-                        <ul id="roiSummaryPoints">
+                        <ul>
                             <li>Reduce initial development costs by eliminating the need for custom integration development</li>
                             <li>Lower ongoing maintenance costs through a managed solution</li>
                             <li>Decrease security incidents through automated security controls</li>
@@ -632,7 +391,7 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <div class="footer-logo-wrapper">
-                        <img src="site-assets/logo.svg" alt="ZeroTrustKerberosLink Symbol" class="footer-logo-symbol">
+                        <img src="assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Symbol" class="footer-logo-symbol">
                         <h2>ZeroTrustKerberosLink</h2>
                     </div>
                     <p>Secure, zero-trust integration between enterprise Kerberos authentication and AWS services.</p>
@@ -652,10 +411,10 @@
                     <div class="footer-column">
                         <h3>Resources</h3>
                         <ul>
-                            <li><a href='/docs'>Documentation</a></li>
-                            <li><a href='/docs'>Implementation Guide</a></li>
-                            <li><a href='/docs'>Security Hardening</a></li>
-                            <li><a href='/roi-calculator'>ROI Calculator</a></li>
+                            <li><a href="docs.html">Documentation</a></li>
+                            <li><a href="docs.html">Implementation Guide</a></li>
+                            <li><a href="docs.html">Security Hardening</a></li>
+                            <li><a href="roi-calculator">ROI Calculator</a></li>
                         </ul>
                     </div>
                     
@@ -664,8 +423,8 @@
                         <ul>
                             <li><a href="index#about">About Us</a></li>
                             <li><a href="index#waitlist">Contact</a></li>
-                            <li><a href='/privacy-policy'>Privacy Policy</a></li>
-                            <li><a href='/terms-of-service'>Terms of Service</a></li>
+                            <li><a href="privacy-policy">Privacy Policy</a></li>
+                            <li><a href="terms-of-service">Terms of Service</a></li>
                         </ul>
                     </div>
                 </div>
@@ -684,6 +443,7 @@
         </div>
     </footer>
 
+    <!-- Include Chart.js from CDN with specific version -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -750,97 +510,59 @@
             const securityIncidents = parseInt(document.getElementById('securityIncidents').value);
             const complianceEffort = parseInt(document.getElementById('complianceEffort').value);
             
-            // Calculate hourly rate (assuming 2080 working hours per year)
-            const hourlyRate = avgSalary / 2080;
-            
-            // Custom solution costs
+            // Calculate custom solution costs
             const initialDevelopmentMonths = 6;
-            const initialDevelopmentEngineers = Math.min(numEngineers, 3);
+            const initialDevelopmentEngineers = 3;
             const initialDevelopmentCost = initialDevelopmentEngineers * (avgSalary / 12) * initialDevelopmentMonths;
             
-            const maintenanceEngineerPercentage = 0.25; // 25% of one engineer's time
-            const annualMaintenanceCost = avgSalary * maintenanceEngineerPercentage;
+            const annualMaintenanceEngineers = 1;
+            const annualMaintenanceTime = 0.25; // 25% of time
+            const annualMaintenanceCost = annualMaintenanceEngineers * avgSalary * annualMaintenanceTime;
             
-            const credentialManagementHoursPerEngineer = 100; // hours per year
-            const credentialManagementCost = hourlyRate * credentialManagementHoursPerEngineer * numEngineers;
+            const credentialManagementHoursPerUser = 5; // hours per year
+            const credentialManagementCost = (credentialManagementHoursPerUser * numUsers * (avgSalary / 2000)); // 2000 working hours per year
             
-            const securityIncidentCost = 25000; // cost per incident
-            const annualSecurityCost = securityIncidentCost * securityIncidents;
+            const securityIncidentCost = securityIncidents * 25000; // $25k per incident
             
-            const complianceCostPerHour = hourlyRate * 1.5; // compliance work often involves senior engineers
-            const annualComplianceCost = complianceCostPerHour * complianceEffort;
+            const complianceCostPerHour = avgSalary / 2000; // hourly rate
+            const complianceCost = complianceEffort * complianceCostPerHour;
             
-            const annualCustomCost = annualMaintenanceCost + credentialManagementCost + annualSecurityCost + annualComplianceCost;
+            const annualCustomCost = annualMaintenanceCost + credentialManagementCost + securityIncidentCost + complianceCost;
             const totalCustomCost = initialDevelopmentCost + (annualCustomCost * timeframe);
             
-            // ZeroTrustKerberosLink costs
-            const baseAnnualLicense = 15000;
-            const perUserLicense = 120; // per user per year
-            const annualLicenseCost = baseAnnualLicense + (perUserLicense * numUsers);
+            // Calculate ZTK solution costs
+            const implementationCost = 10000;
+            const annualLicenseCost = numUsers * 120; // $120 per user per year
             
-            const implementationCost = 10000; // one-time implementation cost
+            const reducedCredentialManagementCost = credentialManagementCost * 0.15; // 85% reduction
+            const reducedSecurityIncidentCost = securityIncidentCost * 0.2; // 80% reduction
+            const reducedComplianceCost = complianceCost * 0.4; // 60% reduction
             
-            const ztkCredentialManagementReduction = 0.85; // 85% reduction
-            const ztkCredentialManagementCost = credentialManagementCost * (1 - ztkCredentialManagementReduction);
-            
-            const ztkSecurityIncidentReduction = 0.80; // 80% reduction
-            const ztkSecurityCost = annualSecurityCost * (1 - ztkSecurityIncidentReduction);
-            
-            const ztkComplianceReduction = 0.60; // 60% reduction
-            const ztkComplianceCost = annualComplianceCost * (1 - ztkComplianceReduction);
-            
-            const annualZTKCost = annualLicenseCost + ztkCredentialManagementCost + ztkSecurityCost + ztkComplianceCost;
+            const annualZTKCost = annualLicenseCost + reducedCredentialManagementCost + reducedSecurityIncidentCost + reducedComplianceCost;
             const totalZTKCost = implementationCost + (annualZTKCost * timeframe);
             
-            // Calculate savings
-            const savings = totalCustomCost - totalZTKCost;
-            const savingsPercent = (savings / totalCustomCost) * 100;
-            
-            // Format currency
-            const formatter = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                maximumFractionDigits: 0
-            });
+            // Calculate savings and ROI
+            const totalSavings = totalCustomCost - totalZTKCost;
+            const roiPercentage = (totalSavings / totalZTKCost) * 100;
             
             // Update results
-            document.getElementById('customCost').textContent = formatter.format(totalCustomCost);
-            document.getElementById('ztkCost').textContent = formatter.format(totalZTKCost);
-            document.getElementById('savingsAmount').textContent = formatter.format(savings);
-            document.getElementById('savingsPercent').textContent = `You could save approximately ${Math.round(savingsPercent)}% over the selected timeframe.`;
+            document.getElementById('customCost').textContent = '$' + totalCustomCost.toLocaleString(undefined, {maximumFractionDigits: 0});
+            document.getElementById('ztkCost').textContent = '$' + totalZTKCost.toLocaleString(undefined, {maximumFractionDigits: 0});
+            document.getElementById('totalSavings').textContent = '$' + totalSavings.toLocaleString(undefined, {maximumFractionDigits: 0});
+            document.getElementById('roiPercentage').textContent = Math.round(roiPercentage) + '%';
             
             // Update detailed analysis
-            document.getElementById('initialDevCost').textContent = formatter.format(initialDevelopmentCost);
-            document.getElementById('maintenanceCost').textContent = formatter.format(annualMaintenanceCost);
-            document.getElementById('credentialCost').textContent = formatter.format(credentialManagementCost);
-            document.getElementById('securityCost').textContent = formatter.format(annualSecurityCost);
-            document.getElementById('complianceCost').textContent = formatter.format(annualComplianceCost);
+            document.getElementById('customInitialDev').textContent = '$' + initialDevelopmentCost.toLocaleString(undefined, {maximumFractionDigits: 0});
+            document.getElementById('customMaintenance').textContent = '$' + annualMaintenanceCost.toLocaleString(undefined, {maximumFractionDigits: 0}) + '/year';
+            document.getElementById('customCredential').textContent = '$' + credentialManagementCost.toLocaleString(undefined, {maximumFractionDigits: 0}) + '/year';
+            document.getElementById('customSecurity').textContent = '$' + securityIncidentCost.toLocaleString(undefined, {maximumFractionDigits: 0}) + '/year';
+            document.getElementById('customCompliance').textContent = '$' + complianceCost.toLocaleString(undefined, {maximumFractionDigits: 0}) + '/year';
             
-            document.getElementById('implementationCost').textContent = formatter.format(implementationCost);
-            document.getElementById('licenseCost').textContent = formatter.format(annualLicenseCost);
-            document.getElementById('ztkCredentialCost').textContent = formatter.format(ztkCredentialManagementCost);
-            document.getElementById('ztkSecurityCost').textContent = formatter.format(ztkSecurityCost);
-            document.getElementById('ztkComplianceCost').textContent = formatter.format(ztkComplianceCost);
-            
-            // Update ROI summary
-            const roiSummaryPoints = document.getElementById('roiSummaryPoints');
-            roiSummaryPoints.innerHTML = '';
-            
-            // Add dynamic ROI summary points based on calculations
-            const summaryPoints = [
-                `Save ${formatter.format(initialDevelopmentCost)} in initial development costs`,
-                `Reduce annual maintenance costs by ${formatter.format(annualMaintenanceCost - (annualZTKCost - annualLicenseCost))} per year`,
-                `Decrease security incident costs by ${Math.round(ztkSecurityIncidentReduction * 100)}% (${formatter.format(annualSecurityCost - ztkSecurityCost)} per year)`,
-                `Lower compliance certification costs by ${Math.round(ztkComplianceReduction * 100)}% (${formatter.format(annualComplianceCost - ztkComplianceCost)} per year)`,
-                `Reduce credential management time by ${Math.round(ztkCredentialManagementReduction * 100)}% (${formatter.format(credentialManagementCost - ztkCredentialManagementCost)} per year)`,
-                `Achieve a total ${Math.round(savingsPercent)}% cost reduction over ${timeframe} years`
-            ];
-            
-            summaryPoints.forEach(point => {
-                const li = document.createElement('li');
-                li.textContent = point;
-                roiSummaryPoints.appendChild(li);
-            });
+            document.getElementById('ztkImplementation').textContent = '$' + implementationCost.toLocaleString(undefined, {maximumFractionDigits: 0});
+            document.getElementById('ztkLicense').textContent = '$' + annualLicenseCost.toLocaleString(undefined, {maximumFractionDigits: 0}) + '/year';
+            document.getElementById('ztkCredential').textContent = '$' + reducedCredentialManagementCost.toLocaleString(undefined, {maximumFractionDigits: 0}) + '/year';
+            document.getElementById('ztkSecurity').textContent = '$' + reducedSecurityIncidentCost.toLocaleString(undefined, {maximumFractionDigits: 0}) + '/year';
+            document.getElementById('ztkCompliance').textContent = '$' + reducedComplianceCost.toLocaleString(undefined, {maximumFractionDigits: 0}) + '/year';
             
             // Update chart
             updateChart(timeframe, totalCustomCost, totalZTKCost);
