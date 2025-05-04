@@ -163,7 +163,7 @@
                     <li><a href="index.html#security">Security</a></li>
                     <li><a href="index.html#case-studies">Case Studies</a></li>
                     <li><a href="index.html#pricing">Pricing</a></li>
-                    <li><a href="site/index.html" class="btn btn-secondary btn-sm">Security Docs</a></li>
+                    <li><a href="docs.html" class="btn btn-secondary btn-sm">Documentation</a></li>
                     <li><a href="index.html#waitlist" class="btn btn-primary btn-sm">Join Waitlist</a></li>
                 </ul>
             </nav>
@@ -296,9 +296,9 @@
                     <div class="footer-column">
                         <h3>Resources</h3>
                         <ul>
-                            <li><a href="site/index.html">Documentation</a></li>
-                            <li><a href="site/implementation-guide/index.html">Implementation Guide</a></li>
-                            <li><a href="site/security-hardening/index.html">Security Hardening</a></li>
+                            <li><a href="docs.html">Documentation</a></li>
+                            <li><a href="docs.html">Implementation Guide</a></li>
+                            <li><a href="docs.html">Security Hardening</a></li>
                             <li><a href="roi-calculator.html">ROI Calculator</a></li>
                         </ul>
                     </div>
@@ -330,8 +330,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <script>
-        // Mobile menu toggle
+        // Wait for DOM to be fully loaded
         document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const mainNav = document.getElementById('mainNav');
             
@@ -345,10 +346,9 @@
             const calculateBtn = document.getElementById('calculateBtn');
             const resultsContainer = document.getElementById('resultsContainer');
             
-            // Remove automatic calculation on input change to ensure button click is required
+            // Make sure the button exists before adding event listener
             if (calculateBtn) {
                 calculateBtn.addEventListener('click', function() {
-                    console.log("Calculate button clicked");
                     calculateROI();
                 });
             }
@@ -357,194 +357,218 @@
             calculateROI();
         });
         
+        // Main calculation function
         function calculateROI() {
             console.log("Calculating ROI...");
             const resultsContainer = document.getElementById('resultsContainer');
             
-            // Get input values - Force parsing as integers and provide fallbacks
-            const numUsers = parseInt(document.getElementById('numUsers').value) || 500;
-            const numAwsAccounts = parseInt(document.getElementById('numAwsAccounts').value) || 5;
-            const engineerCost = parseInt(document.getElementById('engineerCost').value) || 150000;
-            const securityIncidents = parseInt(document.getElementById('securityIncidents').value) || 5;
-            const complianceLevel = document.getElementById('complianceLevel').value;
-            const timeframe = parseInt(document.getElementById('timeframe').value) || 3;
-            
-            console.log("Input values:", {
-                numUsers,
-                numAwsAccounts,
-                engineerCost,
-                securityIncidents,
-                complianceLevel,
-                timeframe
-            });
-            
-            // Calculate compliance costs based on level
-            let complianceCostFactor = 1.0;
-            switch(complianceLevel) {
-                case 'basic':
-                    complianceCostFactor = 0.7;
-                    break;
-                case 'standard':
-                    complianceCostFactor = 1.0;
-                    break;
-                case 'advanced':
-                    complianceCostFactor = 1.5;
-                    break;
+            try {
+                // Get input values with fallbacks
+                const numUsers = Math.max(10, parseInt(document.getElementById('numUsers').value) || 500);
+                const numAwsAccounts = Math.max(1, parseInt(document.getElementById('numAwsAccounts').value) || 5);
+                const engineerCost = Math.max(50000, parseInt(document.getElementById('engineerCost').value) || 150000);
+                const securityIncidents = Math.max(0, parseInt(document.getElementById('securityIncidents').value) || 5);
+                const complianceLevel = document.getElementById('complianceLevel').value || 'standard';
+                const timeframe = Math.max(1, parseInt(document.getElementById('timeframe').value) || 3);
+                
+                console.log("Input values:", {
+                    numUsers,
+                    numAwsAccounts,
+                    engineerCost,
+                    securityIncidents,
+                    complianceLevel,
+                    timeframe
+                });
+                
+                // Calculate compliance costs based on level
+                let complianceCostFactor = 1.0;
+                switch(complianceLevel) {
+                    case 'basic':
+                        complianceCostFactor = 0.7;
+                        break;
+                    case 'standard':
+                        complianceCostFactor = 1.0;
+                        break;
+                    case 'advanced':
+                        complianceCostFactor = 1.5;
+                        break;
+                    default:
+                        complianceCostFactor = 1.0;
+                }
+                
+                // Calculate custom solution costs
+                const initialDevelopmentMonths = 6;
+                const initialDevelopmentEngineers = Math.min(3, Math.max(2, Math.ceil(numAwsAccounts / 5)));
+                const initialDevelopmentCost = (engineerCost / 12) * initialDevelopmentMonths * initialDevelopmentEngineers;
+                
+                const ongoingMaintenanceEngineers = Math.max(0.5, Math.ceil(numAwsAccounts / 10));
+                const ongoingMaintenanceCost = engineerCost * ongoingMaintenanceEngineers * (timeframe - 0.5);
+                
+                const incidentCostPerYear = securityIncidents * 25000;
+                const totalIncidentCost = incidentCostPerYear * timeframe;
+                
+                const complianceCostPerYear = 50000 * complianceCostFactor;
+                const totalComplianceCost = complianceCostPerYear * timeframe;
+                
+                const customSolutionTotalCost = initialDevelopmentCost + ongoingMaintenanceCost + totalIncidentCost + totalComplianceCost;
+                
+                // Calculate ZTK costs
+                let ztkPlanCost;
+                if (numUsers <= 500) {
+                    ztkPlanCost = 999; // Growth plan
+                } else if (numUsers <= 2000) {
+                    ztkPlanCost = 2499; // Business plan
+                } else {
+                    ztkPlanCost = 4999; // Enterprise Plus plan
+                }
+                
+                const ztkTotalCost = ztkPlanCost * 12 * timeframe;
+                const ztkIncidentCost = (incidentCostPerYear * 0.2) * timeframe; // 80% reduction
+                const ztkComplianceCost = (complianceCostPerYear * 0.4) * timeframe; // 60% reduction
+                
+                const ztkTotalWithOverhead = ztkTotalCost + ztkIncidentCost + ztkComplianceCost;
+                
+                // Calculate savings
+                const totalSavings = customSolutionTotalCost - ztkTotalWithOverhead;
+                const savingsPercentage = Math.round((totalSavings / customSolutionTotalCost) * 100);
+                
+                console.log("Calculation results:", {
+                    customSolutionTotalCost,
+                    ztkTotalWithOverhead,
+                    totalSavings,
+                    savingsPercentage
+                });
+                
+                // Update results
+                document.getElementById('customSolutionCost').textContent = '$' + Math.round(customSolutionTotalCost).toLocaleString();
+                document.getElementById('ztkCost').textContent = '$' + Math.round(ztkTotalWithOverhead).toLocaleString();
+                document.getElementById('totalSavings').textContent = '$' + Math.round(totalSavings).toLocaleString();
+                document.getElementById('savingsPercentage').textContent = savingsPercentage + '%';
+                
+                // Show results
+                if (resultsContainer) {
+                    resultsContainer.style.display = 'block';
+                }
+                
+                // Update chart
+                updateChart(timeframe, customSolutionTotalCost, ztkTotalWithOverhead);
+                
+                return true;
+            } catch (error) {
+                console.error("Error calculating ROI:", error);
+                return false;
             }
-            
-            // Calculate custom solution costs
-            const initialDevelopmentMonths = 6;
-            const initialDevelopmentEngineers = Math.min(3, Math.max(2, Math.ceil(numAwsAccounts / 5)));
-            const initialDevelopmentCost = (engineerCost / 12) * initialDevelopmentMonths * initialDevelopmentEngineers;
-            
-            const ongoingMaintenanceEngineers = Math.max(0.5, Math.ceil(numAwsAccounts / 10));
-            const ongoingMaintenanceCost = engineerCost * ongoingMaintenanceEngineers * (timeframe - 0.5);
-            
-            const incidentCostPerYear = securityIncidents * 25000;
-            const totalIncidentCost = incidentCostPerYear * timeframe;
-            
-            const complianceCostPerYear = 50000 * complianceCostFactor;
-            const totalComplianceCost = complianceCostPerYear * timeframe;
-            
-            const customSolutionTotalCost = initialDevelopmentCost + ongoingMaintenanceCost + totalIncidentCost + totalComplianceCost;
-            
-            // Calculate ZTK costs
-            let ztkPlanCost;
-            if (numUsers <= 500) {
-                ztkPlanCost = 999; // Growth plan
-            } else if (numUsers <= 2000) {
-                ztkPlanCost = 2499; // Business plan
-            } else {
-                ztkPlanCost = 4999; // Enterprise Plus plan
-            }
-            
-            const ztkTotalCost = ztkPlanCost * 12 * timeframe;
-            const ztkIncidentCost = (incidentCostPerYear * 0.2) * timeframe; // 80% reduction
-            const ztkComplianceCost = (complianceCostPerYear * 0.4) * timeframe; // 60% reduction
-            
-            const ztkTotalWithOverhead = ztkTotalCost + ztkIncidentCost + ztkComplianceCost;
-            
-            // Calculate savings
-            const totalSavings = customSolutionTotalCost - ztkTotalWithOverhead;
-            const savingsPercentage = Math.round((totalSavings / customSolutionTotalCost) * 100);
-            
-            console.log("Calculation results:", {
-                customSolutionTotalCost,
-                ztkTotalWithOverhead,
-                totalSavings,
-                savingsPercentage
-            });
-            
-            // Update results
-            document.getElementById('customSolutionCost').textContent = '$' + Math.round(customSolutionTotalCost).toLocaleString();
-            document.getElementById('ztkCost').textContent = '$' + Math.round(ztkTotalWithOverhead).toLocaleString();
-            document.getElementById('totalSavings').textContent = '$' + Math.round(totalSavings).toLocaleString();
-            document.getElementById('savingsPercentage').textContent = savingsPercentage + '%';
-            
-            // Show results
-            resultsContainer.style.display = 'block';
-            
-            // Update chart
-            updateChart(timeframe, customSolutionTotalCost, ztkTotalWithOverhead);
         }
         
+        // Chart update function
         function updateChart(timeframe, customCost, ztkCost) {
-            console.log("Updating chart with timeframe:", timeframe, "customCost:", customCost, "ztkCost:", ztkCost);
-            const ctx = document.getElementById('costComparisonChart').getContext('2d');
-            
-            // Destroy existing chart if it exists
-            if (window.costChart) {
-                window.costChart.destroy();
-            }
-            
-            // Calculate yearly costs
-            const customYearlyCosts = [];
-            const ztkYearlyCosts = [];
-            const labels = [];
-            
-            // First year has higher custom cost due to development
-            const firstYearCustom = customCost / timeframe * 1.5;
-            const laterYearCustom = (customCost - firstYearCustom) / (timeframe - 1);
-            
-            customYearlyCosts.push(Math.round(firstYearCustom));
-            for (let i = 1; i < timeframe; i++) {
-                customYearlyCosts.push(Math.round(laterYearCustom));
-            }
-            
-            // ZTK costs are more evenly distributed
-            const yearlyZtk = ztkCost / timeframe;
-            for (let i = 0; i < timeframe; i++) {
-                ztkYearlyCosts.push(Math.round(yearlyZtk));
-                labels.push('Year ' + (i + 1));
-            }
-            
-            // Create chart
             try {
-                window.costChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: [
-                            {
-                                label: 'Custom Solution',
-                                data: customYearlyCosts,
-                                backgroundColor: '#e74c3c',
-                                borderColor: '#c0392b',
-                                borderWidth: 1
-                            },
-                            {
-                                label: 'ZeroTrustKerberosLink',
-                                data: ztkYearlyCosts,
-                                backgroundColor: '#4361ee',
-                                borderColor: '#3a56d4',
-                                borderWidth: 1
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Cost ($)'
+                console.log("Updating chart with timeframe:", timeframe, "customCost:", customCost, "ztkCost:", ztkCost);
+                const canvas = document.getElementById('costComparisonChart');
+                
+                if (!canvas) {
+                    console.error("Chart canvas element not found");
+                    return;
+                }
+                
+                const ctx = canvas.getContext('2d');
+                
+                // Destroy existing chart if it exists
+                if (window.costChart) {
+                    window.costChart.destroy();
+                }
+                
+                // Calculate yearly costs
+                const customYearlyCosts = [];
+                const ztkYearlyCosts = [];
+                const labels = [];
+                
+                // First year has higher custom cost due to development
+                const firstYearCustom = customCost / timeframe * 1.5;
+                const laterYearCustom = (customCost - firstYearCustom) / (timeframe - 1);
+                
+                customYearlyCosts.push(Math.round(firstYearCustom));
+                for (let i = 1; i < timeframe; i++) {
+                    customYearlyCosts.push(Math.round(laterYearCustom));
+                }
+                
+                // ZTK costs are more evenly distributed
+                const yearlyZtk = ztkCost / timeframe;
+                for (let i = 0; i < timeframe; i++) {
+                    ztkYearlyCosts.push(Math.round(yearlyZtk));
+                    labels.push('Year ' + (i + 1));
+                }
+                
+                // Create chart
+                try {
+                    window.costChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [
+                                {
+                                    label: 'Custom Solution',
+                                    data: customYearlyCosts,
+                                    backgroundColor: '#e74c3c',
+                                    borderColor: '#c0392b',
+                                    borderWidth: 1
                                 },
-                                ticks: {
-                                    callback: function(value) {
-                                        return '$' + value.toLocaleString();
+                                {
+                                    label: 'ZeroTrustKerberosLink',
+                                    data: ztkYearlyCosts,
+                                    backgroundColor: '#4361ee',
+                                    borderColor: '#3a56d4',
+                                    borderWidth: 1
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Cost ($)'
+                                    },
+                                    ticks: {
+                                        callback: function(value) {
+                                            return '$' + value.toLocaleString();
+                                        }
+                                    }
+                                },
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Timeline'
                                     }
                                 }
                             },
-                            x: {
-                                title: {
-                                    display: true,
-                                    text: 'Timeline'
-                                }
-                            }
-                        },
-                        plugins: {
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        let label = context.dataset.label || '';
-                                        if (label) {
-                                            label += ': ';
+                            plugins: {
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(context) {
+                                            let label = context.dataset.label || '';
+                                            if (label) {
+                                                label += ': ';
+                                            }
+                                            if (context.parsed.y !== null) {
+                                                label += '$' + context.parsed.y.toLocaleString();
+                                            }
+                                            return label;
                                         }
-                                        if (context.parsed.y !== null) {
-                                            label += '$' + context.parsed.y.toLocaleString();
-                                        }
-                                        return label;
                                     }
                                 }
                             }
                         }
-                    }
-                });
-                console.log("Chart created successfully");
+                    });
+                    console.log("Chart created successfully");
+                } catch (chartError) {
+                    console.error("Error creating chart:", chartError);
+                }
             } catch (error) {
-                console.error("Error creating chart:", error);
+                console.error("Error in updateChart:", error);
             }
         }
     </script>
