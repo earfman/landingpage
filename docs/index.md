@@ -2,7 +2,7 @@
 
 Welcome to the official documentation for ZeroTrustKerberosLink, the secure bridge between enterprise Kerberos authentication and AWS services built on Zero Trust principles.
 
-*Updated: May 3, 2025*
+*Updated: May 4, 2025*
 
 ## Documentation Sections
 
@@ -12,14 +12,32 @@ Everything you need to quickly set up ZeroTrustKerberosLink in your environment.
 ### [Core Concepts](./core-concepts/index.md)
 Understanding the fundamentals of Kerberos, AWS authentication, and Zero Trust security.
 
+### [Deployment Guides](./deployment-guides/)
+Detailed step-by-step guides for deploying in different enterprise environments:
+- [Financial Services Deployment Guide](./deployment-guides/financial-services.md) - PCI-DSS compliant deployment
+- [Healthcare Deployment Guide](./deployment-guides/healthcare.md) - HIPAA compliant deployment
+- [Government Deployment Guide](./deployment-guides/government.md) - FedRAMP compliant deployment
+
+### [Architecture](./architecture/)
+Understanding different deployment architectures and making the right choice:
+- [Deployment Architecture Comparison](./architecture/deployment-comparison.md) - Compare single-node, HA, and multi-region architectures
+
 ### [Security Hardening](./security-hardening/index.md)
 Detailed information on security features, best practices, and compliance.
 
-### [AWS Marketplace](./aws-marketplace/index.md)
-Comprehensive security documentation for AWS Marketplace customers.
-
 ### [Implementation Guide](./implementation-guide/index.md)
 Comprehensive guide for implementing ZeroTrustKerberosLink in production environments.
+
+### [Troubleshooting](./troubleshooting/)
+Solutions for common issues and diagnostic procedures:
+- [Common Issues Guide](./troubleshooting/common-issues.md) - Comprehensive troubleshooting for authentication, AWS integration, and more
+
+### [Interactive Tools](./tools/)
+Interactive tools to help with deployment and configuration:
+- [Configuration Builder](./tools/configuration-builder.html) - Generate custom configurations for your environment
+
+### [AWS Marketplace](./aws-marketplace/index.md)
+Comprehensive security documentation for AWS Marketplace customers.
 
 ### [API Reference](./api-reference/index.md)
 Complete reference for the REST API, CLI, and SDK.
