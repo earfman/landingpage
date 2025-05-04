@@ -8,11 +8,22 @@
     <meta name="keywords" content="Kerberos configuration, AWS integration, zero trust deployment, enterprise security configuration, HIPAA configuration, PCI-DSS configuration, FedRAMP configuration">
     <link rel="stylesheet" href="../../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     <style>
-        .config-builder {
+        .documentation-content {
             max-width: 1200px;
             margin: 40px auto;
             padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .documentation-content h1 {
+            color: var(--primary-color);
+            margin-top: 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
         }
         
         .builder-section {
@@ -49,31 +60,6 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 16px;
-        }
-        
-        .form-group select {
-            height: 42px;
-        }
-        
-        .checkbox-group {
-            margin-top: 15px;
-        }
-        
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        
-        .checkbox-item input[type="checkbox"] {
-            margin-right: 10px;
-        }
-        
-        .template-selector {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 30px;
         }
         
         .template-card {
@@ -192,13 +178,10 @@
     <header>
         <div class="container">
             <div class="logo">
-                <a href="../../index.html" class="logo-link">
+                <a href="../../index.html">
                     <img src="../../assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Symbol" class="logo-symbol">
-                    <h1>ZeroTrustKerberosLink</h1>
+                    <span>ZeroTrustKerberosLink</span>
                 </a>
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
             </div>
             <nav id="mainNav">
                 <ul>
@@ -207,33 +190,35 @@
                     <li><a href="../../index.html#security">Security</a></li>
                     <li><a href="../../index.html#case-studies">Case Studies</a></li>
                     <li><a href="../../index.html#pricing">Pricing</a></li>
-                    <li><a href="../../docs.html" class="btn btn-secondary btn-sm">Documentation</a></li>
-                    <li><a href="../../index.html#waitlist" class="btn btn-primary btn-sm">Join Waitlist</a></li>
+                    <li><a href="../../docs.html" class="active">Documentation</a></li>
+                    <li><a href="../../index.html#waitlist" class="btn btn-primary">Join Waitlist</a></li>
                 </ul>
             </nav>
+            <button id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
-    <!-- Configuration Builder -->
-    <section class="config-builder">
-        <div class="section-header center">
-            <span class="section-badge">Interactive Tool</span>
-            <h2>Enterprise Deployment Configuration Builder</h2>
-            <p class="section-subtitle">Create a custom configuration for your ZeroTrustKerberosLink deployment</p>
+    <div class="documentation-content">
+        <div class="breadcrumbs">
+            <a href="../../docs.html">Documentation</a> &gt; 
+            <a href="../index.html">Tools</a> &gt; 
+            <span>Configuration Builder</span>
         </div>
         
-        <!-- Template Selector -->
-        <div class="builder-section">
-            <h3 class="section-title">Select a Starting Template</h3>
-            <div class="template-selector">
+        <h1>Enterprise Deployment Configuration Builder</h1>
+        <p class="section-subtitle">Create a custom configuration for your ZeroTrustKerberosLink deployment</p>
+        
+        <div class="template-selection">
+            <h2>Select a Starting Template</h2>
+            <div class="template-cards">
                 <div class="template-card" id="financial-template">
-                    <h3><i class="fas fa-landmark"></i> Financial Services</h3>
+                    <div class="template-icon"><i class="fas fa-landmark"></i></div>
+                    <h3>Financial Services</h3>
                     <p>Optimized for banking, investment, and financial institutions with PCI-DSS compliance.</p>
-                    <div class="compliance-badges">
-                        <span class="compliance-badge">PCI-DSS</span>
-                        <span class="compliance-badge">SOC 2</span>
-                        <span class="compliance-badge">GLBA</span>
-                    </div>
                     <ul>
                         <li>Active-active high availability</li>
                         <li>Enhanced audit logging</li>
@@ -242,12 +227,9 @@
                 </div>
                 
                 <div class="template-card" id="healthcare-template">
-                    <h3><i class="fas fa-hospital"></i> Healthcare</h3>
+                    <div class="template-icon"><i class="fas fa-hospital"></i></div>
+                    <h3>Healthcare</h3>
                     <p>Designed for hospitals, clinics, and healthcare providers with HIPAA compliance.</p>
-                    <div class="compliance-badges">
-                        <span class="compliance-badge">HIPAA</span>
-                        <span class="compliance-badge">HITECH</span>
-                    </div>
                     <ul>
                         <li>PHI access tracking</li>
                         <li>Extended log retention</li>
@@ -256,12 +238,9 @@
                 </div>
                 
                 <div class="template-card" id="government-template">
-                    <h3><i class="fas fa-landmark"></i> Government</h3>
+                    <div class="template-icon"><i class="fas fa-landmark"></i></div>
+                    <h3>Government</h3>
                     <p>Configured for federal, state, and local government agencies with FedRAMP compliance.</p>
-                    <div class="compliance-badges">
-                        <span class="compliance-badge">FedRAMP</span>
-                        <span class="compliance-badge">NIST 800-53</span>
-                    </div>
                     <ul>
                         <li>PIV/CAC integration</li>
                         <li>FIPS 140-2 cryptography</li>
@@ -271,7 +250,6 @@
             </div>
         </div>
         
-        <!-- Basic Configuration -->
         <div class="builder-section">
             <h3 class="section-title">Basic Configuration</h3>
             
@@ -288,15 +266,15 @@
             <div class="form-group">
                 <label for="ha-mode">High Availability Mode</label>
                 <select id="ha-mode">
-                    <option value="active-active">Active-Active (Highest Availability)</option>
-                    <option value="active-passive">Active-Passive (Standard HA)</option>
-                    <option value="single">Single Node (No HA)</option>
+                    <option value="single">Single Node</option>
+                    <option value="active-passive">Active-Passive</option>
+                    <option value="active-active" selected>Active-Active</option>
                 </select>
             </div>
             
             <div class="form-group">
-                <label for="node-count">Number of Nodes</label>
-                <input type="number" id="node-count" min="1" max="10" value="2">
+                <label for="node-count">Minimum Node Count</label>
+                <input type="number" id="node-count" min="1" value="2">
             </div>
         </div>
         
@@ -488,43 +466,61 @@ compliance:
                 <button class="btn btn-secondary" id="download-config">Download YAML</button>
             </div>
         </div>
-    </section>
+    </div>
     
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="../../index.html" class="footer-logo">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-wrapper">
                         <img src="../../assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Logo" class="footer-logo-img">
-                        <span class="footer-logo-text">ZeroTrustKerberosLink</span>
-                    </a>
-                    <p class="footer-tagline">Enterprise-grade Kerberos to AWS integration with zero-trust security principles</p>
+                        <h2>ZeroTrustKerberosLink</h2>
+                    </div>
+                    <p>Secure, zero-trust integration between enterprise Kerberos authentication and AWS services.</p>
                 </div>
                 
-                <div class="footer-links">
-                    <h4>Documentation</h4>
-                    <ul>
-                        <li><a href="../../docs.html">Documentation Home</a></li>
-                        <li><a href="../deployment-guides/financial-services.html">Financial Services Guide</a></li>
-                        <li><a href="../deployment-guides/healthcare.html">Healthcare Guide</a></li>
-                        <li><a href="../deployment-guides/government.html">Government Guide</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Tools</h4>
-                    <ul>
-                        <li><a href="configuration-builder.html">Configuration Builder</a></li>
-                        <li><a href="deployment-checklist.html">Deployment Checklist</a></li>
-                        <li><a href="architecture-designer.html">Architecture Designer</a></li>
-                    </ul>
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <h3>Product</h3>
+                        <ul>
+                            <li><a href="../../index.html#features">Features</a></li>
+                            <li><a href="../../index.html#security">Security</a></li>
+                            <li><a href="../../index.html#pricing">Pricing</a></li>
+                            <li><a href="../../index.html#case-studies">Case Studies</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="../../docs.html">Documentation</a></li>
+                            <li><a href="../../docs/implementation-guide/index.html">Implementation Guide</a></li>
+                            <li><a href="../../docs/security-hardening/index.html">Security Hardening</a></li>
+                            <li><a href="../../roi-calculator.html">ROI Calculator</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="../../index.html#about">About Us</a></li>
+                            <li><a href="../../index.html#waitlist">Contact</a></li>
+                            <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="../../terms-of-service.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
                 <div class="footer-copyright">
                     <p>&copy; 2025 ZeroTrustKerberosLink. All rights reserved.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="../../privacy-policy.html">Privacy Policy</a>
+                    <a href="../../terms-of-service.html">Terms of Service</a>
+                    <a href="../../index.html#security">Security</a>
                 </div>
             </div>
         </div>
