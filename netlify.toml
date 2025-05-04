@@ -1,6 +1,6 @@
 [build]
-  publish = "site"
-  command = "mkdir -p site && cp -r *.html site-assets styles.css assets site/ && pip install --user mkdocs mkdocs-material pymdown-extensions mkdocs-minify-plugin mkdocs-git-revision-date-localized-plugin && python -m mkdocs build"
+  publish = "."
+  command = "pip install --user mkdocs mkdocs-material pymdown-extensions mkdocs-minify-plugin mkdocs-git-revision-date-localized-plugin && python -m mkdocs build"
 
 [build.environment]
   NODE_VERSION = "16"
