@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise SLA Details - ZeroTrustKerberosLink Documentation</title>
+    <meta name="description" content="Detailed service level agreement information for ZeroTrustKerberosLink enterprise customers.">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../site-assets/docs-logo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        .documentation-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .documentation-content h1 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .documentation-content h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .documentation-content h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-color);
+        }
+        
+        .documentation-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .documentation-content ul, 
+        .documentation-content ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        .documentation-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .documentation-content code {
+            background-color: var(--background-alt);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        
+        .documentation-content pre {
+            background-color: var(--background-alt);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+        
+        .documentation-content pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        
+        .documentation-content blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+            margin-left: 0;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+        
+        .documentation-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+        }
+        
+        .documentation-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+        
+        .documentation-content th, 
+        .documentation-content td {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .documentation-content th {
+            background-color: var(--background-alt);
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .documentation-content tr:nth-child(even) {
+            background-color: var(--background-alt);
+        }
+        
+        .documentation-header {
+            margin-bottom: 2rem;
+        }
+        
+        .documentation-badge {
+            display: inline-block;
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .documentation-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .documentation-toc {
+            background-color: var(--background-alt);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+        
+        .documentation-toc h4 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .documentation-toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .documentation-toc li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .documentation-toc a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .documentation-toc a:hover {
+            color: var(--primary-color);
+        }
+        
+        .documentation-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .nav-previous, 
+        .nav-next {
+            display: flex;
+            align-items: center;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .nav-previous:hover, 
+        .nav-next:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-previous i {
+            margin-right: 0.5rem;
+        }
+        
+        .nav-next i {
+            margin-left: 0.5rem;
+        }
+        
+        .sla-highlight {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: #2ecc71;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        .sla-card {
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .sla-card h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .contact-info {
+            background-color: var(--background-alt);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-top: 2rem;
+        }
+        
+        .contact-info h3 {
+            margin-top: 0;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-method i {
+            width: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../../index.html" class="logo-link">
+                    <img src="../../assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Symbol" class="logo-symbol">
+                    <h1>ZeroTrustKerberosLink</h1>
+                </a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="../../index.html#features">Features</a></li>
+                    <li><a href="../../index.html#how-it-works">How It Works</a></li>
+                    <li><a href="../../index.html#security">Security</a></li>
+                    <li><a href="../../index.html#case-studies">Case Studies</a></li>
+                    <li><a href="../../index.html#pricing">Pricing</a></li>
+                    <li><a href="../../docs.html" class="btn btn-secondary btn-sm">Documentation</a></li>
+                    <li><a href="../../index.html#waitlist" class="btn btn-primary btn-sm">Join Waitlist</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="documentation-page">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-badge">Documentation</span>
+                <h2>Enterprise SLA Details</h2>
+                <p class="section-subtitle">Comprehensive service level agreements for enterprise customers</p>
+            </div>
+            
+            <div class="documentation-content">
+                <div class="documentation-header">
+                    <span class="documentation-badge">99.99% Uptime</span>
+                    <h1>Enterprise SLA Details</h1>
+                    <div class="documentation-meta">
+                        <span>10 min read • Updated May 2025</span>
+                    </div>
+                </div>
+                
+                <div class="documentation-toc">
+                    <h4>Table of Contents</h4>
+                    <ul>
+                        <li><a href="#overview">SLA Overview</a></li>
+                        <li><a href="#uptime">Uptime Guarantee</a></li>
+                        <li><a href="#response-times">Response Times</a></li>
+                        <li><a href="#support-tiers">Support Tiers</a></li>
+                        <li><a href="#maintenance">Scheduled Maintenance</a></li>
+                        <li><a href="#credits">Service Credits</a></li>
+                        <li><a href="#reporting">SLA Reporting</a></li>
+                        <li><a href="#contact">Support Contact Information</a></li>
+                    </ul>
+                </div>
+                
+                <h2 id="overview">SLA Overview</h2>
+                
+                <p>ZeroTrustKerberosLink is committed to providing enterprise customers with reliable, secure, and high-performance service. Our Service Level Agreement (SLA) outlines the standards we maintain and the guarantees we provide to ensure your critical authentication infrastructure operates without interruption.</p>
+                
+                <p>This SLA applies to all Enterprise and Enterprise Plus plan customers and covers the following components:</p>
+                
+                <ul>
+                    <li>ZeroTrustKerberosLink Authentication Service</li>
+                    <li>Policy Enforcement Points</li>
+                    <li>Management Console</li>
+                    <li>API Endpoints</li>
+                    <li>Logging and Monitoring Components</li>
+                </ul>
+                
+                <h2 id="uptime">Uptime Guarantee</h2>
+                
+                <div class="sla-card">
+                    <h3>99.99% Uptime Guarantee</h3>
+                    <p>ZeroTrustKerberosLink guarantees 99.99% uptime for all core authentication services. This equates to a maximum of 52.6 minutes of downtime per year.</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Service Component</th>
+                                <th>Uptime Guarantee</th>
+                                <th>Maximum Downtime (Annual)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Authentication Service</td>
+                                <td><span class="sla-highlight">99.99%</span></td>
+                                <td>52.6 minutes</td>
+                            </tr>
+                            <tr>
+                                <td>Policy Enforcement Points</td>
+                                <td><span class="sla-highlight">99.99%</span></td>
+                                <td>52.6 minutes</td>
+                            </tr>
+                            <tr>
+                                <td>API Endpoints</td>
+                                <td><span class="sla-highlight">99.99%</span></td>
+                                <td>52.6 minutes</td>
+                            </tr>
+                            <tr>
+                                <td>Management Console</td>
+                                <td><span class="sla-highlight">99.95%</span></td>
+                                <td>4.38 hours</td>
+                            </tr>
+                            <tr>
+                                <td>Logging and Monitoring</td>
+                                <td><span class="sla-highlight">99.95%</span></td>
+                                <td>4.38 hours</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <p>Uptime is calculated based on the following formula:</p>
+                <pre><code>Uptime Percentage = ((Total Minutes in Month - Downtime Minutes) / Total Minutes in Month) × 100</code></pre>
+                
+                <p>Downtime is defined as any period during which the service is unavailable or does not respond to authentication requests. Scheduled maintenance windows are excluded from downtime calculations.</p>
+                
+                <h2 id="response-times">Response Times</h2>
+                
+                <p>ZeroTrustKerberosLink provides rapid response times for all support inquiries based on severity level:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Severity</th>
+                            <th>Definition</th>
+                            <th>Initial Response</th>
+                            <th>Status Updates</th>
+                            <th>Target Resolution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>P1 - Critical</td>
+                            <td>Service unavailable or severely impacted affecting production</td>
+                            <td><strong>15 minutes</strong></td>
+                            <td>Hourly</td>
+                            <td>4 hours</td>
+                        </tr>
+                        <tr>
+                            <td>P2 - High</td>
+                            <td>Service degraded with significant impact to business operations</td>
+                            <td><strong>1 hour</strong></td>
+                            <td>4 hours</td>
+                            <td>8 hours</td>
+                        </tr>
+                        <tr>
+                            <td>P3 - Medium</td>
+                            <td>Partial, non-critical loss of functionality</td>
+                            <td><strong>4 hours</strong></td>
+                            <td>Daily</td>
+                            <td>3 business days</td>
+                        </tr>
+                        <tr>
+                            <td>P4 - Low</td>
+                            <td>General questions, feature requests, or minor issues</td>
+                            <td><strong>1 business day</strong></td>
+                            <td>As appropriate</td>
+                            <td>10 business days</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p>For more detailed information on response times and escalation procedures, please refer to our <a href="response-times.html">Support Response Times</a> documentation.</p>
+                
+                <h2 id="support-tiers">Support Tiers</h2>
+                
+                <div class="sla-card">
+                    <h3>Enterprise Support</h3>
+                    <ul>
+                        <li><strong>Availability:</strong> 24/7/365 for P1 and P2 issues</li>
+                        <li><strong>Support Channels:</strong> Email, phone, web portal</li>
+                        <li><strong>Named Support Contacts:</strong> Up to 5</li>
+                        <li><strong>Technical Account Manager:</strong> Quarterly reviews</li>
+                        <li><strong>Proactive Monitoring:</strong> Included</li>
+                    </ul>
+                </div>
+                
+                <div class="sla-card">
+                    <h3>Enterprise Plus Support</h3>
+                    <ul>
+                        <li><strong>Availability:</strong> 24/7/365 for all severity levels</li>
+                        <li><strong>Support Channels:</strong> Email, phone, web portal, dedicated Slack channel</li>
+                        <li><strong>Named Support Contacts:</strong> Unlimited</li>
+                        <li><strong>Technical Account Manager:</strong> Dedicated, monthly reviews</li>
+                        <li><strong>Proactive Monitoring:</strong> Enhanced with predictive analysis</li>
+                        <li><strong>Architecture Reviews:</strong> Quarterly</li>
+                    </ul>
+                </div>
+                
+                <h2 id="maintenance">Scheduled Maintenance</h2>
+                
+                <p>To ensure optimal performance and security, ZeroTrustKerberosLink performs regular maintenance on our systems. Scheduled maintenance follows these guidelines:</p>
+                
+                <ul>
+                    <li><strong>Standard Maintenance:</strong> Performed during low-usage windows with at least 7 days advance notice</li>
+                    <li><strong>Emergency Maintenance:</strong> May be performed with shorter notice to address critical security or stability issues</li>
+                    <li><strong>Maintenance Windows:</strong> Typically scheduled between 10:00 PM and 2:00 AM in the customer's primary time zone</li>
+                    <li><strong>Redundancy:</strong> All maintenance is performed using rolling updates to maintain service availability</li>
+                </ul>
+                
+                <p>Customers can opt to receive maintenance notifications via email, SMS, or through the Management Console.</p>
+                
+                <h2 id="credits">Service Credits</h2>
+                
+                <p>If ZeroTrustKerberosLink fails to meet the guaranteed uptime in any calendar month, customers are eligible for service credits according to the following schedule:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Monthly Uptime</th>
+                            <th>Service Credit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Less than 99.99% but greater than or equal to 99.9%</td>
+                            <td>10% of monthly fee</td>
+                        </tr>
+                        <tr>
+                            <td>Less than 99.9% but greater than or equal to 99.0%</td>
+                            <td>25% of monthly fee</td>
+                        </tr>
+                        <tr>
+                            <td>Less than 99.0%</td>
+                            <td>50% of monthly fee</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p>To receive service credits, customers must submit a claim within 30 days of the incident. Credits will be applied to future billing cycles and cannot exceed 100% of the monthly fee for the affected service.</p>
+                
+                <h2 id="reporting">SLA Reporting</h2>
+                
+                <p>ZeroTrustKerberosLink provides comprehensive SLA reporting to help customers monitor service performance:</p>
+                
+                <ul>
+                    <li><strong>Monthly SLA Reports:</strong> Detailed uptime statistics and incident summaries</li>
+                    <li><strong>Real-time Status Dashboard:</strong> Current service status and historical performance</li>
+                    <li><strong>Incident Reports:</strong> Detailed post-mortem analysis for any service disruptions</li>
+                    <li><strong>Quarterly Business Reviews:</strong> Comprehensive service performance reviews for Enterprise Plus customers</li>
+                </ul>
+                
+                <p>All reports are available through the Management Console and can be automatically delivered via email to designated contacts.</p>
+                
+                <h2 id="contact">Support Contact Information</h2>
+                
+                <div class="contact-info">
+                    <h3>How to Reach Support</h3>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <span><strong>Email:</strong> support@zerotrustkerberoslink.com</span>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-phone"></i>
+                        <span><strong>Phone (24/7):</strong> +1 (800) 555-0123</span>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-globe"></i>
+                        <span><strong>Support Portal:</strong> <a href="https://support.zerotrustkerberoslink.com">https://support.zerotrustkerberoslink.com</a></span>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-comment"></i>
+                        <span><strong>Enterprise Plus Slack:</strong> Contact your TAM for access</span>
+                    </div>
+                </div>
+                
+                <div class="documentation-nav">
+                    <a href="../index.html" class="nav-previous">
+                        <i class="fas fa-arrow-left"></i> Support Documentation Index
+                    </a>
+                    <a href="response-times.html" class="nav-next">
+                        Support Response Times <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-wrapper">
+                        <img src="../../assets/cerberus-symbol.png" alt="ZeroTrustKerberosLink Symbol" class="footer-logo-symbol">
+                        <h2>ZeroTrustKerberosLink</h2>
+                    </div>
+                    <p>Secure, zero-trust integration between enterprise Kerberos authentication and AWS services.</p>
+                </div>
+                
+                <div class="footer-columns">
+                    <div class="footer-column">
+                        <h3>Product</h3>
+                        <ul>
+                            <li><a href="../../index.html#features">Features</a></li>
+                            <li><a href="../../index.html#security">Security</a></li>
+                            <li><a href="../../index.html#pricing">Pricing</a></li>
+                            <li><a href="../../index.html#case-studies">Case Studies</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="../../docs.html">Documentation</a></li>
+                            <li><a href="../../docs.html">Implementation Guide</a></li>
+                            <li><a href="../../docs.html">Security Hardening</a></li>
+                            <li><a href="../../roi-calculator.html">ROI Calculator</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li><a href="../../index.html#about">About Us</a></li>
+                            <li><a href="../../index.html#waitlist">Contact</a></li>
+                            <li><a href="../../privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="../../terms-of-service.html">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2025 ZeroTrustKerberosLink. All rights reserved.
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            if (mobileMenuToggle && mainNav) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    mobileMenuToggle.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
